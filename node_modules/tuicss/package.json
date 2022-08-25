@@ -1,0 +1,40 @@
+{
+  "name": "tuicss",
+  "version": "2.1.1",
+  "description": "TuiCss is a library for developing Web applications that uses text-based user interface applications (TUI) as a style",
+  "keywords": [
+    "tui",
+    "text based user interface",
+    "frontend",
+    "css",
+    "frameword",
+    "turbo vision",
+    "tuicss",
+    "ncurses",
+    "msdos",
+    "ascii"
+  ],
+  "main": "dist/tuicss.min.css",
+  "scripts": {
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinibiavatti1/TuiCss.git"
+  },
+  "author": "Vinícius Reif Biavatti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinibiavatti1/TuiCss/issues"
+  },
+  "homepage": "https://github.com/vinibiavatti1/TuiCss#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-copy": "^4.0.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0"
+  }
+}

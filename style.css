@@ -1,0 +1,43 @@
+html, body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    background-color: black;
+    height: 100vh;
+    /* font-family: 'Lucida Console'; */
+    font-family: 'DOS';
+    color: white;
+    width: 98vw;
+}
+legend {
+    position: absolute;
+    bottom: 2.5%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    padding: 0 5px;
+    background: inherit;
+    font-size: 1vw;
+}
+.art {
+    display: flex;
+    justify-content: center;
+    font-size: 1vw;
+
+}
+.main {
+    width: 100%;
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#terminal-wrapper {
+    margin: 5%;
+    padding: 1%;
+    border: 2px white solid;
+}
+
+

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "tuicss": "^2.1.1",
+    "xterm": "^4.19.0",
+    "xterm-addon-fit": "^0.5.0"
+  }
+}

@@ -1,0 +1,87 @@
+@import '../mixins.scss';
+
+.left {
+    float: left!important;
+}
+.right {
+    float: right!important;
+}
+.center {
+    text-align: center;
+}
+.left-align {
+    text-align: left;
+}
+.right-align {
+    text-align: right;
+}
+.center-align {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%!important;
+}
+.full-height {
+    height: 100%!important;
+}
+
+.inline {
+    display: inline!important;
+}
+.inline-block {
+    display: inline-block!important;
+}
+.block {
+    display: block!important;
+}
+
+.valign-top {
+    vertical-align: top!important;
+}
+.valign-middle {
+    vertical-align: middle!important;
+}
+.valign-bottom {
+    vertical-align: bottom!important;
+}
+
+.fixed {
+    position: fixed!important;
+}
+.absolute {
+    position: absolute!important;
+}
+.relative {
+    position: relative!important;
+}
+.static {
+    position: static!important;
+}
+
+.no-shadow {
+    box-shadow: none!important;
+}
+.no-padding {
+    padding: 0px!important;
+}
+.no-border {
+    border: none!important;
+}
+.content {
+    padding: 12px;
+}
+.disable-select {
+    @include disable-select;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+.cursor-default {
+    cursor: default !important;
+}
+
+.disabled {
+    cursor: not-allowed!important;
+}

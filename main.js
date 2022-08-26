@@ -1,6 +1,9 @@
 
+
 // Creates terminal and updates options
 const terminal = new Terminal({
+    columns: 200,
+    rows: 15,
     fontFamily: 'DOS',
     cursorBlink: 'true',
     convertEol: true,
@@ -9,7 +12,10 @@ const terminal = new Terminal({
         cursor: 'yellowgreen',
       }
 });
-terminal.open(document.getElementById('terminal'));
+const fitAddon = new FitAddon.FitAddon();
+terminal.loadAddon(fitAddon);
+terminal.open(document.getElementById('terminal-wrapper'));
+fitAddon.fit();
 terminal.focus();
 
 consoleUser()

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/node_modules/tuicss/dist/tuicss.css">
+        <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
+        <script src="/node_modules/xterm/lib/xterm.js" defer></script>
+        <script type="text/javascript" src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+        <script src="waf.js" defer></script>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1"/>
+    </head>
+    <body>
+        <a href="/index.html" class="title">
+            <div class="tui-window" class="center" class=".title">
+                <fieldset class="tui-fieldset" class=".title">
+                    <legend class=".title">a latency based testing paradigm for the modern web</legend>
+                    <pre class="art" class=".title">                  
+    #             _ _ _ _                              _                           _   _            
+    #   _ __ ___ (_) | (_)___  ___  ___ ___  _ __   __| |___       _ __ ___   __ _| |_| |_ ___ _ __ 
+    #  | '_ ` _ \| | | | / __|/ _ \/ __/ _ \| '_ \ / _` / __|_____| '_ ` _ \ / _` | __| __/ _ \ '__|
+    #  | | | | | | | | | \__ \  __/ (_| (_) | | | | (_| \__ \_____| | | | | | (_| | |_| ||  __/ |   
+    #  |_| |_| |_|_|_|_|_|___/\___|\___\___/|_| |_|\__,_|___/     |_| |_| |_|\__,_|\__|\__\___|_|   
+    #                                                                                               
+                    </pre>
+                </fieldset>
+            </div>
+        </a>
+        <div class="main">
+            <div id="waf-table">
+                <table class="tui-table hovered-purple" >
+                    <caption class="table-region">
+                        North America: Dallas
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Org</th>
+                            <th>Position</th>
+                            <th>% faster than next</th>
+                            <th>TTFB</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>StackPath</td>
+                            <td>1</td>
+                            <td><div class="tui-chart-value red-168" style="width: 10%;">10%</div></td>
+                            <td>50ms</td>
+                        </tr>
+                        <tr>
+                            <td>Imperva</td>
+                            <td>2</td>
+                            <td><div class="tui-chart-value green-168" style="width: 10%;">10%</div></td>
+                            <td>54ms</td>
+                        </tr>
+                        <tr>
+                            <td>AWS</td>
+                            <td>3</td>
+                            <td><div class="tui-chart-value blue-168" style="width: 10%;">10%</div></td>
+                            <td>57ms</td>
+                        </tr>
+                        <tr>
+                            <td>Cloudflare</td>
+                            <td>4</td>
+                            <td><div class="tui-chart-value yellow-168" style="width: 10%;">10%</div></td>
+                            <td>69ms</td>
+                        </tr>
+                        <tr>
+                            <td>Fastly</td>
+                            <td>5</td>
+                            <td><div class="tui-chart-value orange-168" style="width: 10%;">10%</div></td>
+                            <td>419ms</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th>Org</th>
+                            <th>Position</th>
+                            <th>% faster than next</th>
+                            <th>TTFB</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th class="table-run-button"colspan="100" scope="colgroup">
+                                <button onclick="test()">
+                                    <span>Run Test</span>
+                                </button>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- <div id="terminal-wrapper"></div> -->
+        </div>
+        <div class="tui-statusbar">
+            <ul>
+                <li><a href="/index.html"><span class="purple-168-text">F12</span> home</a></li>
+                <span class="tui-statusbar-divider"></span>
+                <li><a href="/waf/waf.html"><span class="purple-168-text">F1</span> waf-test</a></li>
+                <span class="tui-statusbar-divider"></span>
+                <li><a href="#!"><span class="black-168">N/A</span> rpc-test</a></li>
+                <span class="tui-statusbar-divider"></span>
+                <li><a href="#!"><span class="black-168">N/A</span> about</a></li>
+                <li>...</li>
+            </ul>
+        </div>
+    </body>

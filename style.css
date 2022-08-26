@@ -17,12 +17,12 @@ legend {
     transform: translate(-50%, 50%);
     padding: 0 5px;
     background: inherit;
-    font-size: 1vw;
+    font-size: 1.4vw;
 }
 .art {
     display: flex;
     justify-content: center;
-    font-size: 1vw;
+    font-size: 1.7vw;
 
 }
 .main {

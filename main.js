@@ -4,14 +4,22 @@ const terminal = new Terminal({
     fontFamily: 'DOS',
     cursorBlink: 'true',
     convertEol: true,
-  });
-terminal.setOption('theme', { background: 'green' });
+    theme: {
+        background: 'black',
+        cursor: 'yellowgreen',
+      }
+});
 terminal.open(document.getElementById('terminal'));
 terminal.focus();
 
-terminal.write('$ ');
+consoleUser()
 introText();
 
+function consoleUser() {
+    terminal.write('\x1b[38;2;168;0;168m $ \x1b[38;2;255;255;255m');
+
+
+}
 // Types text into terminal upon load
 function introText () {
     const txt = "This is where the intro text will be.\n\nThere will be instructrions on how to proceed.\nAs well as options for next steps.";

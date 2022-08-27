@@ -2,15 +2,74 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     background-color: black;
-    /* font-family: 'Lucida Console'; */
     font-family: 'DOS';
     color: floralwhite;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    
 }
-.title {
+.main {
+    font-size: 1em;
+    border-left: 1em #a8a8a8 solid;
+    border-right: 1em #a8a8a8 solid;
+    border-top: 1em #a8a8a8 solid;
+    background-color: #a8a8a8;
+    display: flex;
+    flex: 1 1 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 85vh;
+    width: 50vw;
+    overflow: hidden;
+}
+/* With flex-start the terminal is pinned to the left side. 
+This way resizing only hides the right side */
+#terminal {
+    display: flex;
+    flex: 1 1 1;
+    align-self: flex-start;
+    border: 5px black solid;
+}
+.tui-statusbar {
+    display: flex;
+    align-self: stretch;
+    background-color: #a8a8a8;
+    
+}
+  .tui-statusbar ul li {
+    display: inline-block;
+    margin-left: 1px;
+}
+  .tui-statusbar ul li:active {
+    background-color: yellowgreen;
+    color: black; 
+}
+  .tui-statusbar ul {
+    display: flex;
+    flex: 1 1 auto;
+    align-self: stretch;
+
+}
+  .tui-statusbar li {
+    display: flex;
+    flex: 1 1 auto;
+    align-self: flex-end;
+}
+   .tui-statusbar li a {
+    font-size: 1em;
+}
+  .tui-statusbar-divider {
+    border-right: 2px floralwhite solid;
+    display: inline;
+    margin: 0px 3px; 
+}
+
+
+
+/* .title {
     position: relative;
     margin-top: 1%;
 }
@@ -21,11 +80,11 @@ html, body {
     border: 6px floralwhite double;
     padding: 1px;
     background-color: inherit;
-}
-pre {
+} */
+/* pre {
     margin: -1%;
-}
-.art {
+} */
+/* .art {
     margin-right: 3%;
     display: flex;
     justify-content: center;
@@ -39,27 +98,12 @@ legend {
     padding: 0 5px;
     background: black;
     font-size: 1.4vw;
-}
-.main {
-    display: flex;
-    flex: 1 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    max-width: 100%;
-}
-#terminal-wrapper {
-    display: flex;
-    flex: 1 1;
-    justify-content: center;
-    align-items: center;
-    margin: 4%;
-    padding: 2%;
-    border: 2px floralwhite solid;
-    width: 75vw;
-    max-height: 65%;
-}
+} */
+
+
+
+
+
 #waf-table {
     display: flex;
     flex: 1 1;
@@ -93,5 +137,6 @@ legend {
 .table-run-button button:hover span {
     display: none;
 }
+
 
 

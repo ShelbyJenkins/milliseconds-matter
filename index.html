@@ -1,44 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>milliseconds-matter</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="/node_modules/tuicss/dist/tuicss.css">
         <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
         <script type="text/javascript" src="/node_modules/xterm/lib/xterm.js" defer></script>
-        <script type="text/javascript" src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+        <script type="text/javascript" src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js" defer></script>
         <script src="main.js" defer></script>
-        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1"/>
     </head>
     <body>
-        <a href="/index.html" class="title">
-            <div class="tui-window" class="center" class=".title">
-                <fieldset class="tui-fieldset" class=".title">
-                    <legend class=".title">a latency based testing paradigm for the modern web</legend>
-                    <pre class="art" class=".title">                  
-    #             _ _ _ _                              _                           _   _            
-    #   _ __ ___ (_) | (_)___  ___  ___ ___  _ __   __| |___       _ __ ___   __ _| |_| |_ ___ _ __ 
-    #  | '_ ` _ \| | | | / __|/ _ \/ __/ _ \| '_ \ / _` / __|_____| '_ ` _ \ / _` | __| __/ _ \ '__|
-    #  | | | | | | | | | \__ \  __/ (_| (_) | | | | (_| \__ \_____| | | | | | (_| | |_| ||  __/ |   
-    #  |_| |_| |_|_|_|_|_|___/\___|\___\___/|_| |_|\__,_|___/     |_| |_| |_|\__,_|\__|\__\___|_|   
-    #                                                                                               
-                    </pre>
-                </fieldset>
-            </div>
-        </a>
         <div class="main">
-            <div id="terminal-wrapper"></div>
-        </div>
-        <div class="tui-statusbar">
-            <ul>
-                <li><a href="/index.html"><span class="purple-168-text">F12</span> home</a></li>
-                <span class="tui-statusbar-divider"></span>
-                <li><a href="/waf/waf.html"><span class="purple-168-text">F1</span> waf-test</a></li>
-                <span class="tui-statusbar-divider"></span>
-                <li><a href="#!"><span class="black-168">N/A</span> rpc-test</a></li>
-                <span class="tui-statusbar-divider"></span>
-                <li><a href="#!"><span class="black-168">N/A</span> about</a></li>
-                <li>...</li>
-            </ul>
+            <div id="terminal"></div>
+            <div class="tui-statusbar">
+                <ul>
+                    <li><a href="/index.html"><span class="purple-168-text">F12</span> home</a></li>
+                    <span class="tui-statusbar-divider"></span>
+                    <li><a href="/waf/waf.html"><span class="purple-168-text">F1</span> waf-test</a></li>
+                    <span class="tui-statusbar-divider"></span>
+                    <li><a href="#!"><span style="color: floralwhite">N/A</span> rpc-test</a></li>
+                    <span class="tui-statusbar-divider"></span>
+                    <li><a href="#!"><span style="color: floralwhite">N/A</span> about</a></li>
+                    <li>...</li>
+                </ul>
+            </div>
         </div>
     </body>
 

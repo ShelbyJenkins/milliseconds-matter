@@ -5,18 +5,32 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="/node_modules/tuicss/dist/tuicss.css">
         <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
-        <script type="text/javascript" src="/node_modules/xterm/lib/xterm.js" defer></script>
-        <script type="text/javascript" src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js" defer></script>
+        <script src="/node_modules/xterm/lib/xterm.js" defer></script>
+        <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js" defer></script>
         <script src="main.js" defer></script>
     </head>
     <body>
         <div class="main">
-            <div id="terminal"></div>
+            <nav class="tui-statusbar">
+                <ul>
+                    <li class="tui-dropdown">
+                        v0.0.3
+                        <div class="tui-dropdown-content">
+                            <ul>
+                                <li><a href="#!"><span class="purple-168-text">N</span>othing done here.</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div id="terminal-wrapper">
+                <div id="terminal"></div>
+            </div>
             <div class="tui-statusbar">
                 <ul>
-                    <li><a href="/index.html"><span class="purple-168-text">F12</span> home</a></li>
+                    <li><a href="/"><span class="purple-168-text">F1</span> home</a></li>
                     <span class="tui-statusbar-divider"></span>
-                    <li><a href="/waf/waf.html"><span class="purple-168-text">F1</span> waf-test</a></li>
+                    <li><a href="/waf/waf.html"><span class="purple-168-text">F2</span> waf-test</a></li>
                     <span class="tui-statusbar-divider"></span>
                     <li><a href="#!"><span style="color: floralwhite">N/A</span> rpc-test</a></li>
                     <span class="tui-statusbar-divider"></span>

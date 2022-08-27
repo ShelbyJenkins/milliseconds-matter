@@ -1,8 +1,8 @@
 
 // Creates terminal and updates it's options.
 const terminal = new Terminal({
-    cols: 138,
-    rows: 25,
+    cols: 124,
+    rows: 20,
     fontSize: 12,
     fontWeight: 450,
     fontFamily: 'DOS',
@@ -19,10 +19,11 @@ terminal.open(document.getElementById('terminal'));
 fitAddon.fit();
 terminal.focus();
 
-// On resize page is reloaded to assure fit() runs correctly.
+// On resize or reload runs fit().
 window.onresize = function(){ location.reload(); }
-
-introText()
+window.addEventListener('load', function () {
+    fitAddon.fit();
+  })
 
 // Types text into terminal upon load.
 function introText() {
@@ -49,12 +50,13 @@ terminal.onKey(e => {
         cmd = '';
     } else if (e.key === '\x7F') {
         terminal.write("\b \b");
+        cmd = cmd.slice(0, -1); 
     } else {
         terminal.write(e.key);
         cmd += e.key;
     }
 })
-
+// Very basic CLI.
 function runCommand(cmd) {
     switch (cmd) {
         case '':
@@ -64,7 +66,7 @@ function runCommand(cmd) {
             terminal.write('\r\n');
             break;
         case 'home':
-            window.location.href = '/index.html';
+            window.location.href = '/';
             terminal.write('\r\n');
             break;
         case 'waf-test':
@@ -86,7 +88,7 @@ function consoleUser() {
     terminal.write('\x1b[38;2;168;0;168m $ \x1b[38;2;255;255;255m');
 }
 
-  
+introText()
 
 
 

@@ -7,37 +7,34 @@ html, body {
     font-family: 'DOS';
     color: floralwhite;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     
 }
 .main {
     font-size: 1em;
     border-left: 1em #a8a8a8 solid;
     border-right: 1em #a8a8a8 solid;
-    border-top: 1em #a8a8a8 solid;
-    background-color: #a8a8a8;
+    /* background-color: #a8a8a8; */
     display: flex;
     flex: 1 1 1;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    max-height: 85vh;
-    width: 50vw;
-    overflow: hidden;
+    width: 60vw;
+    
 }
-/* With flex-start the terminal is pinned to the left side. 
-This way resizing only hides the right side */
-#terminal {
+#terminal-wrapper {
     display: flex;
     flex: 1 1 1;
-    align-self: flex-start;
-    border: 5px black solid;
+    align-content: center;
+    align-items: stretch;
+    max-width: 100%;
+}
+#terminal {
 }
 .tui-statusbar {
     display: flex;
     align-self: stretch;
     background-color: #a8a8a8;
-    
 }
   .tui-statusbar ul li {
     display: inline-block;
@@ -45,13 +42,12 @@ This way resizing only hides the right side */
 }
   .tui-statusbar ul li:active {
     background-color: yellowgreen;
-    color: black; 
+    color: floralwhite; 
 }
   .tui-statusbar ul {
     display: flex;
     flex: 1 1 auto;
     align-self: stretch;
-
 }
   .tui-statusbar li {
     display: flex;
@@ -67,52 +63,18 @@ This way resizing only hides the right side */
     margin: 0px 3px; 
 }
 
-
-
-/* .title {
-    position: relative;
-    margin-top: 1%;
-}
-.title:hover  .art {
-    color: yellowgreen;
-}
-.tui-fieldset {
-    border: 6px floralwhite double;
-    padding: 1px;
-    background-color: inherit;
-} */
-/* pre {
-    margin: -1%;
-} */
-/* .art {
-    margin-right: 3%;
-    display: flex;
-    justify-content: center;
-    font-size: 1.7vw;
-}
-legend {
-    position: absolute;
-    bottom: 2.5%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    padding: 0 5px;
-    background: black;
-    font-size: 1.4vw;
-} */
-
-
-
-
-
 #waf-table {
     display: flex;
-    flex: 1 1;
+    flex: 1 1 ;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3%;
-    margin-bottom: 3%;
+    width: 90%;
+    margin-top: 1%;
+    margin-bottom: 2%;
 }
+.tui-table {
+    border: 2px solid floralwhite;
+}
+
 .table-region {
     color: inherit;
     text-align: center;

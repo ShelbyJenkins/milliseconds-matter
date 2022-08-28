@@ -40,7 +40,7 @@ function introText() {
         }(i));
         } 
     })
-    setTimeout(consoleUser, 1000);
+    setTimeout(consoleUser, 1500);
 }
 // Very basic typing interface.
 var cmd = '';
@@ -90,29 +90,32 @@ function consoleUser() {
     terminal.write('\x1b[38;2;168;0;168m $ \x1b[38;2;255;255;255m');
 }
 
-function fetchTest() {
+async function fetchTest() {
+
+    const orgs = {'control': 'https://google.com/', stackpath: 'https://p4p2r9v3.stackpathcdn.com/'};
+
+    // When this for loop is done it needs to return
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+    // terminal.write('\r\n');
+    // consoleUser()
+    for (var [key, value] of Object.entries(orgs)) {
+        test(key, value);
+    }
+    
     async function test(org, url) {
         const t0 = performance.now()
-        console.log("creating.....")
         try {
             const response = await fetch(url);
         } catch (error) {
             const t1 = performance.now()
-            console.log(`Response from ` + org + ` took ${t1 - t0} milliseconds.`);
-            console.log(error);
+            terminal.write('\r\n');
+            terminal.write(`   ` + org + ` response time from ` + url + ` took ${t1 - t0} milliseconds.`);
+            return 1;
         }   
     }
-    const orgs = {control: 'https://google.com/', stackpath: 'https://p4p2r9v3.stackpathcdn.com/'};
-    for (var [key, value] of Object.entries(orgs)) {
-        test(key, value);
-    }
-    // How a fetch would look if it worked on google.com.
-    // fetch('https://p4p2r9v3.stackpathcdn.com')
-    // .then((response) => console.log(response))
-    // .catch((error) => console.log(error))
 }
 
 introText()
-// fetchTest()
+
 
 

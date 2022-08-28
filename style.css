@@ -74,7 +74,7 @@ html, body {
     flex: 1 1 ;
     flex-direction: column;
     width: 90%;
-    margin-top: 1%;
+    margin-top: 2%;
     margin-bottom: 2%;
 }
 .tui-table {

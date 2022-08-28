@@ -19,7 +19,7 @@ html, body {
     flex: 1 1 1;
     flex-direction: column;
     align-items: center;
-    width: 60vw;
+    max-width: 60vw;
     
 }
 #terminal-wrapper {
@@ -30,11 +30,17 @@ html, body {
     max-width: 100%;
 }
 #terminal {
+    display: flex;
+    flex: 1 1 1;
+    align-content: center;
+    align-items: stretch;
+    max-width: 100%;
 }
 .tui-statusbar {
     display: flex;
     align-self: stretch;
     background-color: #a8a8a8;
+    max-width: 100%;
 }
   .tui-statusbar ul li {
     display: inline-block;

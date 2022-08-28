@@ -69,7 +69,7 @@ html, body {
     margin: 0px 3px; 
 }
 
-#waf-table {
+#waf-table-wrapper {
     display: flex;
     flex: 1 1 ;
     flex-direction: column;

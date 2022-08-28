@@ -1,0 +1,10 @@
+    
+    This will describe how the test works.
+    Right now it simply uses the WAF provider as a proxy.
+    google.com is used as the origin.
+    The request returns a 200 error from google.com due to CORS policies,
+    but the response time can still be used to aproximate WAF latency.
+    Control simply requests from google.com directly without a WAF as a proxy.
+
+    about    home    waf-test-start    waf-test-about   rpc-test
+

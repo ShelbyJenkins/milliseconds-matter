@@ -8,6 +8,7 @@
         <script src="/node_modules/xterm/lib/xterm.js" defer></script>
         <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js" defer></script>
         <script src="/main.js" defer></script>
+        <script src="waf.js" defer></script>
     </head>
     <body>
         <div class="main">
@@ -26,18 +27,18 @@
             <div id="terminal-wrapper">
                 <div id="terminal"></div>
             </div>
-            <div id="waf-table">
+            <div id="waf-table-wrapper">
                 <table class="tui-table hovered-purple" >
                     <caption class="table-region">
-                        North America: Dallas
+                        region: user locale
                     </caption>
                     <thead>
                         <tr>
-                            <th>Org</th>
-                            <th>Position</th>
-                            <th>% faster than next</th>
-                            <th>TTFB</th>
-                            <th>(TTFB - control)</th>
+                            <th>(org)</th>
+                            <th>(rank)</th>
+                            <th>(% lead from next)</th>
+                            <th>(ttfb)</th>
+                            <th>(ttfb - control)</th>
                         </tr>
                     </thead>
                     <tbody>

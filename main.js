@@ -16,9 +16,7 @@ const terminal = new Terminal({
 const fitAddon = new FitAddon.FitAddon();
 terminal.loadAddon(fitAddon);
 terminal.open(document.getElementById('terminal'));
-console.log(terminal.rows, terminal.cols);
 fitAddon.fit();
-console.log(terminal.rows, terminal.cols);
 terminal.focus();
 
 // On resize or reload runs fit().
@@ -32,40 +30,56 @@ function introText() {
     fetch('terminalText.txt')
     .then(response => response.text())
     .then((text) => {
-      for(i = 0; i < text.length; i++) {
-        (function(i){
-            setTimeout(function() {
-                terminal.write(text[i]);
-            }, 1 * i);
-        }(i));
-        } 
+        for(i = 0; i < text.length; i++) {
+            (function(i){
+                setTimeout(function() {
+                    terminal.write(text[i]);
+                    if ((text.length - 1) == (i)) { 
+                        toggleKeyboard();
+                    };
+                }, 1 * i);
+            }(i));
+            } 
     })
-    setTimeout(consoleUser, 1500);
 }
 // Very basic typing interface.
-var cmd = '';
-terminal.onKey(e => {
-    if (e.key === '\r') {
-        terminal.write('\r\n');
-        terminal.write('\r\n');
-        runCommand(cmd);
-        cmd = '';
-    } else if (e.key === '\x7F') {
-        terminal.write("\b \b");
-        cmd = cmd.slice(0, -1); 
+let keyboardStatus = false;
+function toggleKeyboard() {
+    terminal.focus();
+    var cmd = '';
+    consoleUser();
+    if (keyboardStatus === true) { 
+        return ;
     } else {
-        terminal.write(e.key);
-        cmd += e.key;
+        keyboardStatus = true;
+        let keyboard = terminal.onKey(e => {
+            if (e.key === '\r') {
+                terminal.write('\r\n');
+                keyboardStatus = false;
+                runCommand(cmd);
+                keyboard.dispose()
+                cmd = '';
+            } else if (e.key === '\x7F') {
+                terminal.write("\b \b");
+                cmd = cmd.slice(0, -1); 
+            } else {
+                terminal.write(e.key);
+                cmd += e.key;
+            }
+        })
     }
-})
+}
 // Very basic CLI.
 function runCommand(cmd) {
     switch (cmd) {
         case '':
+            terminal.write('\r\n');
+            toggleKeyboard();
             break;
         case 'about':
             terminal.write('   Command not implemented.');
             terminal.write('\r\n');
+            toggleKeyboard();
             break;
         case 'home':
             window.location.href = '/';
@@ -74,51 +88,32 @@ function runCommand(cmd) {
         case 'waf-test':
             window.location.href = '/waf/waf.html';
             break;
-            case 'waf-test-start':
-                fetchTest();
-                return;    
+        case 'waf-test-start':
+            fetchTest();
+            return;
+        case 'waf-test-about':
+            terminal.write('\r\n');
+            wafTestAbout();
+            break;    
         case 'rpc-test':
             terminal.write('   Command not implemented.');
             terminal.write('\r\n');
+            toggleKeyboard();
             break;
         default:
             terminal.write('   Command does not exist.');
             terminal.write('\r\n');
+            toggleKeyboard();
+            break;
     }
-    terminal.write('\r\n');
-    consoleUser();
 }
 // Prints '$' at start of new lines.
 function consoleUser() {
     terminal.write('\x1b[38;2;168;0;168m $ \x1b[38;2;255;255;255m');
 }
 
-async function fetchTest() {
-
-    const orgs = {'control': 'https://google.com/', stackpath: 'https://p4p2r9v3.stackpathcdn.com/'};
-
-    // When this for loop is done it needs to return
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
-    // terminal.write('\r\n');
-    // consoleUser()
-    for (var [key, value] of Object.entries(orgs)) {
-        test(key, value);
-    }
-    
-    async function test(org, url) {
-        const t0 = performance.now()
-        try {
-            const response = await fetch(url);
-        } catch (error) {
-            const t1 = performance.now()
-            terminal.write('\r\n');
-            terminal.write(`   ` + org + ` response time from ` + url + ` took ${t1 - t0} milliseconds.`);
-            return 1;
-        }   
-    }
-}
-
 introText()
+
 
 
 

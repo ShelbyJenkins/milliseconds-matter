@@ -13,5 +13,5 @@
             
 
 
-   about    home    waf-test-start    rpc-test
+    about    home    waf-test-start    waf-test-about   rpc-test
 

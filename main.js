@@ -41,6 +41,7 @@ function introText() {
             }(i));
             } 
     })
+    fitAddon.fit();
 }
 // Very basic typing interface.
 let keyboardStatus = false;

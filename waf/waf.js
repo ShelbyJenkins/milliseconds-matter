@@ -1,5 +1,31 @@
+// Creates terminal and updates it's options.
+const terminal = new Terminal({
+  cols: 200,
+  rows: 20,
+  fontSize: 12,
+  fontWeight: 450,
+  fontFamily: 'DOS',
+  cursorBlink: 'true',
+  convertEol: true,
+  theme: {
+      background: 'black',
+      cursor: 'yellowgreen',
+    }
+});
 
 async function fetchTest() {
+  // Disables button after click to prevent multiple entries.
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach((b) => {
+      b.addEventListener('click', function(){ 
+          buttons.forEach((b) => {
+              b.disabled = true;
+              setTimeout( function() {
+                  b.disabled = false;
+              }, 4000);
+          });
+      });
+  });
   // Create nested objects containing all orgs.
   const orgs = [
     { 
@@ -7,6 +33,7 @@ async function fetchTest() {
       url     : 'https://google.com/',
       rank    : 0,
       percent : 100,
+      graph   : 100,
       ttfb    : 0,
       actual  : 0
     },
@@ -15,6 +42,7 @@ async function fetchTest() {
       url     : 'https://p4p2r9v3.stackpathcdn.com/',
       rank    : 0,
       percent : 0,
+      graph   : 0,
       ttfb    : 0,
       actual  : 0
     },
@@ -23,6 +51,25 @@ async function fetchTest() {
       url     : 'https://error.com',
       rank    : 0,
       percent : 0,
+      graph   : 0,
+      ttfb    : 0,
+      actual  : 0
+    },
+    { 
+      org     : 'texas.gov', 
+      url     : 'https://texas.gov',
+      rank    : 0,
+      percent : 0,
+      graph   : 0,
+      ttfb    : 0,
+      actual  : 0
+    },
+    { 
+      org     : 'buc-ees.com', 
+      url     : 'https://buc-ees.com/',
+      rank    : 0,
+      percent : 0,
+      graph   : 0,
       ttfb    : 0,
       actual  : 0
     }
@@ -30,6 +77,7 @@ async function fetchTest() {
   // Defines control average within main function scope.
   let controlAverage;
   let slowestActual = 0;
+  let fastestActual = Number.MAX_VALUE;
 
   // Iterates through each org and waits for completion before each.
   await orgs.reduce(async (memo, o) => {
@@ -60,18 +108,32 @@ async function fetchTest() {
       controlAverage = a;
     }
     // Sets slowest actual.
-    if (a > slowestActual) {
-      slowestActual = a;
+    if ((a - controlAverage) > slowestActual) {
+      slowestActual = (a - controlAverage);
     }
     // Sets results into orgs object.
     o.ttfb = a;
-    // Sets average results and graph in orgs object. Skips control.
+    // Sets average result in orgs object. Skips control.
     if ((a - controlAverage) > 0 ) {
       o.actual = (a - controlAverage);
     }
     return 1;
   }
-
+  // Populates percentage. Skips control.
+  let largestPercent = 0;
+  orgs.forEach((o) => {
+    if (o.org !== 'control') {
+      o.percent = Math.round((((slowestActual - o.actual) / o.actual) * 100));
+      // Gathers largest percentage for math.
+      if (o.percent > largestPercent) {
+        largestPercent = o.percent;
+      }
+    }
+  });
+  // Populates graph.
+  orgs.forEach((o) => {
+    o.graph = ((o.percent / largestPercent) * 100);
+  });
   postTest(orgs);
 }
 
@@ -85,11 +147,11 @@ function postTest(orgs) {
   // Populates table with rank, ttfb, and actual.
   orgs.forEach((o) => {
     updateTableFields(o);
-  })
-  // Populates graph.
-  // (old-new)/new x 100% = %
+  });
   
-
+  terminal.write('\r\n');
+  terminal.write('\r\n');
+  terminal.write('   about    home    waf-test-start    waf-test-about   rpc-test');
   terminal.write('\r\n');
   terminal.write('\r\n');
   toggleKeyboard();
@@ -99,7 +161,7 @@ function updateTableFields(o) {
   // Sets col variable based on rank.
   var row = o.rank;
   // Iterate through each field to be updated.
-  const fields = ['org', 'percent', 'rank', 'ttfb', 'actual'];
+  const fields = ['org', 'rank', 'percent', 'ttfb', 'actual'];
   fields.forEach((f) => {
     switch (f) {
       case 'org':
@@ -110,10 +172,14 @@ function updateTableFields(o) {
         var update = o.rank;
         fields(1);
         break;
-      // case 'percent':
-      //   var update = o.percent;
-      //   fields(2);
-      //   break;  
+      case 'percent':
+        if (o.org === 'control') {
+          graph('-');
+          break;  
+        } else {
+          graph(o.percent, o.graph);
+          break;
+        };
       case 'ttfb':
         var update = Math.round(o.ttfb * 10) / 10 + 'ms';
         fields(3);
@@ -129,12 +195,28 @@ function updateTableFields(o) {
       myTableBody = myTable.getElementsByTagName("tbody")[0];
       myRow = myTableBody.getElementsByTagName("tr")[row];
       myCell = myRow.getElementsByTagName("td")[col];
-      myCell.innerText = update;
+      myCell.textContent = update;
+    
     }
-    function graph(percent) {
-
-    }
-
+    function graph(p, g) {
+      // Doing some tricks to make the graph look good.
+      if (p !== '-') {
+        percent =  p  + '%';
+      } else {
+        percent = p;
+      }
+      myBody = document.getElementsByTagName("body")[0];
+      myTable = myBody.getElementsByTagName("table")[0];
+      myTableBody = myTable.getElementsByTagName("tbody")[0];
+      myRow = myTableBody.getElementsByTagName("tr")[row];
+      myCell = myRow.getElementsByTagName("td")[2];
+      myDiv = myCell.querySelector("div");
+      myDiv.style.width = g + '%';
+      while(myDiv.firstChild) {
+        myDiv.removeChild(myDiv.firstChild);
+      }
+      myDiv.insertAdjacentText('beforeend', percent);
+    };
   });
   
 }
@@ -155,3 +237,4 @@ function wafTestAbout() {
             } 
     })
 }
+

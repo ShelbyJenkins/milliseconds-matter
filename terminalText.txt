@@ -9,9 +9,9 @@
                              | | | | | | (_| | |_| ||  __/ |   
                              |_| |_| |_|\__,_|\__|\__\___|_|
 
-                    a latency based testing paradigm for the modern web
-            
+                
 
+    not suitable for mobile browsers
 
-   about    home    waf-test    rpc-test
+    about    home    waf-test    rpc-test
 

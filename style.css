@@ -19,7 +19,7 @@ html, body {
     flex: 1 1 1;
     flex-direction: column;
     align-items: center;
-    max-width: 60vw;
+    width: 80vw;
     
 }
 #terminal-wrapper {

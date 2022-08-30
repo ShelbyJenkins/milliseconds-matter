@@ -1,18 +1,5 @@
 
-// Creates terminal and updates it's options.
-const terminal = new Terminal({
-    cols: 124,
-    rows: 20,
-    fontSize: 12,
-    fontWeight: 450,
-    fontFamily: 'DOS',
-    cursorBlink: 'true',
-    convertEol: true,
-    theme: {
-        background: 'black',
-        cursor: 'yellowgreen',
-      }
-});
+
 const fitAddon = new FitAddon.FitAddon();
 terminal.loadAddon(fitAddon);
 terminal.open(document.getElementById('terminal'));

@@ -7,15 +7,16 @@
         <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
         <script src="/node_modules/xterm/lib/xterm.js" defer></script>
         <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js" defer></script>
-        <script src="/main.js" defer></script>
         <script src="waf.js" defer></script>
+        <script src="/main.js" defer></script>
+        
     </head>
     <body>
         <div class="main">
             <nav class="tui-statusbar">
                 <ul>
                     <li class="tui-dropdown">
-                        v0.0.3
+                        waf-test v0.0.3
                         <div class="tui-dropdown-content">
                             <ul>
                                 <li><a href="#!"><span class="purple-168-text">N</span>othing done here.</a></li>
@@ -36,51 +37,51 @@
                         <tr>
                             <th>(org)</th>
                             <th>(rank)</th>
-                            <th>(% lead from next)</th>
+                            <th>(% faster than slowest)</th>
                             <th>(ttfb)</th>
-                            <th>(actual)</th>
+                            <th>(ttfb-control)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><div class="tui-chart-value white-168" style="width: 100%;">control</div></td>
+                            <td><div class="tui-chart-value white-168" style="width: 100%;"></div></td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><div class="tui-chart-value red-168" style="width: 10%;"></div>10%</td>
+                            <td><div class="tui-chart-value red-168" style="width: 10%;"></div></td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><div class="tui-chart-value green-168" style="width: 10%;">10%</div></td>
+                            <td><div class="tui-chart-value green-168" style="width: 10%;"></div></td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><div class="tui-chart-value blue-168" style="width: 10%;">10%</div></td>
+                            <td><div class="tui-chart-value blue-168" style="width: 10%;"></div></td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><div class="tui-chart-value yellow-168" style="width: 10%;">10%</div></td>
+                            <td><div class="tui-chart-value yellow-168" style="width: 10%;"></div></td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><div class="tui-chart-value purple-168" style="width: 10%;">10%</div></td>
+                            <td><div class="tui-chart-value purple-168" style="width: 10%;"></div></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -99,9 +100,11 @@
             </div>
             <div class="tui-statusbar">
                 <ul>
-                    <li><a href="/index.html"><span class="purple-168-text">F1</span> home</a></li>
+                    <li><a href="/index.html"><span class="purple-168-text">GO</span> home</a></li>
                     <span class="tui-statusbar-divider"></span>
-                    <li><a href="/waf/waf.html"><span class="purple-168-text">F2</span> waf-test</a></li>
+                    <li><a href="/waf/waf.html"><span class="purple-168-text">GO</span> waf-test</a></li>
+                    <span class="tui-statusbar-divider"></span>
+                    <li><a onclick="wafTestAbout()"><span class="purple-168-text">GO</span> waf-test-about</a></li>
                     <span class="tui-statusbar-divider"></span>
                     <li><a href="#!"><span style="color: floralwhite">N/A</span> rpc-test</a></li>
                     <span class="tui-statusbar-divider"></span>

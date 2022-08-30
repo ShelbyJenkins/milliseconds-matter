@@ -63,16 +63,16 @@ async function fetchTest() {
       graph   : 0,
       ttfb    : 0,
       actual  : 0
-    },
-    { 
-      org     : 'buc-ees.com', 
-      url     : 'https://buc-ees.com/',
-      rank    : 0,
-      percent : 0,
-      graph   : 0,
-      ttfb    : 0,
-      actual  : 0
     }
+    // { 
+    //   org     : 'buc-ees.com', 
+    //   url     : 'https://buc-ees.com/',
+    //   rank    : 0,
+    //   percent : 0,
+    //   graph   : 0,
+    //   ttfb    : 0,
+    //   actual  : 0
+    // }
   ];
   // Defines control average within main function scope.
   let controlAverage;
@@ -87,11 +87,16 @@ async function fetchTest() {
 
   async function test(o) {
     let a = 0;
+    terminal.write('\r\n');
+    terminal.write(`   Now Testing: ` + o.org);
     for (let t = 0; t < 3; t++) {
       // Performance.now() measures the time with higher presicision than date()/
       const t0 = performance.now()
       try {
-          const response = await fetch(o.url);
+          const response = await fetch(o.url, {
+            // mode: 'no-cors' does not work.
+            cache: 'no-cache'
+          });
       } catch (error) {
           const t1 = performance.now()
           terminal.write('\r\n');

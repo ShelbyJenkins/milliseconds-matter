@@ -27,10 +27,11 @@ async function fetchTest() {
       });
   });
   // Create nested objects containing all orgs.
+  // Uses https://api.github.com/organizations for testing.
   const orgs = [
     { 
       org     : 'control',  
-      url     : 'https://google.com/',
+      url     : 'https://api.github.com/organizations',
       rank    : 0,
       percent : 100,
       graph   : 100,
@@ -38,8 +39,8 @@ async function fetchTest() {
       actual  : 0
     },
     { 
-      org     : 'stackpath', 
-      url     : 'https://p4p2r9v3.stackpathcdn.com/',
+      org     : 'StackPath', 
+      url     : 'https://p4p2r9v3.stackpathcdn.com',
       rank    : 0,
       percent : 0,
       graph   : 0,
@@ -47,37 +48,18 @@ async function fetchTest() {
       actual  : 0
     },
     { 
-      org     : 'error.com', 
-      url     : 'https://error.com',
-      rank    : 0,
-      percent : 0,
-      graph   : 0,
-      ttfb    : 0,
-      actual  : 0
-    },
-    { 
-      org     : 'texas.gov', 
-      url     : 'https://texas.gov',
+      org     : 'AWS CloudFront', 
+      url     : 'https://d27kryaiszkpz.cloudfront.net',
       rank    : 0,
       percent : 0,
       graph   : 0,
       ttfb    : 0,
       actual  : 0
     }
-    // { 
-    //   org     : 'buc-ees.com', 
-    //   url     : 'https://buc-ees.com/',
-    //   rank    : 0,
-    //   percent : 0,
-    //   graph   : 0,
-    //   ttfb    : 0,
-    //   actual  : 0
-    // }
   ];
-  // Defines control average within main function scope.
+  // Defines controls within main function scope.
   let controlAverage;
   let slowestActual = 0;
-  let fastestActual = Number.MAX_VALUE;
 
   // Iterates through each org and waits for completion before each.
   await orgs.reduce(async (memo, o) => {
@@ -94,14 +76,13 @@ async function fetchTest() {
       const t0 = performance.now()
       try {
           const response = await fetch(o.url, {
-            // mode: 'no-cors' does not work.
-            cache: 'no-cache'
+            cache: 'no-cache',
           });
-      } catch (error) {
-          const t1 = performance.now()
+          const t1 = performance.now();
           terminal.write('\r\n');
           terminal.write(`   ` + o.org + ` response time from ` + o.url + ` took ${t1 - t0} milliseconds.`);
-          a += (t1 - t0)
+          a += (t1 - t0);
+      } catch (error) {
       }
     }
     // Average of 3 runs.
@@ -124,6 +105,8 @@ async function fetchTest() {
     }
     return 1;
   }
+
+
   // Populates percentage. Skips control.
   let largestPercent = 0;
   orgs.forEach((o) => {
@@ -135,12 +118,13 @@ async function fetchTest() {
       }
     }
   });
-  // Populates graph.
+  // Populates graph based off of largestPercent.
   orgs.forEach((o) => {
     o.graph = ((o.percent / largestPercent) * 100);
   });
   postTest(orgs);
 }
+
 
 function postTest(orgs) {
   // Sort by actual.

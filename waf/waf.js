@@ -40,7 +40,7 @@ async function fetchTest() {
     },
     { 
       org     : 'StackPath', 
-      url     : 'https://p4p2r9v3.stackpathcdn.com',
+      url     : 'https://h5n7s5h4.stackpathcdn.com',
       rank    : 0,
       percent : 0,
       graph   : 0,

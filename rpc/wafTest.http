@@ -25,7 +25,7 @@ curl https://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
   }
 '
 ### cdn site address: sea 
-curl y4i3j6c3.stackpathcdn.com -X POST -H "Content-Type: application/json" -d ' 
+curl https://y4i3j6c3.stackpathcdn.com -X POST -H "Content-Type: application/json" -d ' 
   {
     "jsonrpc": "2.0",
     "id": "null",

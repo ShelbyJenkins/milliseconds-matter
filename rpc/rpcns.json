@@ -11,7 +11,7 @@
         },
         { 
             "rpcn"    : "sea",
-            "address" : "http://y4i3j6c3.stackpathcdn.com",
+            "address" : "https://y4i3j6c3.stackpathcdn.com",
             "network" : "private",
             "rest0"   : 0,
             "resT1"   : 0,
@@ -20,7 +20,7 @@
         },
         { 
             "rpcn"    : "mia",
-            "address" : "http://d7b5c9i5.stackpathcdn.com",
+            "address" : "https://d7b5c9i5.stackpathcdn.com",
             "network" : "private",
             "rest0"   : 0,
             "resT1"   : 0,
@@ -29,7 +29,7 @@
         },
         { 
             "rpcn"    : "fra",
-            "address" : "http://c6k4s4a4.stackpathcdn.com",
+            "address" : "https://c6k4s4a4.stackpathcdn.com",
             "network" : "private",
             "rest0"   : 0,
             "resT1"   : 0,
@@ -38,7 +38,7 @@
         },
         { 
             "rpcn"    : "sin", 
-            "address" : "http://d9a4h2q8.stackpathcdn.com",
+            "address" : "https://d9a4h2q8.stackpathcdn.com",
             "network" : "private",
             "rest0"   : 0,
             "resT1"   : 0,
@@ -47,7 +47,7 @@
         },
         { 
             "rpcn"    : "sea",
-            "address" : "http://69.197.3.4:8080",
+            "address" : "https://69.197.3.4:8080",
             "network" : "public",
             "resT0"   : 0,
             "resT1"   : 0,
@@ -56,7 +56,7 @@
         },
         { 
             "rpcn"    : "mia",
-            "address" : "http://69.197.2.5:8080",
+            "address" : "https://69.197.2.5:8080",
             "network" : "public",
             "resT0"   : 0,
             "resT1"   : 0,
@@ -65,7 +65,7 @@
         },
         { 
             "rpcn"    : "fra",
-            "address" : "http://69.197.4.3:8080",
+            "address" : "https://69.197.4.3:8080",
             "network" : "public",
             "resT0"   : 0,
             "resT1"   : 0,
@@ -74,7 +74,7 @@
         },
         { 
             "rpcn"    : "sin", 
-            "address" : "http://69.197.24.3:8080",
+            "address" : "https://69.197.24.3:8080",
             "network" : "public",
             "resT0"   : 0,
             "resT1"   : 0,

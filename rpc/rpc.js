@@ -178,12 +178,19 @@ function updateTable(t, row, col, v, g, s, f) {
   if (g === true) {
     myCell = myRow.getElementsByTagName("th")[col];
     myDiv = myCell.querySelector("div");
+    // Removes previous test's entry.
+    while(myDiv.firstChild) {
+      myDiv.removeChild(myDiv.firstChild);
+    }
     myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart');
     myDiv.insertAdjacentText('beforeend', v + '% delta');
     myDiv.style.width = v + '%';
     myDiv.style.color = 'white';
   } else {
     myCell = myRow.getElementsByTagName("td")[col];
+    while(myCell.firstChild) {
+      myCell.removeChild(myCell.firstChild);
+    }
     myCell.textContent += v;
     // Highlights slowest and fastest.
     if (s === true) {

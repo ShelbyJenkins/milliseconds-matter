@@ -91,10 +91,15 @@ function runCommand(cmd) {
             wafTestAbout();
             break;    
         case 'rpc-test':
-            terminal.write('   Command not implemented.');
-            terminal.write('\r\n');
-            toggleKeyboard();
+            window.location.href = '/rpc/rpc.html';
             break;
+        case 'rpc-test-start':
+            rpcTest(rpcns);
+            return;
+        case 'rpc-test-about':
+            terminal.write('\r\n');
+            rpcTestAbout();
+            break;  
         default:
             terminal.write('   Command does not exist.');
             terminal.write('\r\n');

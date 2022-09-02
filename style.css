@@ -44,6 +44,7 @@ html, body {
 }
   .tui-statusbar ul li {
     display: inline-block;
+    color: black;
     margin-left: 1px;
 }
   .tui-statusbar ul li:active {
@@ -64,7 +65,7 @@ html, body {
     font-size: 1em;
 }
   .tui-statusbar-divider {
-    border-right: 2px floralwhite solid;
+    border-right: 2px rgb(0, 0, 0) solid;
     display: inline;
     margin: 0px 3px; 
 }
@@ -77,10 +78,15 @@ html, body {
     margin-top: 2%;
     margin-bottom: 2%;
 }
+
+
+
 .tui-table {
     border: 2px solid floralwhite;
+    padding: 1%;
 }
 
+/* title */
 .table-region {
     color: inherit;
     text-align: center;
@@ -89,9 +95,11 @@ html, body {
     border-top: 2px floralwhite solid;
     padding: 1%;
 }
+
+/* button */
 .table-run-button button {
-    border: 3px floralwhite solid;
-    padding: 1.5%;
+
+    padding: .5%;
     width: 100%;
     background-color: #a800a8;
     color: floralwhite;
@@ -106,5 +114,31 @@ html, body {
     display: none;
 }
 
+/* rpc test table */
+#rpc-table-wrapper-outer {
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    width: 90%;
+    border: 2px solid floralwhite;
+    
+}
 
+/* centers top table */
+#rpc-table-wrapper-outer > table:nth-child(1) > thead > tr * {
+    width: 33%;
+}
 
+/* centers bottom table */
+#rpc-table-wrapper-outer > table:nth-child(2) > thead > tr > th:nth-child(1) {
+    width: 40%;
+}
+#rpc-table-wrapper-outer > table:nth-child(2) > thead > tr * {
+    width: 10%;
+}
+#rpc-table-wrapper-outer > table:nth-child(2) > tbody *  td:nth-child(1) {
+    text-align: left;
+    padding-left: 4%;
+}

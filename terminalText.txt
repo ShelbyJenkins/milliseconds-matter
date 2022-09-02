@@ -13,5 +13,5 @@
 
     not suitable for mobile browsers
 
-    about    home    waf-test    rpc-test
+    home    waf-test    rpc-test    about
 

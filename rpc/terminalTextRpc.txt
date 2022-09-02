@@ -1,0 +1,10 @@
+    
+    Text approximates RPC latency for comparison purpose.
+    
+
+    Please note:
+    This documentation and test is incomplete.
+    
+
+    home    rpc-test-start    rpc-test-about    waf-test
+

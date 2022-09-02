@@ -11,5 +11,5 @@
     2) The test does not take into account for performance gains/losses in WAF sharing a stack with CDN.
     
 
-    about    home    waf-test-start    waf-test-about   rpc-test
+    home    waf-test-start    waf-test-about   rpc-test
 

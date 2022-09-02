@@ -8,7 +8,7 @@ curl http://151.139.128.10:8080 -X POST -H "Content-Type: application/json" -d '
   }
 '
 ### anycast address for ec workload
-curl http://185.85.196.19:8080 -X POST -H "Content-Type: application/json" -d '
+curl http://69.197.3.4:8080 -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": "null",

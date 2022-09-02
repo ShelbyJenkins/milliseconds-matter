@@ -1,4 +1,16 @@
-
 ###
-curl  http://arion.earth/
-
+curl http://185.85.196.19:8080 -X POST -H "Content-Type: application/json" -d '
+  {
+    "jsonrpc": "2.0",
+    "id": "null",
+    "method": "getTransactionCount"
+  }
+'
+###
+curl https://arion.earth/rpc -X POST -H "Content-Type: application/json" -d ' 
+  {
+    "jsonrpc": "2.0",
+    "id": "null",
+    "method": "getLatestBlockhash"
+  }
+'

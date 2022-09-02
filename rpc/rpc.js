@@ -1,8 +1,8 @@
 // Creates terminal and updates it's options.
 const terminal = new Terminal({
   cols: 200,
-  rows: 10,
-  fontSize: 12,
+  rows: 20,
+  fontSize: 10,
   fontWeight: 450,
   fontFamily: 'DOS',
   cursorBlink: 'true',
@@ -13,92 +13,16 @@ const terminal = new Terminal({
     }
 });
 
-// need to call this from json.
-// Create nested objects containing all rpcn.
-const rpcns = [
-    { 
-      rpcn    : 'user-locale',
-      network : 'anycast',
-      address : 'http://1.1.1.1',
-      resT0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    { 
-      rpcn    : 'na1', 
-      address : 'http://1.1.1.1',
-      network : 'private',
-      rest0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    { 
-      rpcn    : 'na2', 
-      address : 'http://1.1.1.1',
-      network : 'private',
-      rest0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    { 
-      rpcn    : 'eu', 
-      address : 'http://1.1.1.1',
-      network : 'private',
-      rest0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    { 
-      rpcn    : 'apac', 
-      address : 'http://1.1.1.1',
-      network : 'private',
-      rest0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    { 
-      rpcn    : 'na1', 
-      address : 'http://1.1.1.1',
-      network : 'public',
-      resT0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    { 
-      rpcn    : 'na2', 
-      address : 'http://1.1.1.1',
-      network : 'public',
-      resT0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    { 
-      rpcn    : 'eu', 
-      address : 'http://1.1.1.1',
-      network : 'public',
-      resT0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    { 
-      rpcn    : 'apac', 
-      address : 'http://1.1.1.1',
-      network : 'public',
-      resT0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    }
-  ];
+// Creates an array of objects from json file.
+let rpcns = [];
+async function fetchRpcns() {
+  let response = await fetch('rpcns.json');
+  let data = await response.json();
+  rpcns = data;
+};
+fetchRpcns();
 
+// Starts test.
 async function rpcTest(rpcns) {
   // Disables button after click to prevent multiple entries.
   const buttons = document.querySelectorAll('button');
@@ -117,6 +41,8 @@ async function rpcTest(rpcns) {
   // Performs the test 3 times to generate averages.
   for (let b = 0; b < 3; b++) {
     // Pauses loop until batch is complete.
+    terminal.write('\r\n');
+    terminal.write('    starting test batch ' + b + ' of 2');
     await Promise.all(rpcns.map(async (rpcn) => {
     await testSingle(rpcn, b);
     }));
@@ -128,10 +54,21 @@ async function rpcTest(rpcns) {
     return new Promise(async function(resolve, reject){
       // Performance.now() measures the time with higher presicision than date()/
       const t0 = performance.now()
+      console.log(rpcn.address);
       try {
           const response = await fetch(rpcn.address, {
-            cache: 'no-cache',
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify( {jsonrpc: "2.0", id: "null", method: "getTransactionCount"} )
           });
+          const t1 = performance.now();
+          r = await response.json()
+          console.log(r.result);
+          logTest((t1 - t0), rpcn, b);
+          resolve();
       } catch (error) {
           const t1 = performance.now();
           logTest((t1 - t0), rpcn, b);
@@ -141,16 +78,15 @@ async function rpcTest(rpcns) {
   }
   postTest();
 }
-
+// Updates object after each test within a batch.
 function logTest(r, rpcn, b) {
   // Updates rpcn objects with results of tests.
   const batch = 'resT' + b;
   r = Math.round(r);
   rpcn[batch] = r;
   terminal.write('\r\n');
-  terminal.write(`    response from ` + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + r + ' milliseconds.');
+  terminal.write(`    response from ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + r + ' milliseconds.');
 }
-
 function postTest() {
   let fastestA = Number.MAX_VALUE;
   let slowestA = 0;
@@ -172,11 +108,18 @@ function postTest() {
       fastestA = rpcn.resA;
     }
     terminal.write('\r\n');
-    terminal.write(`    average response from ` + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + a + ' milliseconds.');
-    // Populates table with response time averages, bests/worst, and graph.
-    updateMainTableFields(rpcn);
+    terminal.write(`    average response from ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + a + ' milliseconds.');
   }) 
- 
+  // Populates table with response time averages, and highlights best/worse.
+  rpcns.forEach((rpcn) => {
+    if (rpcn.resA === slowestA) {
+      updateMainTableFields(rpcn, true, false);
+    } else if (rpcn.resA === fastestA) {
+      updateMainTableFields(rpcn, false, true);
+    } else {
+      updateMainTableFields(rpcn);
+    }
+  });
   // Updates slowest and fastest average scores in to best/worst table.
   updateSF(slowestA, fastestA);
   terminal.write('\r\n');
@@ -186,21 +129,43 @@ function postTest() {
   terminal.write('\r\n');
   toggleKeyboard();
 }
-
-function updateSF(slowestA, fastestA) {
-  updateTable(0, 0, 0, (slowestA + 'ms'), false);
-  updateTable(0, 0, 2, (fastestA + 'ms'), false);
-  // Updates graph text.
-  d = slowestA - fastestA;
-  updateTable(0, 0, 1, (d + 'ms delta'), false);
-  // Doing some tricks to make the graph look good.
-  p = Math.round(((slowestA - fastestA) / fastestA) * 10);
-  console.log(p);
-  updateTable(0, 0, 1, p, true);
-
+// Initialize update process.
+function updateMainTableFields(rpcn, s, f) {
+  // Iterate through each field to be updated.
+  switch (rpcn.network) {
+    case 'public':
+      fields(1);
+      break;
+    case 'private':
+      fields(0);
+      break;
+    case 'anycast':
+      fields(0);
+      break;
+  }
+  function fields(row) {
+    switch (rpcn.rpcn) {
+      case 'sea':
+        var col = 2;
+        break;
+      case 'mia':
+        var col = 3;
+        break;
+      case 'fra':
+        var col = 4;
+        break;
+      case 'sin':
+        var col = 5;
+        break;
+      case 'user-locale':
+        var col = 1;
+        break;
+    }
+    updateTable(1, row, col, (rpcn.resA + 'ms'), false, s, f);
+  }
 }
-
-function updateTable(t, row, col, v, g) {
+// Updates tables.
+function updateTable(t, row, col, v, g, s, f) {
   myBody = document.getElementsByTagName("body")[0];
   myTable = myBody.getElementsByTagName("table")[t];
   if (g === true) {
@@ -220,43 +185,26 @@ function updateTable(t, row, col, v, g) {
   } else {
     myCell = myRow.getElementsByTagName("td")[col];
     myCell.textContent += v;
+    // Highlights slowest and fastest.
+    if (s === true) {
+      myCell.classList.add('red-168-text');
+    };
+    if (f === true) {
+      myCell.classList.add('green-168-text');
+    };
   }
 }
-function updateMainTableFields(rpcn) {
-  // Iterate through each field to be updated.
-  switch (rpcn.network) {
-    case 'public':
-      fields(1);
-      break;
-    case 'private':
-      fields(0);
-      break;
-    case 'anycast':
-      fields(0);
-      break;
-  }
-  function fields(row) {
-    switch (rpcn.rpcn) {
-      case 'na1':
-        var col = 2;
-        break;
-      case 'na2':
-        var col = 3;
-        break;
-      case 'eu':
-        var col = 4;
-        break;
-      case 'apac':
-        var col = 5;
-        break;
-      case 'user-locale':
-        var col = 1;
-        break;
-    }
-    updateTable(1, row, col, (rpcn.resA + 'ms'));
-  }
-}
-  
+// Updates top table with slowest and fastest and graph.
+function updateSF(slowestA, fastestA) {
+  updateTable(0, 0, 0, (slowestA + 'ms'), false, false, false);
+  updateTable(0, 0, 2, (fastestA + 'ms'), false, false, false);
+  // Updates graph text.
+  d = slowestA - fastestA;
+  updateTable(0, 0, 1, (d + 'ms delta'), false);
+  // Doing some tricks to make the graph look good.
+  p = Math.round(((slowestA - fastestA) / fastestA) * 10);
+  updateTable(0, 0, 1, p, true);
+} 
 function rpcTestAbout() {
   fetch('terminalTextRpc.txt')
     .then(response => response.text())

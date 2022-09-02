@@ -17,47 +17,8 @@ const terminal = new Terminal({
 // Create nested objects containing all rpcn.
 const rpcns = [
     { 
-      rpcn    : 'anycast-user-locale',  
-      address : 'http://1.1.1.1',
-      resT0   : 0,
-      resT1   : 0,
-      resT2   : 0,
-      resA    : 0
-    },
-    // { 
-    //   rpcn    : 'anycast-na1', 
-    //   address : 'http://1.1.1.1',
-    //   rest0    : 0,
-    //   resT1   : 0,
-    //   resT2   : 0,
-    // resA    : 0
-    // },
-    // { 
-    //   rpcn    : 'anycast-na2', 
-    //   address : 'http://1.1.1.1',
-    //   rest0    : 0,
-    //   resT1   : 0,
-    //   resT2   : 0,
-    // resA    : 0
-    // },
-    // { 
-    //   rpcn    : 'anycast-eu', 
-    //   address : 'http://1.1.1.1',
-    //   rest0    : 0,
-    //   resT1   : 0,
-    //   resT2   : 0,
-    // resA    : 0
-    // },
-    // { 
-    //   rpcn    : 'anycast-apac', 
-    //   address : 'http://1.1.1.1',
-    //   rest0    : 0,
-    //   resT1   : 0,
-    //   resT2   : 0,
-    // resA    : 0
-    // },
-    { 
-      rpcn    : 'public-na1', 
+      rpcn    : 'user-locale',
+      network : 'anycast',
       address : 'http://1.1.1.1',
       resT0   : 0,
       resT1   : 0,
@@ -65,24 +26,72 @@ const rpcns = [
       resA    : 0
     },
     { 
-      rpcn    : 'public-na2', 
+      rpcn    : 'na1', 
       address : 'http://1.1.1.1',
+      network : 'private',
+      rest0   : 0,
+      resT1   : 0,
+      resT2   : 0,
+      resA    : 0
+    },
+    { 
+      rpcn    : 'na2', 
+      address : 'http://1.1.1.1',
+      network : 'private',
+      rest0   : 0,
+      resT1   : 0,
+      resT2   : 0,
+      resA    : 0
+    },
+    { 
+      rpcn    : 'eu', 
+      address : 'http://1.1.1.1',
+      network : 'private',
+      rest0   : 0,
+      resT1   : 0,
+      resT2   : 0,
+      resA    : 0
+    },
+    { 
+      rpcn    : 'apac', 
+      address : 'http://1.1.1.1',
+      network : 'private',
+      rest0   : 0,
+      resT1   : 0,
+      resT2   : 0,
+      resA    : 0
+    },
+    { 
+      rpcn    : 'na1', 
+      address : 'http://1.1.1.1',
+      network : 'public',
       resT0   : 0,
       resT1   : 0,
       resT2   : 0,
       resA    : 0
     },
     { 
-      rpcn    : 'public-eu', 
+      rpcn    : 'na2', 
       address : 'http://1.1.1.1',
+      network : 'public',
       resT0   : 0,
       resT1   : 0,
       resT2   : 0,
       resA    : 0
     },
     { 
-      rpcn    : 'public-apac', 
+      rpcn    : 'eu', 
       address : 'http://1.1.1.1',
+      network : 'public',
+      resT0   : 0,
+      resT1   : 0,
+      resT2   : 0,
+      resA    : 0
+    },
+    { 
+      rpcn    : 'apac', 
+      address : 'http://1.1.1.1',
+      network : 'public',
       resT0   : 0,
       resT1   : 0,
       resT2   : 0,
@@ -113,6 +122,7 @@ async function rpcTest(rpcns) {
     }));
   };
 
+  // Single test within a batch.
   async function testSingle(rpcn, b) {
     // Returns promise when fetch succeeds or fails.
     return new Promise(async function(resolve, reject){
@@ -125,13 +135,11 @@ async function rpcTest(rpcns) {
       } catch (error) {
           const t1 = performance.now();
           logTest((t1 - t0), rpcn, b);
-          postTest();
-        // ~~~ remove settimeout after tests finalized. ~~~ 
           resolve();
       }
     });
-    
   }
+  postTest();
 }
 
 function logTest(r, rpcn, b) {
@@ -154,24 +162,23 @@ function postTest() {
       a += rpcn[batch];
     }
     a /= 3;
+    rpcn.resA = Math.round(a);
     // Sets slowest average.
-    if (a > slowestA) {
-      slowestActual = a;
+    if (rpcn.resA > slowestA) {
+      slowestA = rpcn.resA;
     }
     // Sets fastest average.
-    if (a < fastestA) {
-      fastestA = a;
+    if (rpcn.resA < fastestA) {
+      fastestA = rpcn.resA;
     }
-    rpcn.resA = a;
     terminal.write('\r\n');
     terminal.write(`    average response from ` + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + a + ' milliseconds.');
+    // Populates table with response time averages, bests/worst, and graph.
+    updateMainTableFields(rpcn);
   }) 
-  // Populates table with rank, ttfb, and actual.
-  rpcns.forEach((rpcn) => {
-    // updateTableFields(rpcn);
-    // update graph
-  });
-  console.log('hey')
+ 
+  // Updates slowest and fastest average scores in to best/worst table.
+  updateSF(slowestA, fastestA);
   terminal.write('\r\n');
   terminal.write('\r\n');
   terminal.write('    about    home    waf-test-start    waf-test-about   rpc-test');
@@ -180,103 +187,89 @@ function postTest() {
   toggleKeyboard();
 }
 
+function updateSF(slowestA, fastestA) {
+  updateTable(0, 0, 0, (slowestA + 'ms'), false);
+  updateTable(0, 0, 2, (fastestA + 'ms'), false);
+  // Updates graph text.
+  d = slowestA - fastestA;
+  updateTable(0, 0, 1, (d + 'ms delta'), false);
+  // Doing some tricks to make the graph look good.
+  p = Math.round(((slowestA - fastestA) / fastestA) * 10);
+  console.log(p);
+  updateTable(0, 0, 1, p, true);
 
+}
 
-// Populates percentage. Skips control.
-// let largestPercent = 0;
-// orgs.forEach((o) => {
-//   if (o.org !== 'control') {
-//     o.percent = Math.round((((slowestActual - o.actual) / o.actual) * 100));
-//     // Gathers largest percentage for math.
-//     if (o.percent > largestPercent) {
-//       largestPercent = o.percent;
-//     }
-//   }
-// });
-// // Populates graph based off of largestPercent.
-// orgs.forEach((o) => {
-//   o.graph = ((o.percent / largestPercent) * 100);
-// });
-
-
-
-// function updateTableFields(o) {
-//   // Sets col variable based on rank.
-//   var row = o.rank;
-//   // Iterate through each field to be updated.
-//   const fields = ['org', 'rank', 'percent', 'ttfb', 'actual'];
-//   fields.forEach((f) => {
-//     switch (f) {
-//       case 'org':
-//         var update = o.org;
-//         fields(0);
-//         break;
-//       case 'rank':
-//         var update = o.rank;
-//         fields(1);
-//         break;
-//       case 'percent':
-//         if (o.org === 'control') {
-//           graph('-');
-//           break;  
-//         } else {
-//           graph(o.percent, o.graph);
-//           break;
-//         };
-//       case 'ttfb':
-//         var update = Math.round(o.ttfb * 10) / 10 + 'ms';
-//         fields(3);
-//         break;
-//       case 'actual':
-//         var update = Math.round(o.actual * 10) / 10 + 'ms';
-//         fields(4);
-//         break;
-//     }
-//     function fields(col) {
-//       myBody = document.getElementsByTagName("body")[0];
-//       myTable = myBody.getElementsByTagName("table")[0];
-//       myTableBody = myTable.getElementsByTagName("tbody")[0];
-//       myRow = myTableBody.getElementsByTagName("tr")[row];
-//       myCell = myRow.getElementsByTagName("td")[col];
-//       myCell.textContent = update;
-    
-//     }
-//     function graph(p, g) {
-//       // Doing some tricks to make the graph look good.
-//       if (p !== '-') {
-//         percent =  p  + '%';
-//       } else {
-//         percent = p;
-//       }
-//       myBody = document.getElementsByTagName("body")[0];
-//       myTable = myBody.getElementsByTagName("table")[0];
-//       myTableBody = myTable.getElementsByTagName("tbody")[0];
-//       myRow = myTableBody.getElementsByTagName("tr")[row];
-//       myCell = myRow.getElementsByTagName("td")[2];
-//       myDiv = myCell.querySelector("div");
-//       myDiv.style.width = g + '%';
-//       while(myDiv.firstChild) {
-//         myDiv.removeChild(myDiv.firstChild);
-//       }
-//       myDiv.insertAdjacentText('beforeend', percent);
-//     };
-//   });
-// }
-
-// function rpcTestAbout() {
-//   fetch('terminalTextRpc.txt')
-//     .then(response => response.text())
-//     .then((text) => {
-//         for(i = 0; i < text.length; i++) {
-//             (function(i){
-//                 setTimeout(function() {
-//                     terminal.write(text[i]);
-//                     if ((text.length - 1) == (i)) { 
-//                         toggleKeyboard();
-//                     };
-//                 }, 1 * i);
-//             }(i));
-//             } 
-//     })
-// }
-
+function updateTable(t, row, col, v, g) {
+  myBody = document.getElementsByTagName("body")[0];
+  myTable = myBody.getElementsByTagName("table")[t];
+  if (g === true) {
+    myTableBody = myTable.getElementsByTagName("thead")[0];
+  } else {
+    myTableBody = myTable.getElementsByTagName("tbody")[0];
+  }
+  myRow = myTableBody.getElementsByTagName("tr")[row];
+  // Sets graph.
+  if (g === true) {
+    myCell = myRow.getElementsByTagName("th")[col];
+    myDiv = myCell.querySelector("div");
+    myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart');
+    myDiv.insertAdjacentText('beforeend', v + '% delta');
+    myDiv.style.width = v + '%';
+    myDiv.style.color = 'white';
+  } else {
+    myCell = myRow.getElementsByTagName("td")[col];
+    myCell.textContent += v;
+  }
+}
+function updateMainTableFields(rpcn) {
+  // Iterate through each field to be updated.
+  switch (rpcn.network) {
+    case 'public':
+      fields(1);
+      break;
+    case 'private':
+      fields(0);
+      break;
+    case 'anycast':
+      fields(0);
+      break;
+  }
+  function fields(row) {
+    switch (rpcn.rpcn) {
+      case 'na1':
+        var col = 2;
+        break;
+      case 'na2':
+        var col = 3;
+        break;
+      case 'eu':
+        var col = 4;
+        break;
+      case 'apac':
+        var col = 5;
+        break;
+      case 'user-locale':
+        var col = 1;
+        break;
+    }
+    updateTable(1, row, col, (rpcn.resA + 'ms'));
+  }
+}
+  
+function rpcTestAbout() {
+  fetch('terminalTextRpc.txt')
+    .then(response => response.text())
+    .then((text) => {
+        for(i = 0; i < text.length; i++) {
+            (function(i){
+                setTimeout(function() {
+                    terminal.write(text[i]);
+                    if ((text.length - 1) == (i)) { 
+                        toggleKeyboard();
+                    };
+                }, 1 * i);
+            }(i));
+            } 
+    })
+}

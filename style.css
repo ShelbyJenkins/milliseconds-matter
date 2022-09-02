@@ -133,12 +133,16 @@ html, body {
 
 /* centers bottom table */
 #rpc-table-wrapper-outer > table:nth-child(2) > thead > tr > th:nth-child(1) {
-    width: 40%;
+    width: 25%;
 }
 #rpc-table-wrapper-outer > table:nth-child(2) > thead > tr * {
-    width: 10%;
+    width: 15%;
 }
-#rpc-table-wrapper-outer > table:nth-child(2) > tbody *  td:nth-child(1) {
+/* #rpc-table-wrapper-outer > table:nth-child(2) > tbody *  td:nth-child(1) {
     text-align: left;
     padding-left: 4%;
+} */
+.rpc-table-chart {
+   margin-left: auto;
+   margin-right: auto;
 }

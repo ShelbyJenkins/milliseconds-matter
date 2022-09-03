@@ -54,38 +54,42 @@ async function rpcTest(rpcns) {
     return new Promise(async function(resolve, reject){
       // Performance.now() measures the time with higher presicision than date()/
       const t0 = performance.now()
-      console.log(rpcn.address);
       try {
           const response = await fetch(rpcn.address, {
             method: 'POST',
             headers: {
+              'mode': 'no-cors',
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
             body: JSON.stringify( {jsonrpc: "2.0", id: "null", method: "getTransactionCount"} )
           });
-          const t1 = performance.now();
           r = await response.json()
-          console.log(r.result);
-          logTest((t1 - t0), rpcn, b);
-          resolve();
-      } catch (error) {
           const t1 = performance.now();
-          logTest((t1 - t0), rpcn, b);
+          logTest((t1 - t0), rpcn, b, r.result);
+          terminal.write('\r\n');
+          terminal.write(`    response from ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + ' milliseconds.');  
+          resolve();      
+      } catch (error) {
+          terminal.write('\r\n');
+          terminal.write(`    error testing ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' ' + error);        
+          logTest(999, rpcn, b);
           resolve();
-      }
+      };
     });
   }
   postTest();
 }
 // Updates object after each test within a batch.
-function logTest(r, rpcn, b) {
+function logTest(r, rpcn, b, c) {
   // Updates rpcn objects with results of tests.
   const batch = 'resT' + b;
   r = Math.round(r);
   rpcn[batch] = r;
-  terminal.write('\r\n');
-  terminal.write(`    response from ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + r + ' milliseconds.');
+  if (c !== undefined ) {
+    console.log(c);
+    document.getElementById('solana-transaction-count').innerText = c;
+  }
 }
 function postTest() {
   let fastestA = Number.MAX_VALUE;
@@ -99,17 +103,20 @@ function postTest() {
     }
     a /= 3;
     rpcn.resA = Math.round(a);
-    // Sets slowest average.
-    if (rpcn.resA > slowestA) {
-      slowestA = rpcn.resA;
-    }
-    // Sets fastest average.
-    if (rpcn.resA < fastestA) {
-      fastestA = rpcn.resA;
-    }
     terminal.write('\r\n');
     terminal.write(`    average response from ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + a + ' milliseconds.');
+      if (rpcn.provider === "stackpath") {
+        // Sets slowest average.
+      if (rpcn.resA > slowestA) {
+        slowestA = rpcn.resA;
+      }
+      // Sets fastest average.
+      if (rpcn.resA < fastestA) {
+        fastestA = rpcn.resA;
+      }
+    }
   }) 
+   
   // Populates table with response time averages, and highlights best/worse.
   rpcns.forEach((rpcn) => {
     if (rpcn.resA === slowestA) {
@@ -121,7 +128,7 @@ function postTest() {
     }
   });
   // Updates slowest and fastest average scores in to best/worst table.
-  updateSF(slowestA, fastestA);
+  // updateSF(slowestA, fastestA);
   terminal.write('\r\n');
   terminal.write('\r\n');
   terminal.write('    about    home    waf-test-start    waf-test-about   rpc-test');
@@ -132,17 +139,18 @@ function postTest() {
 // Initialize update process.
 function updateMainTableFields(rpcn, s, f) {
   // Iterate through each field to be updated.
-  switch (rpcn.network) {
-    case 'public':
-      fields(1);
-      break;
-    case 'private':
-      fields(0);
-      break;
-    case 'anycast':
-      fields(0);
-      break;
-  }
+  if (rpcn.provider === "stackpath") { 
+    switch (rpcn.network) {
+      case 'public':
+        fields(1);
+        break;
+      case 'private':
+        fields(0);
+        break;
+      case 'anycast':
+        fields(0);
+        break;
+    };
   function fields(row) {
     switch (rpcn.rpcn) {
       case 'sea':
@@ -162,6 +170,26 @@ function updateMainTableFields(rpcn, s, f) {
         break;
     }
     updateTable(1, row, col, (rpcn.resA + 'ms'), false, s, f);
+  }
+  } else {
+    switch (rpcn.rpcn) {
+      case 'foundation':
+        var col = 0;
+        break;
+      case 'serum':
+        var col = 1;
+        break;
+      case 'quicknode':
+        var col = 2;
+        break;
+      case 'blockdaemon':
+        var col = 3;
+        break;
+      case 'allthatnode':
+        var col = 4;
+        break;
+    }
+    updateTable(2, 0, col, (rpcn.resA + 'ms'), false, false, false);
   }
 }
 // Updates tables.
@@ -188,17 +216,18 @@ function updateTable(t, row, col, v, g, s, f) {
     myDiv.style.color = 'white';
   } else {
     myCell = myRow.getElementsByTagName("td")[col];
+    // Removes previous test's entry.
     while(myCell.firstChild) {
       myCell.removeChild(myCell.firstChild);
     }
     myCell.textContent += v;
     // Highlights slowest and fastest.
-    if (s === true) {
-      myCell.classList.add('red-168-text');
-    };
-    if (f === true) {
-      myCell.classList.add('green-168-text');
-    };
+    // if (s === true) {
+    //   myCell.classList.add('red-168-text');
+    // };
+    // if (f === true) {
+    //   myCell.classList.add('green-168-text');
+    // };
   }
 }
 // Updates top table with slowest and fastest and graph.

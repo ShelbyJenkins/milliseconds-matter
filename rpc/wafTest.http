@@ -1,6 +1,13 @@
-### SP anycast IP address
-
-curl http://151.139.128.10:8080 -X POST -H "Content-Type: application/json" -d '
+### Testing community providers
+curl https://proud-wild-film.solana-mainnet.discover.quiknode.pro/11f0a6ab48d73d7ab338a048eb6bbfc1268c7efb -X POST -H "Content-Type: application/json" -d '
+  {
+    "jsonrpc": "2.0",
+    "id": "null",
+    "method": "getTransactionCount"
+  }
+'
+### Request site from SP// anycast address
+curl --resolve d7b5c9i5.stackpathcdn.com:80:151.139.128.10 http://d7b5c9i5.stackpathcdn.com -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": "null",
@@ -8,7 +15,7 @@ curl http://151.139.128.10:8080 -X POST -H "Content-Type: application/json" -d '
   }
 '
 ### anycast address for ec workload
-curl http://69.197.3.4:8080 -X POST -H "Content-Type: application/json" -d '
+curl http://185.85.196.19:8080 -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": "null",

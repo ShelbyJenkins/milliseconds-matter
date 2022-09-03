@@ -78,14 +78,10 @@ html, body {
     margin-top: 2%;
     margin-bottom: 2%;
 }
-
-
-
 .tui-table {
     border: 2px solid floralwhite;
     padding: 1%;
 }
-
 /* title */
 .table-region {
     color: inherit;
@@ -93,6 +89,11 @@ html, body {
     border-left: 2px floralwhite solid;
     border-right: 2px floralwhite solid;
     border-top: 2px floralwhite solid;
+    padding: 1%;
+}
+#solana-transaction-count {
+    color: inherit;
+    text-align: center;
     padding: 1%;
 }
 

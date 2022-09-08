@@ -42,16 +42,19 @@ async function rpcTest(rpcns) {
   for (let b = 0; b < 3; b++) {
     // Pauses loop until batch is complete.
     terminal.write('\r\n');
-    terminal.write('    starting test batch ' + b + ' of 2');
+    terminal.write('    starting test batch ' + (b + 1) + ' of 3');
+    terminal.write('\r\n');
+    terminal.write(`    now testing: `)
     await Promise.all(rpcns.map(async (rpcn) => {
     await testSingle(rpcn, b);
     }));
   };
-
+  
   // Single test within a batch.
   async function testSingle(rpcn, b) {
     // Returns promise when fetch succeeds or fails.
     return new Promise(async function(resolve, reject){
+      terminal.write('    ' + rpcn.rpcn + ' ' +  rpcn.network + '...');  
       // Performance.now() measures the time with higher presicision than date()/
       const t0 = performance.now()
       try {
@@ -68,30 +71,18 @@ async function rpcTest(rpcns) {
           const t1 = performance.now();
           logTest((t1 - t0), rpcn, b, r.result);
           terminal.write('\r\n');
-          terminal.write(`    response from ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + ' milliseconds.');  
+          terminal.write('\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + ' milliseconds.' + '\x1b[39m');  
           resolve();      
       } catch (error) {
           terminal.write('\r\n');
-          terminal.write(`    error testing ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' ' + error);        
+          terminal.write('\x1b[38;2;168;0;0m ' + '    error testing ' + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' ' + error + '\x1b[39m');        
           logTest(999, rpcn, b);
           resolve();
       };
     });
   }
-  postTest();
-}
-// Updates object after each test within a batch.
-function logTest(r, rpcn, b, c) {
-  // Updates rpcn objects with results of tests.
-  const batch = 'resT' + b;
-  r = Math.round(r);
-  rpcn[batch] = r;
-  if (c !== undefined ) {
-    console.log(c);
-    document.getElementById('solana-transaction-count').innerText = c;
-  }
-}
-function postTest() {
+
+  // Post test actions.
   let fastestA = Number.MAX_VALUE;
   let slowestA = 0;
    // Average of 3 runs.
@@ -116,19 +107,20 @@ function postTest() {
       }
     }
   }) 
-   
   // Populates table with response time averages, and highlights best/worse.
   rpcns.forEach((rpcn) => {
     if (rpcn.resA === slowestA) {
-      updateMainTableFields(rpcn, true, false);
+      updatePage(rpcn, true, false);
     } else if (rpcn.resA === fastestA) {
-      updateMainTableFields(rpcn, false, true);
+      updatePage(rpcn, false, true);
     } else {
-      updateMainTableFields(rpcn);
+      updatePage(rpcn);
     }
   });
   // Updates slowest and fastest average scores in to best/worst table.
-  // updateSF(slowestA, fastestA);
+  updateSF(slowestA, fastestA);
+  terminal.write('\r\n');
+  terminal.write(`    test complete`)
   terminal.write('\r\n');
   terminal.write('\r\n');
   terminal.write('    about    home    waf-test-start    waf-test-about   rpc-test');
@@ -136,8 +128,19 @@ function postTest() {
   terminal.write('\r\n');
   toggleKeyboard();
 }
+// Updates object after each test within a batch.
+function logTest(r, rpcn, b, c) {
+  // Updates rpcn objects with results of tests.
+  const batch = 'resT' + b;
+  r = Math.round(r);
+  rpcn[batch] = r;
+  if (c !== undefined ) {
+    console.log(c);
+    document.getElementById('solana-transaction-count').innerText = c;
+  }
+}
 // Initialize update process.
-function updateMainTableFields(rpcn, s, f) {
+function updatePage(rpcn, s, f) {
   // Iterate through each field to be updated.
   if (rpcn.provider === "stackpath") { 
     switch (rpcn.network) {
@@ -212,7 +215,12 @@ function updateTable(t, row, col, v, g, s, f) {
     }
     myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart');
     myDiv.insertAdjacentText('beforeend', v + '% delta');
-    myDiv.style.width = v + '%';
+    if (v > 100) {
+      myDiv.style.width = 100 + '%';
+
+    } else {
+      myDiv.style.width = v + '%';
+    }
     myDiv.style.color = 'white';
   } else {
     myCell = myRow.getElementsByTagName("td")[col];

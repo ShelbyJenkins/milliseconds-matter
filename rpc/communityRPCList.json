@@ -1,0 +1,52 @@
+    [ 
+        { 
+            "rpcn"    : "foundation", 
+            "address" : "https://api.mainnet-beta.solana.com",
+            "network" : "public",
+            "provider": "foundation",
+            "resT0"   : 0,
+            "resT1"   : 0,
+            "resT2"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "serum", 
+            "address" : "https://solana-api.projectserum.com",
+            "network" : "public",
+            "provider": "serum",
+            "resT0"   : 0,
+            "resT1"   : 0,
+            "resT2"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "quicknode", 
+            "address" : "https://proud-wild-film.solana-mainnet.discover.quiknode.pro/11f0a6ab48d73d7ab338a048eb6bbfc1268c7efb/",
+            "network" : "public",
+            "provider": "quicknode",
+            "resT0"   : 0,
+            "resT1"   : 0,
+            "resT2"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "blockdaemon", 
+            "address" : "https://try-rpc.mainnet.solana.blockdaemon.tech",
+            "network" : "public",
+            "provider": "blockdaemon",
+            "resT0"   : 0,
+            "resT1"   : 0,
+            "resT2"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "allthatnode", 
+            "address" : "https://solana-mainnet-rpc.allthatnode.com",
+            "network" : "public",
+            "provider": "allthatnode",
+            "resT0"   : 0,
+            "resT1"   : 0,
+            "resT2"   : 0,
+            "resA"    : 0
+        }
+    ]

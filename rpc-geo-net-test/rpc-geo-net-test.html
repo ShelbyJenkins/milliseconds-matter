@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
         <script src="/node_modules/xterm/lib/xterm.js" defer></script>
         <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js" defer></script>
-        <script src="rpc.js" defer></script>
+        <script src="rpc-geo-net-test.js" defer></script>
         <script src="/main.js" defer></script>
     </head>
     <body>
@@ -39,7 +39,7 @@
                 </div>    
                 <table class="tui-table hovered-purple">
                     <caption class="table-region">
-                        StackPath
+                        StackPath RPC Network Latency Test
                     </caption>
                     <thead>
                         <tr>
@@ -57,22 +57,45 @@
                     </tbody>
 
                 </table>
-                <table class="tui-table hovered-purple" >
-
+                <table class="tui-table hovered-purple">
+                    <colgroup>
+                        <col span="1" style="width: 10%">
+                    </colgroup>
+                    <colgroup>
+                        <col span="2">
+                    </colgroup>
+                    <colgroup>
+                        <col span="2">
+                    </colgroup>
+                    <colgroup>
+                        <col span="2">
+                    </colgroup>
                     <thead>
                         <tr>
-                            <th>method</th>
-                            <th>user locale via anycast</th>
-                            <th>sea</th>
-                            <th>mia</th>
-                            <th>fra</th>
-                            <th>sin</th>
-                            
+                            <th></th>
+                            <th colspan="2">sea</th>
+                            <th colspan="2">mia</th>
+                            <th colspan="2">fra</th>
+                            <th colspan="2">sin</th>
+                        </tr>
+                        <tr>
+                            <th>test #</th>
+                            <th>private network</th>
+                            <th>public internet</th>
+                            <th>private network</th>
+                            <th>public internet</th>
+                            <th>private network</th>
+                            <th>public internet</th>
+                            <th>private network</th>
+                            <th>public internet</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><span class="green-168-text">private network</span></td>
+                            <td>1:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -80,16 +103,39 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td><span class="orange-168-text">public internet</span></td>
-                            <td>n/a</td>
+                            <td>2:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>average:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                    </tfoot>
                 </table>
                 <div class="table-region" colspan="100" scope="colgroup">
                     Solana Transaction Count: <span id="solana-transaction-count"></span> 
@@ -101,11 +147,11 @@
                     <span class="tui-statusbar-divider"></span>
                     <li><a href="/waf/waf.html"><span class="purple-168-text">GO</span> waf-test</a></li>
                     <span class="tui-statusbar-divider"></span>
-                    <li><a href="/rpc/rpc.html"><span class="purple-168-text">GO</span> rpc-test</a></li>
+                    <li><a href="/rpc-geo-net-test/rpc-geo-net-test.html"><span class="purple-168-text">GO</span> rpc-geo-net-test</a></li>
                     <span class="tui-statusbar-divider"></span>
-                    <li><a onclick="rpcTestAbout()"><span class="purple-168-text">GO</span> rpc-test-about</a></li>
+                    <li><a href="#!"><span style="color: floralwhite">N/A</span> rpc-community-test</a></li>
                     <span class="tui-statusbar-divider"></span>
-                    <li><a href="#!"><span style="color: floralwhite">N/A</span> about</a></li>
+                    <li><a onclick="rpcTestAbout()"><span class="purple-168-text">GO</span> about test</a></li>
                     <li>...</li>
                 </ul>
             </div>

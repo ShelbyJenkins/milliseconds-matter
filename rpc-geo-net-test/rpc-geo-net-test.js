@@ -1,7 +1,7 @@
 // Creates terminal and updates it's options.
 const terminal = new Terminal({
   cols: 200,
-  rows: 20,
+  rows: 15,
   fontSize: 10,
   fontWeight: 450,
   fontFamily: 'DOS',
@@ -12,17 +12,15 @@ const terminal = new Terminal({
       cursor: 'yellowgreen',
     }
 });
-
 // Creates an array of objects from json file.
 let rpcns = [];
-async function fetchRpcns() {
+createRPCList();
+async function createRPCList() {
   let response = await fetch('rpcns.json');
   let data = await response.json();
   rpcns = data;
 };
-fetchRpcns();
-
-// Starts test.
+// Main Function.
 async function rpcTest(rpcns) {
   // Disables button after click to prevent multiple entries.
   const buttons = document.querySelectorAll('button');
@@ -36,7 +34,6 @@ async function rpcTest(rpcns) {
           });
       });
   });
-  
   // Calls a single round of test on all rpcns. Waits till all tests are complete, and then tests again.
   // Performs the test 3 times to generate averages.
   for (let b = 0; b < 3; b++) {
@@ -49,7 +46,6 @@ async function rpcTest(rpcns) {
     await testSingle(rpcn, b);
     }));
   };
-  
   // Single test within a batch.
   async function testSingle(rpcn, b) {
     // Returns promise when fetch succeeds or fails.
@@ -80,12 +76,11 @@ async function rpcTest(rpcns) {
           resolve();
       };
     });
-  }
-
+  };
   // Post test actions.
   let fastestA = Number.MAX_VALUE;
   let slowestA = 0;
-   // Average of 3 runs.
+   // Averages 3 runs and updates averages on table.
    rpcns.forEach((rpcn) => {
     let a = 0;
     for (let b = 0; b < 3; b++) {
@@ -96,29 +91,28 @@ async function rpcTest(rpcns) {
     rpcn.resA = Math.round(a);
     terminal.write('\r\n');
     terminal.write(`    average response from ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + a + ' milliseconds.');
-      if (rpcn.provider === "stackpath") {
-        // Sets slowest average.
-      if (rpcn.resA > slowestA) {
-        slowestA = rpcn.resA;
-      }
-      // Sets fastest average.
-      if (rpcn.resA < fastestA) {
-        fastestA = rpcn.resA;
-      }
+      // Sets slowest average.
+    if (rpcn.resA > slowestA) {
+      slowestA = rpcn.resA;
     }
-  }) 
-  // Populates table with response time averages, and highlights best/worse.
+    // Sets fastest average.
+    if (rpcn.resA < fastestA) {
+      fastestA = rpcn.resA;
+    }
+    // Updates average response times.
+    selectCellForUpdate(rpcn, 'resA');
+  });
+  // Highlights slowest and fastest.
   rpcns.forEach((rpcn) => {
     if (rpcn.resA === slowestA) {
-      updatePage(rpcn, true, false);
-    } else if (rpcn.resA === fastestA) {
-      updatePage(rpcn, false, true);
-    } else {
-      updatePage(rpcn);
+      selectCellForUpdate(rpcn, 'resA', 'red-168-text');
+    }
+    if (rpcn.resA === fastestA) {
+      selectCellForUpdate(rpcn, 'resA', 'green-168-text');
     }
   });
   // Updates slowest and fastest average scores in to best/worst table.
-  updateSF(slowestA, fastestA);
+  updateSlowestFastestGraph(slowestA, fastestA);
   terminal.write('\r\n');
   terminal.write(`    test complete`)
   terminal.write('\r\n');
@@ -134,120 +128,113 @@ function logTest(r, rpcn, b, c) {
   const batch = 'resT' + b;
   r = Math.round(r);
   rpcn[batch] = r;
+  selectCellForUpdate(rpcn, batch);
   if (c !== undefined ) {
-    console.log(c);
     document.getElementById('solana-transaction-count').innerText = c;
   }
 }
 // Initialize update process.
-function updatePage(rpcn, s, f) {
+function selectCellForUpdate(rpcn, batch, color) {
   // Iterate through each field to be updated.
-  if (rpcn.provider === "stackpath") { 
-    switch (rpcn.network) {
-      case 'public':
-        fields(1);
-        break;
-      case 'private':
-        fields(0);
-        break;
-      case 'anycast':
-        fields(0);
-        break;
-    };
-  function fields(row) {
-    switch (rpcn.rpcn) {
-      case 'sea':
-        var col = 2;
-        break;
-      case 'mia':
-        var col = 3;
-        break;
-      case 'fra':
-        var col = 4;
-        break;
-      case 'sin':
-        var col = 5;
-        break;
-      case 'user-locale':
-        var col = 1;
-        break;
-    }
-    updateTable(1, row, col, (rpcn.resA + 'ms'), false, s, f);
-  }
-  } else {
-    switch (rpcn.rpcn) {
-      case 'foundation':
-        var col = 0;
-        break;
-      case 'serum':
-        var col = 1;
-        break;
-      case 'quicknode':
-        var col = 2;
-        break;
-      case 'blockdaemon':
-        var col = 3;
-        break;
-      case 'allthatnode':
-        var col = 4;
-        break;
-    }
-    updateTable(2, 0, col, (rpcn.resA + 'ms'), false, false, false);
-  }
+  switch (rpcn.rpcn) {
+    case 'sea':
+      var col = 1;
+      break;
+    case 'mia':
+      var col = 3;
+      break;
+    case 'fra':
+      var col = 5;
+      break;
+    case 'sin':
+      var col = 7;
+      break;
+  };
+  switch (rpcn.network) {
+    case 'public':
+      col += 1;
+      break;
+    case 'private':
+      break;
+  };
+  switch (batch) {
+    case 'resT0':
+      var row = 2;
+      break;
+    case 'resT1':
+      var row = 3;
+      break;
+    case 'resT2':
+      var row = 4;
+      break;
+    case 'resA':
+      var row = 5;
+      break;
+  };
+  updateTable(row, col, (rpcn[batch] + 'ms'), color);
 }
 // Updates tables.
-function updateTable(t, row, col, v, g, s, f) {
+function updateTable(row, col, v, color) {
   myBody = document.getElementsByTagName("body")[0];
-  myTable = myBody.getElementsByTagName("table")[t];
-  if (g === true) {
-    myTableBody = myTable.getElementsByTagName("thead")[0];
-  } else {
-    myTableBody = myTable.getElementsByTagName("tbody")[0];
-  }
+  myTableBody = myBody.getElementsByTagName("table")[1];
   myRow = myTableBody.getElementsByTagName("tr")[row];
-  // Sets graph.
-  if (g === true) {
-    myCell = myRow.getElementsByTagName("th")[col];
-    myDiv = myCell.querySelector("div");
-    // Removes previous test's entry.
-    while(myDiv.firstChild) {
-      myDiv.removeChild(myDiv.firstChild);
-    }
-    myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart');
-    myDiv.insertAdjacentText('beforeend', v + '% delta');
-    if (v > 100) {
-      myDiv.style.width = 100 + '%';
-
-    } else {
-      myDiv.style.width = v + '%';
-    }
-    myDiv.style.color = 'white';
-  } else {
-    myCell = myRow.getElementsByTagName("td")[col];
-    // Removes previous test's entry.
-    while(myCell.firstChild) {
-      myCell.removeChild(myCell.firstChild);
-    }
-    myCell.textContent += v;
-    // Highlights slowest and fastest.
-    // if (s === true) {
-    //   myCell.classList.add('red-168-text');
-    // };
-    // if (f === true) {
-    //   myCell.classList.add('green-168-text');
-    // };
+  myCell = myRow.getElementsByTagName("td")[col];
+  // Removes previous test's entry.
+  while(myCell.firstChild) {
+    myCell.removeChild(myCell.firstChild);
+    myCell.classList.remove('red-168-text');
+    myCell.classList.remove('green-168-text');
   }
+  myCell.textContent += v;
+  if (color === 'red-168-text' ) {
+    myCell.classList.add('red-168-text');
+  };
+  if (color === 'green-168-text' ) {
+    myCell.classList.add('green-168-text');
+  };
 }
 // Updates top table with slowest and fastest and graph.
-function updateSF(slowestA, fastestA) {
-  updateTable(0, 0, 0, (slowestA + 'ms'), false, false, false);
-  updateTable(0, 0, 2, (fastestA + 'ms'), false, false, false);
+function updateSlowestFastestGraph(slowestA, fastestA) {
+  myBody = document.getElementsByTagName("body")[0];
+  myTableBody = myBody.getElementsByTagName("table")[0];
+  myRow = myTableBody.getElementsByTagName("tr")[1];
+  myCell = myRow.getElementsByTagName("td")[0];
+  while(myCell.firstChild) {
+    myCell.removeChild(myCell.firstChild);
+  }
+  myCell.textContent += slowestA;
+  myCell = myRow.getElementsByTagName("td")[2];
+  while(myCell.firstChild) {
+    myCell.removeChild(myCell.firstChild);
+  }
+  myCell.textContent += fastestA;
   // Updates graph text.
   d = slowestA - fastestA;
-  updateTable(0, 0, 1, (d + 'ms delta'), false);
+  myRow = myTableBody.getElementsByTagName("tr")[1];
+  myCell = myRow.getElementsByTagName("td")[1];
+  while(myCell.firstChild) {
+    myCell.removeChild(myCell.firstChild);
+  }
+  myCell.textContent += (d + 'ms delta');
   // Doing some tricks to make the graph look good.
-  p = Math.round(((slowestA - fastestA) / fastestA) * 10);
-  updateTable(0, 0, 1, p, true);
+  p = Math.round(((slowestA - fastestA) / fastestA) * 100);
+  // Sets graph.
+  myRow = myTableBody.getElementsByTagName("tr")[0];
+  myCell = myRow.getElementsByTagName("th")[1];
+  myDiv = myCell.querySelector("div");
+  // Removes previous test's entry.
+  while(myDiv.firstChild) {
+    myDiv.removeChild(myDiv.firstChild);
+  }
+  myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart');
+  myDiv.insertAdjacentText('beforeend', p + '% faster');
+  if (p > 100) {
+    myDiv.style.width = 100 + '%';
+
+  } else {
+    myDiv.style.width = p + '%';
+  }
+  myDiv.style.color = 'white';
 } 
 function rpcTestAbout() {
   fetch('terminalTextRpc.txt')
@@ -265,3 +252,9 @@ function rpcTestAbout() {
             } 
     })
 }
+
+
+
+
+
+ 

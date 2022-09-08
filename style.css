@@ -69,7 +69,6 @@ html, body {
     display: inline;
     margin: 0px 3px; 
 }
-
 #waf-table-wrapper {
     display: flex;
     flex: 1 1 ;
@@ -77,10 +76,6 @@ html, body {
     width: 90%;
     margin-top: 2%;
     margin-bottom: 2%;
-}
-.tui-table {
-    border: 2px solid floralwhite;
-    padding: 1%;
 }
 /* title */
 .table-region {
@@ -124,26 +119,23 @@ html, body {
     margin-top: 2%;
     width: 90%;
     border: 2px solid floralwhite;
-    
 }
-
 /* centers top table */
-#rpc-table-wrapper-outer > table:nth-child(1) > thead > tr * {
+#rpc-table-wrapper-outer > table:nth-child(0) > thead > tr * {
     width: 33%;
 }
+#rpc-table-wrapper-outer > table:nth-child(3) {
+    border: 2px solid floralwhite;
+    border-collapse: collapse;
+}
 
-/* centers bottom table */
-#rpc-table-wrapper-outer > table:nth-child(2) > thead > tr > th:nth-child(1) {
-    width: 25%;
+#rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(2),
+#rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(3),
+#rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(4) {
+    border-left: 2px solid floralwhite;
+    border-right: 2px solid floralwhite;
 }
-#rpc-table-wrapper-outer > table:nth-child(2) > thead > tr * {
-    width: 15%;
-}
-/* #rpc-table-wrapper-outer > table:nth-child(2) > tbody *  td:nth-child(1) {
-    text-align: left;
-    padding-left: 4%;
-} */
-.rpc-table-chart {
-   margin-left: auto;
-   margin-right: auto;
+.tui-table {
+    border: 2px solid floralwhite;
+    padding: 1%;
 }

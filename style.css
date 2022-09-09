@@ -22,6 +22,7 @@ html, body {
     width: 80vw;
     
 }
+/* terminal starts */
 #terminal-wrapper {
     display: flex;
     flex: 1 1 1;
@@ -36,6 +37,8 @@ html, body {
     align-items: stretch;
     max-width: 100%;
 }
+/* terminal ends  */
+/* statusbar starts */
 .tui-statusbar {
     display: flex;
     align-self: stretch;
@@ -69,32 +72,9 @@ html, body {
     display: inline;
     margin: 0px 3px; 
 }
-#waf-table-wrapper {
-    display: flex;
-    flex: 1 1 ;
-    flex-direction: column;
-    width: 90%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-/* title */
-.table-region {
-    color: inherit;
-    text-align: center;
-    border-left: 2px floralwhite solid;
-    border-right: 2px floralwhite solid;
-    border-top: 2px floralwhite solid;
-    padding: 1%;
-}
-#solana-transaction-count {
-    color: inherit;
-    text-align: center;
-    padding: 1%;
-}
-
-/* button */
+/* statusbar ends */
+/* run button starts*/
 .table-run-button button {
-
     padding: .5%;
     width: 100%;
     background-color: #a800a8;
@@ -109,8 +89,24 @@ html, body {
 .table-run-button button:hover span {
     display: none;
 }
-
-/* rpc test table */
+/* run button ends*/
+/* table starts */
+.table-description-text {
+    color: inherit;
+    text-align: center;
+    border-left: 2px floralwhite solid;
+    border-right: 2px floralwhite solid;
+    border-top: 2px floralwhite solid;
+    padding: 1%;
+}
+#waf-table-wrapper {
+    display: flex;
+    flex: 1 1 ;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
 #rpc-table-wrapper-outer {
     display: flex;
     flex: 1 1;
@@ -124,18 +120,29 @@ html, body {
 #rpc-table-wrapper-outer > table:nth-child(0) > thead > tr * {
     width: 33%;
 }
+/* merges borders */
 #rpc-table-wrapper-outer > table:nth-child(3) {
-    border: 2px solid floralwhite;
     border-collapse: collapse;
 }
-
+/* borders for locations */
 #rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(2),
 #rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(3),
 #rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(4) {
     border-left: 2px solid floralwhite;
     border-right: 2px solid floralwhite;
 }
+/* changes to tuic.css class */
 .tui-table {
     border: 2px solid floralwhite;
     padding: 1%;
 }
+/* Adds border around rpc test averages */
+#rpc-table-wrapper-outer > table:nth-child(3) > tbody > tr:nth-child(6) {
+    border: 2px dashed floralwhite;
+}
+#solana-transaction-count {
+    color: inherit;
+    text-align: center;
+    padding: 1%;
+}
+/* table ends */

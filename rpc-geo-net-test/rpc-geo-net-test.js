@@ -36,15 +36,17 @@ async function rpcTest(rpcns) {
   });
   // Calls a single round of test on all rpcns. Waits till all tests are complete, and then tests again.
   // Performs the test 3 times to generate averages.
-  for (let b = 0; b < 3; b++) {
+  for (let b = 1; b < 6; b++) {
     // Pauses loop until batch is complete.
     terminal.write('\r\n');
-    terminal.write('    starting test batch ' + (b + 1) + ' of 3');
+    terminal.write('    starting test batch ' + (b) + ' of 5');
     terminal.write('\r\n');
     terminal.write(`    now testing: `)
     await Promise.all(rpcns.map(async (rpcn) => {
     await testSingle(rpcn, b);
     }));
+    // Pauses loop 1 seconds after each iteration.
+    // await new Promise(resolve => setTimeout(resolve, 1000));
   };
   // Single test within a batch.
   async function testSingle(rpcn, b) {
@@ -80,27 +82,27 @@ async function rpcTest(rpcns) {
   // Post test actions.
   let fastestA = Number.MAX_VALUE;
   let slowestA = 0;
-   // Averages 3 runs and updates averages on table.
+   // Averages 5 runs and updates averages on table.
    rpcns.forEach((rpcn) => {
     let a = 0;
-    for (let b = 0; b < 3; b++) {
+    for (let b = 1; b < 6; b++) {
       const batch = 'resT' + b;
-      a += rpcn[batch];
+      a += parseFloat(rpcn[batch]);
     }
-    a /= 3;
-    rpcn.resA = Math.round(a);
+    a /= 5;
+    rpcn.resA = a.toFixed(1);
     terminal.write('\r\n');
     terminal.write(`    average response from ` + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + a + ' milliseconds.');
-      // Sets slowest average.
-    if (rpcn.resA > slowestA) {
+    // Updates average response times.
+    selectCellForUpdate(rpcn, 'resA');
+    // Sets slowest average.
+    if (rpcn.resA > parseFloat(slowestA)) {
       slowestA = rpcn.resA;
     }
     // Sets fastest average.
-    if (rpcn.resA < fastestA) {
+    if (rpcn.resA < parseFloat(fastestA)) {
       fastestA = rpcn.resA;
     }
-    // Updates average response times.
-    selectCellForUpdate(rpcn, 'resA');
   });
   // Highlights slowest and fastest.
   rpcns.forEach((rpcn) => {
@@ -117,16 +119,17 @@ async function rpcTest(rpcns) {
   terminal.write(`    test complete`)
   terminal.write('\r\n');
   terminal.write('\r\n');
-  terminal.write('    about    home    waf-test-start    waf-test-about   rpc-test');
+  terminal.write('    home    rpc-test-start    rpc-test-about    waf-test');
   terminal.write('\r\n');
   terminal.write('\r\n');
   toggleKeyboard();
+  console.log(rpcns)
 }
 // Updates object after each test within a batch.
 function logTest(r, rpcn, b, c) {
   // Updates rpcn objects with results of tests.
   const batch = 'resT' + b;
-  r = Math.round(r);
+  r = r.toFixed(1);
   rpcn[batch] = r;
   selectCellForUpdate(rpcn, batch);
   if (c !== undefined ) {
@@ -158,17 +161,23 @@ function selectCellForUpdate(rpcn, batch, color) {
       break;
   };
   switch (batch) {
-    case 'resT0':
+    case 'resT1':
       var row = 2;
       break;
-    case 'resT1':
+    case 'resT2':
       var row = 3;
       break;
-    case 'resT2':
+    case 'resT3':
       var row = 4;
       break;
-    case 'resA':
+    case 'resT4':
       var row = 5;
+      break;
+    case 'resT5':
+      var row = 6;
+      break;
+    case 'resA':
+      var row = 7;
       break;
   };
   updateTable(row, col, (rpcn[batch] + 'ms'), color);
@@ -202,12 +211,12 @@ function updateSlowestFastestGraph(slowestA, fastestA) {
   while(myCell.firstChild) {
     myCell.removeChild(myCell.firstChild);
   }
-  myCell.textContent += slowestA;
+  myCell.textContent += slowestA + 'ms';
   myCell = myRow.getElementsByTagName("td")[2];
   while(myCell.firstChild) {
     myCell.removeChild(myCell.firstChild);
   }
-  myCell.textContent += fastestA;
+  myCell.textContent += fastestA + 'ms';
   // Updates graph text.
   d = slowestA - fastestA;
   myRow = myTableBody.getElementsByTagName("tr")[1];

@@ -30,13 +30,13 @@ async function rpcTest(rpcns) {
               b.disabled = true;
               setTimeout( function() {
                   b.disabled = false;
-              }, 4000);
+              }, 6000);
           });
       });
   });
   // Calls a single round of test on all rpcns. Waits till all tests are complete, and then tests again.
   // Performs the test 3 times to generate averages.
-  for (let b = 1; b < 6; b++) {
+  for (let b = 0; b < 6; b++) {
     // Pauses loop until batch is complete.
     terminal.write('\r\n');
     terminal.write('    starting test batch ' + (b) + ' of 5');
@@ -67,14 +67,19 @@ async function rpcTest(rpcns) {
           });
           r = await response.json()
           const t1 = performance.now();
-          logTest((t1 - t0), rpcn, b, r.result);
-          terminal.write('\r\n');
-          terminal.write('\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + ' milliseconds.' + '\x1b[39m');  
-          resolve();      
+            // First test is not logged.
+            if (b !== 0) {
+              logTest((t1 - t0), rpcn, b, r.result);
+              terminal.write('\r\n');
+              terminal.write('\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + ' milliseconds.' + '\x1b[39m');
+            }
+          resolve();
       } catch (error) {
-          terminal.write('\r\n');
-          terminal.write('\x1b[38;2;168;0;0m ' + '    error testing ' + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' ' + error + '\x1b[39m');        
-          logTest(999, rpcn, b);
+          if (b !== 0) {
+            terminal.write('\r\n');
+            terminal.write('\x1b[38;2;168;0;0m ' + '    error testing ' + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' ' + error + '\x1b[39m');        
+            logTest(999, rpcn, b);
+          }
           resolve();
       };
     });

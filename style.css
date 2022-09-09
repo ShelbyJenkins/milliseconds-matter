@@ -11,7 +11,7 @@ html, body {
     
 }
 .main {
-    font-size: 1em;
+    font-size: .8em;
     border-left: 1em #a8a8a8 solid;
     border-right: 1em #a8a8a8 solid;
     /* background-color: #a8a8a8; */

@@ -46,7 +46,7 @@ async function rpcTest(rpcns) {
     await testSingle(rpcn, b);
     }));
     // Pauses loop 1 seconds after each iteration.
-    // await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
   };
   // Single test within a batch.
   async function testSingle(rpcn, b) {
@@ -218,7 +218,7 @@ function updateSlowestFastestGraph(slowestA, fastestA) {
   }
   myCell.textContent += fastestA + 'ms';
   // Updates graph text.
-  d = slowestA - fastestA;
+  d = (slowestA - fastestA).toFixed(1);
   myRow = myTableBody.getElementsByTagName("tr")[1];
   myCell = myRow.getElementsByTagName("td")[1];
   while(myCell.firstChild) {
@@ -261,9 +261,3 @@ function rpcTestAbout() {
             } 
     })
 }
-
-
-
-
-
- 

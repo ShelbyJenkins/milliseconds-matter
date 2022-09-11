@@ -6,6 +6,7 @@ html, body {
     background-color: black;
     font-family: 'DOS';
     color: floralwhite;
+    text-align: center;
     width: 100%;
     min-height: 100vh;
     
@@ -14,28 +15,26 @@ html, body {
     font-size: .8em;
     border-left: 1em #a8a8a8 solid;
     border-right: 1em #a8a8a8 solid;
-    /* background-color: #a8a8a8; */
     display: flex;
     flex: 1 1 1;
     flex-direction: column;
-    align-items: center;
-    width: 80vw;
     
+    width: 90vw;
 }
 /* terminal starts */
-#terminal-wrapper {
+/* #terminal-wrapper {
     display: flex;
     flex: 1 1 1;
     align-content: center;
-    align-items: stretch;
     max-width: 100%;
-}
+} */
 #terminal {
     display: flex;
     flex: 1 1 1;
     align-content: center;
-    align-items: stretch;
     max-width: 100%;
+    margin: 1%;
+    /* padding: 1%; */
 }
 /* terminal ends  */
 /* statusbar starts */
@@ -43,12 +42,16 @@ html, body {
     display: flex;
     align-self: stretch;
     background-color: #a8a8a8;
+    color: floralwhite;
     max-width: 100%;
+    text-align: left;
+    padding-top: .5%;
+    padding-bottom: .5%;
 }
   .tui-statusbar ul li {
     display: inline-block;
     color: black;
-    margin-left: 1px;
+    margin-left: 2px;
 }
   .tui-statusbar ul li:active {
     background-color: yellowgreen;
@@ -74,31 +77,25 @@ html, body {
 }
 /* statusbar ends */
 /* run button starts*/
-.table-run-button button {
+.run-button button {
     padding: .5%;
     width: 100%;
     background-color: #a800a8;
     color: floralwhite;
 }
-.table-run-button button:hover:before {
+.run-button button:hover:before {
     content: "L F G";
 }
-.table-run-button button:hover {
+.run-button button:hover {
     background-color: yellowgreen;
 }
-.table-run-button button:hover span {
+.run-button button:hover span {
     display: none;
 }
 /* run button ends*/
+
 /* table starts */
-.table-description-text {
-    color: inherit;
-    text-align: center;
-    border-left: 2px floralwhite solid;
-    border-right: 2px floralwhite solid;
-    border-top: 2px floralwhite solid;
-    padding: 1%;
-}
+
 #waf-table-wrapper {
     display: flex;
     flex: 1 1 ;
@@ -107,7 +104,7 @@ html, body {
     margin-top: 2%;
     margin-bottom: 2%;
 }
-#rpc-table-wrapper-outer {
+/* #rpc-table-wrapper-outer {
     display: flex;
     flex: 1 1;
     flex-direction: column;
@@ -115,34 +112,59 @@ html, body {
     margin-top: 2%;
     width: 90%;
     border: 2px solid floralwhite;
-}
-/* centers top table */
-#rpc-table-wrapper-outer > table:nth-child(0) > thead > tr * {
-    width: 33%;
-}
+} */
+
 /* merges borders */
-#rpc-table-wrapper-outer > table:nth-child(3) {
+/* #rpc-table-wrapper-outer > table:nth-child(3) {
     border-collapse: collapse;
-}
+} */
+
 /* borders for locations */
-#rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(2),
+/* #rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(2),
 #rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(3),
 #rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(4) {
     border-left: 2px solid floralwhite;
     border-right: 2px solid floralwhite;
-}
+} */
+
 /* changes to tuic.css class */
-.tui-table {
-    border: 2px solid floralwhite;
+/* .tui-table {
+    border: 1px dashed floralwhite;
     padding: 1%;
-}
+} */
+
 /* Adds border around rpc test averages */
-#rpc-table-wrapper-outer > table:nth-child(3) > tbody > tr:nth-child(6) {
+/* #rpc-table-wrapper-outer > table:nth-child(3) > tbody > tr:nth-child(6) {
     border: 2px dashed floralwhite;
+} */
+
+#fastest-slowest {
+    margin: 1%;
 }
-#solana-transaction-count {
-    color: inherit;
-    text-align: center;
-    padding: 1%;
+/* This cool trick adds a border between two adjacent column! */
+#fastest-slowest td + td {
+    border-left: 1px dashed floralwhite;
+}
+#fastest-slowest th + th {
+    border-left: 1px dashed floralwhite;
+}
+#data-table {
+    margin: 1%;
+}
+#data-table td {
+    width: 8%;
+    padding: .3em;
+}
+#data-table td + td {
+    border-left: 1px dashed floralwhite;
 }
 /* table ends */
+
+/* horizontal break */
+hr {
+    /* margin-bottom: .5%; */
+    width: 100%;
+    border-top: none;
+    margin: 0;
+    border-bottom: 1px dashed floralwhite;
+}

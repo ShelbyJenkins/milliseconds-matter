@@ -1,0 +1,855 @@
+"ankr-rpc":
+ http: "https://rpc.ankr.com/solana"
+ ws: "wss://rpc.ankr.com/solana"
+
+"ankr-rpc-auth":
+ http: "https://rpc.ankr.com/solana/89a1577615a713dddcd59aed5762cb3851fe3d050eb6c7e2a26fe39c38cb97d9"
+ ws: "wss://rpc.ankr.com/solana/89a1577615a713dddcd59aed5762cb3851fe3d050eb6c7e2a26fe39c38cb97d9"
+
+"blockdaemon-test":
+ http: "https://34.78.137.251"
+ ws: "wss://34.78.137.251"
+
+"figment-solana-mainnet-auth-1":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/a273d5bc3ab79337e4c0dafc0c45d6df"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/a273d5bc3ab79337e4c0dafc0c45d6df"
+
+"figment-solana-mainnet-auth-10":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/fbb4f00427594e23bfb341c060e6348a"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/fbb4f00427594e23bfb341c060e6348a"
+
+"figment-solana-mainnet-auth-11":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/ef802cd19ef5d8638c6a6cbbcd1d3144"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/ef802cd19ef5d8638c6a6cbbcd1d3144"
+
+"figment-solana-mainnet-auth-12":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/24c64e276fc5db6ff73da2f59bac40f2"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/24c64e276fc5db6ff73da2f59bac40f2"
+
+"figment-solana-mainnet-auth-13":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/5d2d7ea54a347197ccc56fd24ecc2ac5"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/5d2d7ea54a347197ccc56fd24ecc2ac5"
+
+"figment-solana-mainnet-auth-14":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/995d9d62662252c679a6e673fb31b392"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/995d9d62662252c679a6e673fb31b392"
+
+"figment-solana-mainnet-auth-15":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/182e93d87a1f1d335c9d74d6c7371388"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/182e93d87a1f1d335c9d74d6c7371388"
+
+"figment-solana-mainnet-auth-2":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/dc8777df6fba0d48b5448ba05b42b284"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/dc8777df6fba0d48b5448ba05b42b284"
+
+"figment-solana-mainnet-auth-3":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/5346b90a5de1697d94d6eb94e0cb4858"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/5346b90a5de1697d94d6eb94e0cb4858"
+
+"figment-solana-mainnet-auth-4":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/d7d9844ccf72ad4fef9bc5caaa957a50"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/d7d9844ccf72ad4fef9bc5caaa957a50"
+
+"figment-solana-mainnet-auth-5":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/7397f4861bb4284fcda399b1a39ccafd"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/7397f4861bb4284fcda399b1a39ccafd"
+
+"figment-solana-mainnet-auth-6":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/a3478f946baedb5aff131fe262a6090c"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/a3478f946baedb5aff131fe262a6090c"
+
+"figment-solana-mainnet-auth-7":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/6ac78dcab2c65dae978826741a0046bc"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/6ac78dcab2c65dae978826741a0046bc"
+
+"figment-solana-mainnet-auth-8":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/4702b846b74894097f98441de03c6353"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/4702b846b74894097f98441de03c6353"
+
+"figment-solana-mainnet-auth-9":
+ http: "https://solana--mainnet.datahub.figment.io/apikey/52c60049a8f23b7ca8cc9633c1170036"
+ ws: "wss://solana--mainnet.datahub.figment.io/apikey/52c60049a8f23b7ca8cc9633c1170036"
+
+"genesysgo-aldrin-exchange":
+ http: "https://aldrinexchange.genesysgo.net"
+ ws: "wss://aldrinexchange.genesysgo.net"
+
+"genesysgo-alice":
+ http: "https://alice.genesysgo.net"
+ ws: "wss://alice.genesysgo.net"
+
+"genesysgo-alpha-art":
+ http: "https://alpha-art.genesysgo.net"
+ ws: "wss://alpha-art.genesysgo.net"
+
+"genesysgo-apricot":
+ http: "https://apricot.genesysgo.net"
+ ws: "wss://apricot.genesysgo.net"
+
+"genesysgo-atlas":
+ http: "https://atlas.genesysgo.net"
+ ws: "wss://atlas.genesysgo.net"
+
+"genesysgo-aurory":
+ http: "https://aurory.genesysgo.net"
+ ws: "wss://aurory.genesysgo.net"
+
+"genesysgo-bonfida":
+ http: "https://bonfida.genesysgo.net"
+ ws: "wss://bonfida.genesysgo.net"
+
+"genesysgo-bridgesplit":
+ http: "https://bridgesplit.genesysgo.net"
+ ws: "wss://bridgesplit.genesysgo.net"
+
+"genesysgo-cmnftdrop":
+ http: "https://cmnftdrop7299eedc071c.genesysgo.net"
+ ws: "wss://cmnftdrop7299eedc071c.genesysgo.net"
+
+"genesysgo-coin98":
+ http: "https://coin98.genesysgo.net"
+ ws: "wss://coin98.genesysgo.net"
+
+"genesysgo-cropper":
+ http: "https://cropper.genesysgo.net"
+ ws: "wss://cropper.genesysgo.net"
+
+"genesysgo-defiland":
+ http: "https://defiland.genesysgo.net"
+ ws: "wss://defiland.genesysgo.net"
+
+"genesysgo-dex-solrise":
+ http: "https://dex-solrise.genesysgo.net"
+ ws: "wss://dex-solrise.genesysgo.net"
+
+"genesysgo-digitaleyes":
+ http: "https://digitaleyes.genesysgo.net"
+ ws: "wss://digitaleyes.genesysgo.net"
+
+"genesysgo-drift":
+ http: "https://drift.genesysgo.net"
+ ws: "wss://drift.genesysgo.net"
+
+"genesysgo-exchange":
+ http: "https://exchange.genesysgo.net"
+ ws: "wss://exchange.genesysgo.net"
+
+"genesysgo-fabric":
+ http: "https://fabric.genesysgo.net"
+ ws: "wss://fabric.genesysgo.net"
+
+"genesysgo-famousfoxes":
+ http: "https://famousfoxes.genesysgo.net"
+ ws: "wss://famousfoxes.genesysgo.net"
+
+"genesysgo-fractal":
+ http: "https://fractal.genesysgo.net"
+ ws: "wss://fractal.genesysgo.net"
+
+"genesysgo-frakt":
+ http: "https://frakt.genesysgo.net"
+ ws: "wss://frakt.genesysgo.net"
+
+"genesysgo-francium":
+ http: "https://francium.genesysgo.net"
+ ws: "wss://francium.genesysgo.net"
+
+"genesysgo-helios-go":
+ http: "https://helios.go.genesysgo.net"
+ ws: "wss://helios.go.genesysgo.net"
+
+"genesysgo-investinpro":
+ http: "https://investinpro.genesysgo.net"
+ ws: "wss://investinpro.genesysgo.net"
+
+"genesysgo-jetprotocol":
+ http: "https://jetprotocol.genesysgo.net"
+ ws: "wss://jetprotocol.genesysgo.net"
+
+"genesysgo-jet-xoi":
+ http: "https://jetxoivxzknkjzh.main.genesysgo.net"
+ ws: "wss://jetxoivxzknkjzh.main.genesysgo.net"
+
+"genesysgo-jpoolone":
+ http: "https://jpoolone.genesysgo.net"
+ ws: "wss://jpoolone.genesysgo.net"
+
+"genesysgo-kurobi":
+ http: "https://kurobi.genesysgo.net"
+ ws: "wss://kurobi.genesysgo.net"
+
+"genesysgo-loki-dfx":
+ http: "https://lokidfxnwlabdq.main.genesysgo.net:8899"
+ ws: "wss://lokidfxnwlabdq.main.genesysgo.net:8899"
+
+"genesysgo-magic-eden":
+ http: "https://magiceden.genesysgo.net"
+ ws: "wss://magiceden.genesysgo.net"
+
+"genesysgo-mango":
+ http: "https://mango.genesysgo.net"
+ ws: "wss://mango.genesysgo.net"
+
+"genesysgo-nftarmory":
+ http: "https://nftarmory.genesysgo.net"
+ ws: "wss://nftarmory.genesysgo.net"
+
+"genesysgo-ninja":
+ http: "https://ninja.genesysgo.net"
+ ws: "wss://ninja.genesysgo.net"
+
+"genesysgo-ninja-ckv":
+ http: "https://ninjahckvjcyato.main.genesysgo.net:8899"
+ ws: "wss://ninjahckvjcyato.main.genesysgo.net:8899"
+
+"genesysgo-ninja-go":
+ http: "https://ninja.go.genesysgo.net"
+ ws: "wss://ninja.go.genesysgo.net"
+
+"genesysgo-only1":
+ http: "https://only1.genesysgo.net"
+ ws: "wss://only1.genesysgo.net"
+
+"genesysgo-pentacle":
+ http: "https://pentacle.genesysgo.net"
+ ws: "wss://pentacle.genesysgo.net"
+
+"genesysgo-phantasia":
+ http: "https://phantasia.genesysgo.net"
+ ws: "wss://phantasia.genesysgo.net"
+
+"genesysgo-psyoptions":
+ http: "https://psyoptions.genesysgo.net"
+ ws: "wss://psyoptions.genesysgo.net"
+
+"genesysgo-raydium":
+ http: "https://raydium.genesysgo.net"
+ ws: "wss://raydium.genesysgo.net"
+
+"genesysgo-smb":
+ http: "https://smb.genesysgo.net"
+ ws: "wss://smb.genesysgo.net"
+
+"genesysgo-socean":
+ http: "https://socean.genesysgo.net"
+ ws: "wss://socean.genesysgo.net"
+
+"genesysgo-sodaprotocol":
+ http: "https://sodaprotocol.genesysgo.net"
+ ws: "wss://sodaprotocol.genesysgo.net"
+
+"genesysgo-solana":
+ http: "https://solana.genesysgo.net"
+ ws: "wss://solana.genesysgo.net"
+
+"genesysgo-solana-52":
+ http: "https://solana52f86c0.genesysgo.net"
+ ws: "wss://solana52f86c0.genesysgo.net"
+
+"genesysgo-solanalysis":
+ http: "https://solanalysis.genesysgo.net"
+ ws: "wss://solanalysis.genesysgo.net"
+
+"genesysgo-solape":
+ http: "https://solape.genesysgo.net"
+ ws: "wss://solape.genesysgo.net"
+
+"genesysgo-solend":
+ http: "https://solend.genesysgo.net"
+ ws: "wss://solend.genesysgo.net"
+
+"genesysgo-solflare-9w":
+ http: "https://solflarew9wyt3yf6u.main.genesysgo.net"
+ ws: "wss://solflarew9wyt3yf6u.main.genesysgo.net"
+
+"genesysgo-solport":
+ http: "https://solport.genesysgo.net"
+ ws: "wss://solport.genesysgo.net"
+
+"genesysgo-solsea":
+ http: "https://solsea.genesysgo.net"
+ ws: "wss://solsea.genesysgo.net"
+
+"genesysgo-sonar":
+ http: "https://sonar.genesysgo.net"
+ ws: "wss://sonar.genesysgo.net"
+
+"genesysgo-ssc-dao":
+ http: "https://ssc-dao.genesysgo.net"
+ ws: "wss://ssc-dao.genesysgo.net"
+
+"genesysgo-staratlas":
+ http: "https://staratlas.genesysgo.net"
+ ws: "wss://staratlas.genesysgo.net"
+
+"genesysgo-staratlas-exchange":
+ http: "https://staratlasexchange.genesysgo.net"
+ ws: "wss://staratlasexchange.genesysgo.net"
+
+"genesysgo-symmetry":
+ http: "https://symmetry.genesysgo.net"
+ ws: "wss://symmetry.genesysgo.net"
+
+"genesysgo-tulip":
+ http: "https://tulip.genesysgo.net"
+ ws: "wss://tulip.genesysgo.net"
+
+"genesysgo-vybe":
+ http: "https://vybe.genesysgo.net"
+ ws: "wss://vybe.genesysgo.net"
+
+"genesysgo-wumbo":
+ http: "https://wumbo.genesysgo.net"
+ ws: "wss://wumbo.genesysgo.net"
+
+"genesys-psy-dev":
+ http: "https://psytrbhymqlkfrhudd.dev.genesysgo.net:8899"
+ ws: "wss://psytrbhymqlkfrhudd.dev.genesysgo.net:8899"
+
+"getblock-mainnet":
+ http: "https://sol.getblock.io/mainnet"
+ ws: "wss://sol.getblock.io/mainnet"
+
+"jshelbe":
+ http: "http://jshel.be/solana"
+ ws: "ws://jshel.be/solana"
+
+"lonelypathergrindclub-mainnet-beta":
+ http: "https://mainnet-beta.lonelypanthergrindclub.io/5cded9cb9648838d605d18685e3b24e798d29673"
+ ws: "wss://mainnet-beta.lonelypanthergrindclub.io/5cded9cb9648838d605d18685e3b24e798d29673"
+
+"phantom-solana-mainnet":
+ http: "https://solana-mainnet.phantom.tech"
+ ws: "wss://solana-mainnet.phantom.tech"
+
+"quiknode-ancient-cold":
+ http: "https://ancient-cold-log.solana-mainnet.quiknode.pro/22dca31ccc366ea3d664aeef3c1e1e84e67740b4"
+ ws: "wss://ancient-cold-log.solana-mainnet.quiknode.pro/22dca31ccc366ea3d664aeef3c1e1e84e67740b4"
+
+"quiknode-bitter-bold":
+ http: "https://bitter-bold-wave.solana-mainnet.quiknode.pro/a779d61bc7dc76d9dde5ac18a654b0625d127eba"
+ ws: "wss://bitter-bold-wave.solana-mainnet.quiknode.pro/a779d61bc7dc76d9dde5ac18a654b0625d127eba"
+
+"quiknode-bitter-muddy":
+ http: "https://bitter-muddy-pond.solana-mainnet.quiknode.pro/ad81cfd96143d504676659830e6347221514e021"
+ ws: "wss://bitter-muddy-pond.solana-mainnet.quiknode.pro/ad81cfd96143d504676659830e6347221514e021"
+
+"quiknode-black-withered":
+ http: "https://black-withered-sea.solana-mainnet.quiknode.pro/f758490ec233cf0515bd66da16f262fc942dc982"
+ ws: "wss://black-withered-sea.solana-mainnet.quiknode.pro/f758490ec233cf0515bd66da16f262fc942dc982"
+
+"quiknode-bold-hidden":
+ http: "https://bold-hidden-water.solana-mainnet.quiknode.pro/b94f8c6fb6f26fa29792c5304fcea87dd9cfddaa"
+ ws: "wss://bold-hidden-water.solana-mainnet.quiknode.pro/b94f8c6fb6f26fa29792c5304fcea87dd9cfddaa"
+
+"quiknode-broken-proud":
+ http: "https://broken-proud-cherry.quiknode.pro/f146c59b4b14b3c76ea6c04cdb21d0a3"
+ ws: "wss://broken-proud-cherry.quiknode.pro/f146c59b4b14b3c76ea6c04cdb21d0a3"
+
+"quiknode-cold-crimson":
+ http: "https://cold-crimson-feather.solana-mainnet.quiknode.pro/4aaeb78c5df28b8c12a6d12cc4148e6b064dfece"
+ ws: "wss://cold-crimson-feather.solana-mainnet.quiknode.pro/4aaeb78c5df28b8c12a6d12cc4148e6b064dfece"
+
+"quiknode-cold-small":
+ http: "https://cold-small-meadow.solana-mainnet.quiknode.pro/4d5ba9470c46ab34821fae34c32664c71ca5c40f"
+ ws: "wss://cold-small-meadow.solana-mainnet.quiknode.pro/4d5ba9470c46ab34821fae34c32664c71ca5c40f"
+
+"quiknode-cool-wild":
+ http: "https://cool-wild-cherry.solana-mainnet.quiknode.pro/086a636e72b445a617a4ddc91cc0c3f293d71e6a"
+ ws: "wss://cool-wild-cherry.solana-mainnet.quiknode.pro/086a636e72b445a617a4ddc91cc0c3f293d71e6a"
+
+"quiknode-crimson-polished":
+ http: "https://crimson-polished-meadow.solana-mainnet.quiknode.pro/3bb050b1df88968b140bd549af86c2c5056dcf2e"
+ ws: "wss://crimson-polished-meadow.solana-mainnet.quiknode.pro/3bb050b1df88968b140bd549af86c2c5056dcf2e"
+
+"quiknode-crimson-spring":
+ http: "https://crimson-spring-silence.solana-mainnet.quiknode.pro/ace9fd07b18929f276b9537eba5260c15e9703ff"
+ ws: "wss://crimson-spring-silence.solana-mainnet.quiknode.pro/ace9fd07b18929f276b9537eba5260c15e9703ff"
+
+"quiknode-damp-ancient":
+ http: "https://damp-ancient-moon.solana-mainnet.quiknode.pro/efba085533bc4f040851fe911a2ad62ff717f63b"
+ ws: "wss://damp-ancient-moon.solana-mainnet.quiknode.pro/efba085533bc4f040851fe911a2ad62ff717f63b"
+
+"quiknode-dawn-silent":
+ http: "https://dawn-silent-dream.solana-mainnet.quiknode.pro"
+ ws: "wss://dawn-silent-dream.solana-mainnet.quiknode.pro"
+
+"quiknode-dawn-weathered":
+ http: "https://dawn-weathered-snowflake.solana-mainnet.quiknode.pro/614c799fb2a16accdd7f90af145b070a74b0a7a3"
+ ws: "wss://dawn-weathered-snowflake.solana-mainnet.quiknode.pro/614c799fb2a16accdd7f90af145b070a74b0a7a3"
+
+"quiknode-delicate-small":
+ http: "https://delicate-small-flower.solana-mainnet.quiknode.pro/c72dc994d697b05146893af0253b24b361e1a2ef"
+ ws: "wss://delicate-small-flower.solana-mainnet.quiknode.pro/c72dc994d697b05146893af0253b24b361e1a2ef"
+
+"quiknode-divine-black":
+ http: "https://divine-black-leaf.solana-mainnet.quiknode.pro/0a6e0f59227c91b2f1f72953090b46166790529d"
+ ws: "wss://divine-black-leaf.solana-mainnet.quiknode.pro/0a6e0f59227c91b2f1f72953090b46166790529d"
+
+"quiknode-divine-blue":
+ http: "https://divine-blue-flower.solana-mainnet.quiknode.pro/fa030d91d7658e4be2fbacacc356dd488de7727e"
+ ws: "wss://divine-blue-flower.solana-mainnet.quiknode.pro/fa030d91d7658e4be2fbacacc356dd488de7727e"
+
+"quiknode-dry-withered":
+ http: "https://dry-withered-snowflake.solana-mainnet.quiknode.pro/e8d4c34df3050f07a512b581e38ec9e476495340"
+ ws: "wss://dry-withered-snowflake.solana-mainnet.quiknode.pro/e8d4c34df3050f07a512b581e38ec9e476495340"
+
+"quiknode-empty-quiet":
+ http: "https://empty-quiet-fog.solana-mainnet.quiknode.pro/f051f16f70e19ec740d47769b3d821191763bc70"
+ ws: "wss://empty-quiet-fog.solana-mainnet.quiknode.pro/f051f16f70e19ec740d47769b3d821191763bc70"
+
+"quiknode-falling-empty":
+ http: "https://falling-empty-tree.solana-mainnet.quiknode.pro/934c447edf1a84cdee3f3e392d5e5f33f2b9bb48"
+ ws: "wss://falling-empty-tree.solana-mainnet.quiknode.pro/934c447edf1a84cdee3f3e392d5e5f33f2b9bb48"
+
+"quiknode-fragrant-delicate":
+ http: "https://fragrant-delicate-mountain.solana-mainnet.quiknode.pro/c7706f8873ff677decb3ae1d1667d51c2fb1a588"
+ ws: "wss://fragrant-delicate-mountain.solana-mainnet.quiknode.pro/c7706f8873ff677decb3ae1d1667d51c2fb1a588"
+
+"quiknode-fragrant-solitary":
+ http: "https://fragrant-solitary-pine.solana-mainnet.quiknode.pro/1021fb735b22df9dea2ffc8ee8fc5901d4515543"
+ ws: "wss://fragrant-solitary-pine.solana-mainnet.quiknode.pro/1021fb735b22df9dea2ffc8ee8fc5901d4515543"
+
+"quiknode-frosty-red":
+ http: "https://frosty-red-morning.solana-mainnet.quiknode.pro"
+ ws: "wss://frosty-red-morning.solana-mainnet.quiknode.pro"
+
+"quiknode-green-dark":
+ http: "https://green-dark-sky.solana-mainnet.quiknode.pro/0b4b99540b7930cf590dc7fb0a2d1c9a906fd53c"
+ ws: "wss://green-dark-sky.solana-mainnet.quiknode.pro/0b4b99540b7930cf590dc7fb0a2d1c9a906fd53c"
+
+"quiknode-green-hidden":
+ http: "https://green-hidden-shape.solana-mainnet.quiknode.pro"
+ ws: "wss://green-hidden-shape.solana-mainnet.quiknode.pro"
+
+"quiknode-green-little":
+ http: "https://green-little-wind.solana-mainnet.quiknode.pro/0e3bb9a62cf850ee8a4cf68dbb92aef6d4c97d0b"
+ ws: "wss://green-little-wind.solana-mainnet.quiknode.pro/0e3bb9a62cf850ee8a4cf68dbb92aef6d4c97d0b"
+
+"quiknode-green-restless":
+ http: "https://green-restless-river.solana-mainnet.quiknode.pro/d0edf84e7c18f7ec6c5372c22bac6e765822927f"
+ ws: "wss://green-restless-river.solana-mainnet.quiknode.pro/d0edf84e7c18f7ec6c5372c22bac6e765822927f"
+
+"quiknode-holy-proud":
+ http: "https://holy-proud-wave.solana-mainnet.quiknode.pro/790699a8dbe2e4f3b6b5593a366664d78646cf95"
+ ws: "wss://holy-proud-wave.solana-mainnet.quiknode.pro/790699a8dbe2e4f3b6b5593a366664d78646cf95"
+
+"quiknode-holy-snowy":
+ http: "https://holy-snowy-bush.solana-mainnet.quiknode.pro/b5ac0b339eab7f57f1ced49eedbfacb61f9672c7"
+ ws: "wss://holy-snowy-bush.solana-mainnet.quiknode.pro/b5ac0b339eab7f57f1ced49eedbfacb61f9672c7"
+
+"quiknode-holy-young":
+ http: "https://holy-young-butterfly.solana-mainnet.quiknode.pro/0aa3405c4b8ba3a4be1e4a578daa94401a758198"
+ ws: "wss://holy-young-butterfly.solana-mainnet.quiknode.pro/0aa3405c4b8ba3a4be1e4a578daa94401a758198"
+
+"quiknode-icy-polished":
+ http: "https://icy-polished-fog.solana-mainnet.quiknode.pro/12d943277cf1411b9ffa4b0507457124de85e5f7"
+ ws: "wss://icy-polished-fog.solana-mainnet.quiknode.pro/12d943277cf1411b9ffa4b0507457124de85e5f7"
+
+"quiknode-icy-sparkling":
+ http: "https://icy-sparkling-rain.solana-mainnet.quiknode.pro/2dc108670bf5a2e5d314f816bad9bc02e560b3a5"
+ ws: "wss://icy-sparkling-rain.solana-mainnet.quiknode.pro/2dc108670bf5a2e5d314f816bad9bc02e560b3a5"
+
+"quiknode-icy-wispy":
+ http: "https://icy-wispy-frost.solana-mainnet.quiknode.pro/c6e2ed3ba45728d7ad1cf57ad07885aa6e1d1dda"
+ ws: "wss://icy-wispy-frost.solana-mainnet.quiknode.pro/c6e2ed3ba45728d7ad1cf57ad07885aa6e1d1dda"
+
+"quiknode-little-floral":
+ http: "https://little-floral-fog.solana-mainnet.quiknode.pro/ac07157463de78025668499b49818f9877fb2ba8"
+ ws: "wss://little-floral-fog.solana-mainnet.quiknode.pro/ac07157463de78025668499b49818f9877fb2ba8"
+
+"quiknode-lively-frosty":
+ http: "https://lively-frosty-morning.solana-mainnet.quiknode.pro/ecfe4cce4da785522a49d2657f04128a232fd298"
+ ws: "wss://lively-frosty-morning.solana-mainnet.quiknode.pro/ecfe4cce4da785522a49d2657f04128a232fd298"
+
+"quiknode-lively-withered":
+ http: "https://lively-withered-sun.solana-mainnet.quiknode.pro/24aaf42d4f9f7dd337c91c64b80cfbf9c91cb4b4"
+ ws: "wss://lively-withered-sun.solana-mainnet.quiknode.pro/24aaf42d4f9f7dd337c91c64b80cfbf9c91cb4b4"
+
+"quiknode-misty-delicate":
+ http: "https://misty-delicate-sun.solana-mainnet.quiknode.pro/86b07da9bd277bba8ad87eba3262e10d44870f2d"
+ ws: "wss://misty-delicate-sun.solana-mainnet.quiknode.pro/86b07da9bd277bba8ad87eba3262e10d44870f2d"
+
+"quiknode-nameless-summer":
+ http: "https://nameless-summer-frog.solana-mainnet.quiknode.pro/6db4a195c4e7a2ae27e226fc3c38e159c7c7f3d5"
+ ws: "wss://nameless-summer-frog.solana-mainnet.quiknode.pro/6db4a195c4e7a2ae27e226fc3c38e159c7c7f3d5"
+
+"quiknode-old-empty":
+ http: "https://old-empty-resonance.solana-mainnet.quiknode.pro/4a9c3cfdde0e0e289dd7d907c2cd1a81339c98b0"
+ ws: "wss://old-empty-resonance.solana-mainnet.quiknode.pro/4a9c3cfdde0e0e289dd7d907c2cd1a81339c98b0"
+
+"quiknode-old-lively":
+ http: "https://old-lively-fog.solana-mainnet.quiknode.pro/3c322548ba9125e63f9490cfee01dfe7fbb6fbc1"
+ ws: "wss://old-lively-fog.solana-mainnet.quiknode.pro/3c322548ba9125e63f9490cfee01dfe7fbb6fbc1"
+
+"quiknode-old-summer":
+ http: "https://old-summer-snow.quiknode.pro/6d8caca935e0d827cbd4374472816789d55096da"
+ ws: "wss://old-summer-snow.quiknode.pro/6d8caca935e0d827cbd4374472816789d55096da"
+
+"quiknode-patient-delicate":
+ http: "https://patient-delicate-darkness.solana-mainnet.quiknode.pro/e845f8680b317cebfd5feb724d9200660f330c93"
+ ws: "wss://patient-delicate-darkness.solana-mainnet.quiknode.pro/e845f8680b317cebfd5feb724d9200660f330c93"
+
+"quiknode-patient-green":
+ http: "https://patient-green-dew.solana-mainnet.quiknode.pro/cd8f53a8905c0bf0e3d14a5375dcc910308197f7"
+ ws: "wss://patient-green-dew.solana-mainnet.quiknode.pro/cd8f53a8905c0bf0e3d14a5375dcc910308197f7"
+
+"quiknode-patient-proud":
+ http: "https://patient-proud-dew.solana-mainnet.quiknode.pro/0c5b5dfc389f144e912274604daa0a401b2bf367"
+ ws: "wss://patient-proud-dew.solana-mainnet.quiknode.pro/0c5b5dfc389f144e912274604daa0a401b2bf367"
+
+"quiknode-patient-sparkling":
+ http: "https://patient-sparkling-frost.solana-mainnet.quiknode.pro/e9532651c62d0463dcdccc195fee16ed918e98c8"
+ ws: "wss://patient-sparkling-frost.solana-mainnet.quiknode.pro/e9532651c62d0463dcdccc195fee16ed918e98c8"
+
+"quiknode-patient-wandering":
+ http: "https://patient-wandering-silence.solana-mainnet.quiknode.pro/7e771f9a87eaad9ef140f024bfb10ee97928503c"
+ ws: "wss://patient-wandering-silence.solana-mainnet.quiknode.pro/7e771f9a87eaad9ef140f024bfb10ee97928503c"
+
+"quiknode-purple-shy":
+ http: "https://purple-shy-dream.solana-mainnet.quiknode.pro/0731606c4fef0b8406f5ab97a8c204a88fcf0689"
+ ws: "wss://purple-shy-dream.solana-mainnet.quiknode.pro/0731606c4fef0b8406f5ab97a8c204a88fcf0689"
+
+"quiknode-restless-morning":
+ http: "https://restless-morning-dew.solana-mainnet.quiknode.pro/59ec41da879a3ab39e3cfc4aa1a35ca425e84011"
+ ws: "wss://restless-morning-dew.solana-mainnet.quiknode.pro/59ec41da879a3ab39e3cfc4aa1a35ca425e84011"
+
+"quiknode-restless-silent":
+ http: "https://restless-silent-cloud.solana-mainnet.quiknode.pro"
+ ws: "wss://restless-silent-cloud.solana-mainnet.quiknode.pro"
+
+"quiknode-rough-misty":
+ http: "https://rough-misty-night.solana-mainnet.quiknode.pro/0e5b8044efa931baf6eb130ff4798fb84af114d3"
+ ws: "wss://rough-misty-night.solana-mainnet.quiknode.pro/0e5b8044efa931baf6eb130ff4798fb84af114d3"
+
+"quiknode-silent-patient":
+ http: "https://silent-patient-sea.solana-mainnet.quiknode.pro/36e32f4aea27a39d2f7379a6673f40de4d6faf6c"
+ ws: "wss://silent-patient-sea.solana-mainnet.quiknode.pro/36e32f4aea27a39d2f7379a6673f40de4d6faf6c"
+
+"quiknode-silent-thrumming":
+ http: "https://silent-thrumming-wind.solana-mainnet.quiknode.pro/c17a6e8ccc35a9f80a47c45f16263f2620d9ecb5"
+ ws: "wss://silent-thrumming-wind.solana-mainnet.quiknode.pro/c17a6e8ccc35a9f80a47c45f16263f2620d9ecb5"
+
+"quiknode-snowy-weathered":
+ http: "https://snowy-weathered-star.solana-mainnet.quiknode.pro/5e5ae7658b08fbccf6a6fc8962450801b506f2e8"
+ ws: "wss://snowy-weathered-star.solana-mainnet.quiknode.pro/5e5ae7658b08fbccf6a6fc8962450801b506f2e8"
+
+"quiknode-solitary-autumn":
+ http: "https://solitary-autumn-water.solana-mainnet.quiknode.pro/dcbac9d444818a20ac583541dec35b44c6840888"
+ ws: "wss://solitary-autumn-water.solana-mainnet.quiknode.pro/dcbac9d444818a20ac583541dec35b44c6840888"
+
+"quiknode-spring-crimson":
+ http: "https://spring-crimson-shape.solana-mainnet.quiknode.pro/101d753db4b4b167756067e5dbeabb4fad28adb3"
+ ws: "wss://spring-crimson-shape.solana-mainnet.quiknode.pro/101d753db4b4b167756067e5dbeabb4fad28adb3"
+
+"quiknode-spring-rough":
+ http: "https://spring-rough-glitter.solana-mainnet.quiknode.pro/e6377fee64718429610357b3e93c6767ed09f30c"
+ ws: "wss://spring-rough-glitter.solana-mainnet.quiknode.pro/e6377fee64718429610357b3e93c6767ed09f30c"
+
+"quiknode-spring-weathered":
+ http: "https://spring-weathered-pond.solana-mainnet.quiknode.pro/038697492d0e73e4abfaccb066db242141de7c81"
+ ws: "wss://spring-weathered-pond.solana-mainnet.quiknode.pro/038697492d0e73e4abfaccb066db242141de7c81"
+
+"quiknode-still-black":
+ http: "https://still-black-night.solana-mainnet.quiknode.pro/9dcd24a3cbbfe2d9c7af3fb3b03306a5328eeace"
+ ws: "wss://still-black-night.solana-mainnet.quiknode.pro/9dcd24a3cbbfe2d9c7af3fb3b03306a5328eeace"
+
+"quiknode-summer-broken":
+ http: "https://summer-broken-sea.solana-mainnet.quiknode.pro/b30c9c457c5565f23065da74a3a708a87b4622a5"
+ ws: "wss://summer-broken-sea.solana-mainnet.quiknode.pro/b30c9c457c5565f23065da74a3a708a87b4622a5"
+
+"quiknode-summer-solitary":
+ http: "https://summer-solitary-river.solana-mainnet.quiknode.pro/91dcd4e146d1011e1131db974af5d5f50b2084a8"
+ ws: "wss://summer-solitary-river.solana-mainnet.quiknode.pro/91dcd4e146d1011e1131db974af5d5f50b2084a8"
+
+"quiknode-summer-wispy":
+ http: "https://summer-wispy-frost.solana-mainnet.quiknode.pro/46b6a945d633bab9cac87a2f4771e395448811ad"
+ ws: "wss://summer-wispy-frost.solana-mainnet.quiknode.pro/46b6a945d633bab9cac87a2f4771e395448811ad"
+
+"quiknode-twilight-dark":
+ http: "https://twilight-dark-star.solana-mainnet.quiknode.pro/1f62c339d08a7714133c24ccc8c2f04544116800"
+ ws: "wss://twilight-dark-star.solana-mainnet.quiknode.pro/1f62c339d08a7714133c24ccc8c2f04544116800"
+
+"quiknode-twilight-proud":
+ http: "https://twilight-proud-waterfall.solana-mainnet.quiknode.pro/bc8ae8799644ceb86bd8c0b986a66fb8b1eab604"
+ ws: "wss://twilight-proud-waterfall.solana-mainnet.quiknode.pro/bc8ae8799644ceb86bd8c0b986a66fb8b1eab604"
+
+"quiknode-wandering-divine":
+ http: "https://wandering-divine-dream.solana-mainnet.quiknode.pro/51a28202db85ffa02345f9ba72ad73394732af13"
+ ws: "wss://wandering-divine-dream.solana-mainnet.quiknode.pro/51a28202db85ffa02345f9ba72ad73394732af13"
+
+"quiknode-white-bitter":
+ http: "https://white-bitter-breeze.quiknode.pro/a53ae019bc2182e0a144c51f8c04a2d6687cecb6"
+ ws: "wss://white-bitter-breeze.quiknode.pro/a53ae019bc2182e0a144c51f8c04a2d6687cecb6"
+
+"quiknode-white-damp":
+ http: "https://white-damp-rain.solana-mainnet.quiknode.pro/728e275a5bf349a7384fcc8e72d463df65b24a8c"
+ ws: "wss://white-damp-rain.solana-mainnet.quiknode.pro/728e275a5bf349a7384fcc8e72d463df65b24a8c"
+
+"quiknode-white-dawn":
+ http: "https://white-dawn-fog.solana-mainnet.quiknode.pro/bba6063e7d406c4eff88a2a85ff25d6d8eab84df"
+ ws: "wss://white-dawn-fog.solana-mainnet.quiknode.pro/bba6063e7d406c4eff88a2a85ff25d6d8eab84df"
+
+"quiknode-white-delicate":
+ http: "https://white-delicate-meadow.solana-mainnet.quiknode.pro/d6f2bd8792c00978043f665edf1838c452f79ff7"
+ ws: "wss://white-delicate-meadow.solana-mainnet.quiknode.pro/d6f2bd8792c00978043f665edf1838c452f79ff7"
+
+"quiknode-wild-dry":
+ http: "https://wild-dry-wind.solana-mainnet.quiknode.pro"
+ ws: "wss://wild-dry-wind.solana-mainnet.quiknode.pro"
+
+"quiknode-wild-red":
+ http: "https://wild-red-morning.solana-mainnet.quiknode.pro/e48180a05f9f7ab63b6d9f0609f0ba675854e471"
+ ws: "wss://wild-red-morning.solana-mainnet.quiknode.pro/e48180a05f9f7ab63b6d9f0609f0ba675854e471"
+
+"quiknode-winter-crimson":
+ http: "https://winter-crimson-feather.solana-mainnet.quiknode.pro/7f1e2320bc6c956af0f0953ce8a86629aa6b52bd"
+ ws: "wss://winter-crimson-feather.solana-mainnet.quiknode.pro/7f1e2320bc6c956af0f0953ce8a86629aa6b52bd"
+
+"quiknode-wispy-cool":
+ http: "https://wispy-cool-tree.solana-mainnet.quiknode.pro/e1f76d47c8ccec34e2b5b30dc2a87149120a5204"
+ ws: "wss://wispy-cool-tree.solana-mainnet.quiknode.pro/e1f76d47c8ccec34e2b5b30dc2a87149120a5204"
+
+"quiknode-withered-cool":
+ http: "https://withered-cool-brook.solana-mainnet.quiknode.pro/b44d1222c014690f954ef6bce03952c76dbfc691"
+ ws: "wss://withered-cool-brook.solana-mainnet.quiknode.pro/b44d1222c014690f954ef6bce03952c76dbfc691"
+
+"quiknode-withered-delicate":
+ http: "https://withered-delicate-bird.solana-mainnet.quiknode.pro/59cfd581e09e0c25b375a642f91a4db010cf27f6"
+ ws: "wss://withered-delicate-bird.solana-mainnet.quiknode.pro/59cfd581e09e0c25b375a642f91a4db010cf27f6"
+
+"quiknode-withered-rough":
+ http: "https://withered-rough-tree.solana-mainnet.quiknode.pro/5ddd27dc601ff16ccd4ae5fd747e5251b8850309"
+ ws: "wss://withered-rough-tree.solana-mainnet.quiknode.pro/5ddd27dc601ff16ccd4ae5fd747e5251b8850309"
+
+"rpcpool-api":
+ http: "https://api.rpcpool.com"
+ ws: "wss://api.rpcpool.com"
+
+"rpcpool-api-cryptocurrencies-ai":
+ http: "https://api-cryptocurrencies-ai.rpcpool.com"
+ ws: "wss://api-cryptocurrencies-ai.rpcpool.com"
+
+"rpcpool-api-mainnet":
+ http: "https://api.mainnet.rpcpool.com"
+ ws: "wss://api.mainnet.rpcpool.com"
+
+"rpcpool-apricot":
+ http: "https://apricot-main-67cd.mainnet.rpcpool.com"
+ ws: "wss://apricot-main-67cd.mainnet.rpcpool.com"
+
+"rpcpool-arbirgis":
+ http: "https://arbirgis.rpcpool.com"
+ ws: "wss://arbirgis.rpcpool.com"
+
+"rpcpool-audius":
+ http: "https://audius.rpcpool.com"
+ ws: "wss://audius.rpcpool.com"
+
+"rpcpool-audius-auth":
+ http: "https://audius.rpcpool.com/4d12c27ad978e40c1b0f8449b93c"
+ ws: "wss://audius.rpcpool.com/4d12c27ad978e40c1b0f8449b93c"
+
+"rpcpool-audius-fe":
+ http: "https://audius-fe.rpcpool.com"
+ ws: "wss://audius-fe.rpcpool.com"
+
+"rpcpool-aurory":
+ http: "https://aurory.rpcpool.com"
+ ws: "wss://aurory.rpcpool.com"
+
+"rpcpool-auth-fra1":
+ http: "https://auth-fra1.rpcpool.com"
+ ws: "wss://auth-fra1.rpcpool.com"
+
+"rpcpool-calvin":
+ http: "https://calvin.rpcpool.com"
+ ws: "wss://calvin.rpcpool.com"
+
+"rpcpool-civic-auth":
+ http: "https://civic.rpcpool.com/f40a068020b85335d0c8f2783747"
+ ws: "wss://civic.rpcpool.com/f40a068020b85335d0c8f2783747"
+
+"rpcpool-cope":
+ http: "https://cope.rpcpool.com"
+ ws: "wss://cope.rpcpool.com"
+
+"rpcpool-crema":
+ http: "https://crema.rpcpool.com"
+ ws: "wss://crema.rpcpool.com"
+
+"rpcpool-dexlab":
+ http: "https://dexlab.rpcpool.com"
+ ws: "wss://dexlab.rpcpool.com"
+
+"rpcpool-entropy":
+ http: "https://entropy.mainnet.rpcpool.com"
+ ws: "wss://entropy.mainnet.rpcpool.com"
+
+"rpcpool-extend":
+ http: "https://extend.mainnet.rpcpool.com"
+ ws: "wss://extend.mainnet.rpcpool.com"
+
+"rpcpool-fraktion":
+ http: "https://fraktion.rpcpool.com"
+ ws: "wss://fraktion.rpcpool.com"
+
+"rpcpool-free":
+ http: "https://free.rpcpool.com"
+ ws: "wss://free.rpcpool.com"
+
+"rpcpool-friktion-auth-1":
+ http: "https://friktion.rpcpool.com/8236ce58a8cc909af597734efe5f"
+ ws: "wss://friktion.rpcpool.com/8236ce58a8cc909af597734efe5f"
+
+"rpcpool-friktion-auth-2":
+ http: "https://friktion.rpcpool.com/132d5fccfadee1fd0c2fce38aa14"
+ ws: "wss://friktion.rpcpool.com/132d5fccfadee1fd0c2fce38aa14"
+
+"rpcpool-friktion-mainnet":
+ http: "https://friktion-friktion-e7c9.mainnet.rpcpool.com"
+ ws: "wss://friktion-friktion-e7c9.mainnet.rpcpool.com"
+
+"rpcpool-gokal":
+ http: "https://gokal.rpcpool.com"
+ ws: "wss://gokal.rpcpool.com"
+
+"rpcpool-hedgehog":
+ http: "https://hedgehog.rpcpool.com"
+ ws: "wss://hedgehog.rpcpool.com"
+
+"rpcpool-hel1":
+ http: "https://hel1.rpcpool.com"
+ ws: "wss://hel1.rpcpool.com"
+
+"rpcpool-holaplex":
+ http: "https://holaplex.rpcpool.com"
+ ws: "wss://holaplex.rpcpool.com"
+
+"rpcpool-hxro":
+ http: "https://hxro.rpcpool.com/081597d8bb90b3da7fd354257950"
+ ws: "wss://hxro.rpcpool.com/081597d8bb90b3da7fd354257950"
+
+"rpcpool-jetprot-main":
+ http: "https://jetprot-main-0d7b.mainnet.rpcpool.com"
+ ws: "wss://jetprot-main-0d7b.mainnet.rpcpool.com"
+
+"rpcpool-lamport":
+ http: "https://lamport.rpcpool.com"
+ ws: "wss://lamport.rpcpool.com"
+
+"rpcpool-larix":
+ http: "https://larix.rpcpool.com"
+ ws: "wss://larix.rpcpool.com"
+
+"rpcpool-larix-auth":
+ http: "https://larix.rpcpool.com/b9f4f7c826357818e91fbd79bd85"
+ ws: "wss://larix.rpcpool.com/b9f4f7c826357818e91fbd79bd85"
+
+"rpcpool-mainnet":
+ http: "https://mainnet.rpcpool.com"
+ ws: "wss://mainnet.rpcpool.com"
+
+"rpcpool-mango":
+ http: "https://mango.rpcpool.com"
+ ws: "wss://mango.rpcpool.com"
+
+"rpcpool-mango-auth":
+ http: "https://mango.rpcpool.com/946ef7337da3f5b8d3e4a34e7f88"
+ ws: "wss://mango.rpcpool.com/946ef7337da3f5b8d3e4a34e7f88"
+
+"rpcpool-marinade":
+ http: "https://marinade.rpcpool.com"
+ ws: "wss://marinade.rpcpool.com"
+
+"rpcpool-mercurial":
+ http: "https://mercurial.rpcpool.com"
+ ws: "wss://mercurial.rpcpool.com"
+
+"rpcpool-mia7":
+ http: "https://mia7.rpcpool.com"
+ ws: "wss://mia7.rpcpool.com"
+
+"rpcpool-nina":
+ http: "https://nina.rpcpool.com"
+ ws: "wss://nina.rpcpool.com"
+
+"rpcpool-omicron":
+ http: "https://omicron.rpcpool.com"
+ ws: "wss://omicron.rpcpool.com"
+
+"rpcpool-orca":
+ http: "https://orca.rpcpool.com"
+ ws: "wss://orca.rpcpool.com"
+
+"rpcpool-p2p":
+ http: "https://p2p.rpcpool.com"
+ ws: "wss://p2p.rpcpool.com"
+
+"rpcpool-p2p-auth":
+ http: "https://p2p.rpcpool.com/82313b15169cb10f3ff230febb8d"
+ ws: "wss://p2p.rpcpool.com/82313b15169cb10f3ff230febb8d"
+
+"rpcpool-parrot":
+ http: "https://parrot.rpcpool.com"
+ ws: "wss://parrot.rpcpool.com"
+
+"rpcpool-raydium":
+ http: "https://raydium.rpcpool.com"
+ ws: "wss://raydium.rpcpool.com"
+
+"rpcpool-ren":
+ http: "https://ren.rpcpool.com"
+ ws: "wss://ren.rpcpool.com"
+
+"rpcpool-sencha":
+ http: "https://sencha.rpcpool.com"
+ ws: "wss://sencha.rpcpool.com"
+
+"rpcpool-slope":
+ http: "https://slope.rpcpool.com"
+ ws: "wss://slope.rpcpool.com"
+
+"rpcpool-solstake":
+ http: "https://solstake.rpcpool.com"
+ ws: "wss://solstake.rpcpool.com"
+
+"rpcpool-stage-auth":
+ http: "https://stage.mainnet.rpcpool.com/4715f6087c8269548f2edb003a5e"
+ ws: "wss://stage.mainnet.rpcpool.com/4715f6087c8269548f2edb003a5e"
+
+"rpcpool-svak-auth":
+ http: "https://svak.rpcpool.com/999df3e1e76e5a78cc003c8a8ca2"
+ ws: "wss://svak.rpcpool.com/999df3e1e76e5a78cc003c8a8ca2"
+
+"rpcpool-trashpandas":
+ http: "https://trashpandas.rpcpool.com"
+ ws: "wss://trashpandas.rpcpool.com"
+
+"rpcpool-zeta":
+ http: "https://zeta.rpcpool.com"
+ ws: "wss://zeta.rpcpool.com"
+
+"serum-solana-api":
+ http: "https://solana-api.projectserum.com"
+ ws: "wss://solana-api.projectserum.com"
+
+"solana-mainnet-beta-api":
+ http: "https://api.mainnet-beta.solana.com"
+ ws: "wss://api.mainnet-beta.solana.com"
+
+"solana-metaplex-api":
+ http: "https://api.metaplex.solana.com"
+ ws: "wss://api.metaplex.solana.com"
+
+"solflare-mainnet-beta":
+ http: "https://mainnet-beta.solflare.network"
+ ws: "wss://mainnet-beta.solflare.network"
+
+"syndica-solana-api":
+ http: "https://solana-api.syndica.io/access-token/AzElazRAfxEgsmApGQVnBE0jvEu3tOhCvozReARILXGDW8fOMdyJy79S3GvyARQV/rpc"
+ ws: "wss://solana-api.syndica.io/access-token/AzElazRAfxEgsmApGQVnBE0jvEu3tOhCvozReARILXGDW8fOMdyJy79S3GvyARQV/rpc"
+
+"tt-prod-solana-api":
+ http: "https://solana-api.tt-prod.net"
+ ws: "wss://solana-api.tt-prod.net"

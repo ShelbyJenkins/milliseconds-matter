@@ -1,11 +1,18 @@
-function loadScript(url)
-{    
-    var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
-    head.appendChild(script);
-}
+
+// Creates terminal and updates it's options.
+const terminal = new Terminal({
+    cols: 200,
+    rows: 20,
+    fontSize: 12,
+    fontWeight: 450,
+    fontFamily: 'DOS',
+    cursorBlink: 'true',
+    convertEol: true,
+    theme: {
+        background: 'black',
+        cursor: 'yellowgreen',
+      }
+  });
 
 const fitAddon = new FitAddon.FitAddon();
 terminal.loadAddon(fitAddon);
@@ -24,7 +31,7 @@ function introText() {
     fetch('terminalText.txt')
     .then(response => response.text())
     .then((text) => {
-        for(i = 0; i < text.length; i++) {
+        for(var i = 0; i < text.length; i++) {
             (function(i){
                 setTimeout(function() {
                     terminal.write(text[i]);
@@ -91,7 +98,7 @@ function runCommand(cmd) {
             wafTestAbout();
             break;    
         case 'rpc-test':
-            window.location.href = '/rpc/rpc.html';
+            window.location.href = 'rpc-geo-net-test/rpc-geo-net-test.html';
             break;
         case 'rpc-test-start':
             rpcTest(rpcns);

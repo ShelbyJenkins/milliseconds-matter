@@ -6,42 +6,36 @@
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
         <meta http-equiv="Pragma" content="no-cache"/>
         <meta http-equiv="Expires" content="0"/>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="/node_modules/tuicss/dist/tuicss.css">
         <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
-        <script src="/node_modules/xterm/lib/xterm.js" defer></script>
-        <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js" defer></script>
-        <script src="mainTerm.js" defer></script>
+        <script src="/node_modules/xterm/lib/xterm.js"></script>
+        <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
         <script src="main.js" defer></script>
     </head>
     <body>
         <div class="main">
             <nav class="tui-statusbar">
                 <ul>
-                    <li class="tui-dropdown">
-                        milliseconds-matter v0.0.5
-                        <div class="tui-dropdown-content">
-                            <ul>
-                                <li><a href="#!"><span class="purple-168-text">N</span>othing done here.</a></li>
-                            </ul>
-                        </div>
+                    <li>
+                        milliseconds-matter v0.6
                     </li>
                 </ul>
             </nav>
             <div id="terminal-wrapper">
-                <div id="terminal"></div>
+                <div id="terminal" style="margin: 10%"></div>
             </div>
             <div class="tui-statusbar">
                 <ul>
-                    <li><a href="/index.html"><span class="purple-168-text">GO</span> home</a></li>
+                    <li><a href="/"><span class="purple-168-text">GO</span> home</a></li>
+                    <!-- <span class="tui-statusbar-divider"></span>
+                    <li><a href="waf"><span class="purple-168-text">GO</span> waf-test</a></li>
                     <span class="tui-statusbar-divider"></span>
-                    <li><a href="/waf/waf.html"><span class="purple-168-text">GO</span> waf-test</a></li>
+                    <li><a href="rpc-geo-net-test"><span class="purple-168-text">GO</span> rpc-geo-net-test</a></li> -->
                     <span class="tui-statusbar-divider"></span>
-                    <li><a href="/rpc-geo-net-test/rpc-geo-net-test.html"><span class="purple-168-text">GO</span> rpc-geo-net-test</a></li>
+                    <li><a href="rpc-com-test"><span class="purple-168-text">GO</span> rpc-com-test</a></li>
                     <span class="tui-statusbar-divider"></span>
-                    <li><a href="#!"><span style="color: floralwhite">N/A</span> rpc-community-test</a></li>
-                    <span class="tui-statusbar-divider"></span>
-                    <li><a href="#!"><span style="color: floralwhite">GO</span> about test</a></li>
+                    <li><a href="#!"><span style="color: floralwhite">N/A</span> about</a></li>
                     <li>...</li>
                 </ul>
             </div>

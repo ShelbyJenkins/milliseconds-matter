@@ -109,14 +109,14 @@ async function rpcTest(rpcns) {
     }
   });
   // // Removes slowest duplicate if rpcn had both http and https tested.
-  // var rpcnsClean = rpcns.filter((rpcn, index, self) =>
+  // var rpcns = rpcns.filter((rpcn, index, self) =>
   //   index === self.findIndex((t) => (t.rpcn === rpcns.rpcn)))
   // Sorts list by averages.
-  rpcnsClean.sort((a, b) => a.resA - b.resA);
-  rpcnsClean.forEach((rpcn) => {
+  rpcns.sort((a, b) => a.resA - b.resA);
+  rpcns.forEach((rpcn) => {
     terminal.write('\r\n' + '    average response from ' + rpcn.address + ' took ' + rpcn.resA + ' milliseconds.');
   });
-    rpcnsClean.slice(0, 9).forEach((rpcn, p) => {
+    rpcns.slice(0, 9).forEach((rpcn, p) => {
     // Adds to table a header cell for position.
     generateTableHeader(p);
     // Adds a cell for org name and test result.
@@ -128,7 +128,7 @@ async function rpcTest(rpcns) {
   terminal.write('\r\n' + '\r\n' + '    home    rpc-test-start    rpc-test-about    waf-test' + '\r\n' + '\r\n');
   toggleKeyboard();
   console.log('The following rpcns were tested: ');
-  console.log(rpcnsClean);
+  console.log(rpcns);
   console.log('The following rpcns failed testing: ');
   console.log(rpcnsBad);
 }

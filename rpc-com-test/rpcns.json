@@ -1,10 +1,10 @@
 [
     {
-        "rpcn"    : "StackPath-Mia",
+        "rpcn"    : "stackpath-mia",
         "address" : "69.197.2.7:8080"
     },
     {
-        "rpcn"    : "StackPath-Sea",
+        "rpcn"    : "stackpath-sea",
         "address" : "69.197.3.5:8080"
     },
     {

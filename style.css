@@ -22,6 +22,19 @@ html, body {
     width: 90vw;
     height: 95vh;
 }
+/* horizontal break */
+hr {
+    /* margin-bottom: .5%; */
+    width: 100%;
+    border-top: none;
+    margin: 0;
+    border-bottom: 1px dashed floralwhite;
+}
+#terminal {
+    flex: 1 1 0;
+    overflow: hidden;
+    margin: .5%;
+}
 /* statusbar starts */
 .tui-statusbar {
     display: flex;
@@ -91,7 +104,6 @@ html, body {
 
 /* changes to tuic.css class */
 .tui-table {
-    flex: 0 1 0;
 }
 
 #fastest-slowest {
@@ -114,19 +126,13 @@ html, body {
 #data-table td + td {
     border-left: 1px dashed floralwhite;
 }
+
+#multi-test {
+    margin: .5%;
+    display: flex;
+    flex-direction: column;
+}
 /* table ends */
 
-#terminal {
-    flex: 1 1 0;
-    overflow: hidden;
-    margin: .5%;
-}
 
-/* horizontal break */
-hr {
-    /* margin-bottom: .5%; */
-    width: 100%;
-    border-top: none;
-    margin: 0;
-    border-bottom: 1px dashed floralwhite;
-}
+

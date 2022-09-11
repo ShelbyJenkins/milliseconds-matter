@@ -72,8 +72,8 @@ async function rpcTest(rpcns) {
           }
         });
       });
-    // // Pauses loop 1 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // // Pauses loop 3 seconds after each iteration.
+    await new Promise(resolve => setTimeout(resolve, 3000));
   };
   // Single test within a batch.
   async function testSingle(rpcn, b) {
@@ -148,7 +148,7 @@ async function rpcTest(rpcns) {
   // Updates slowest and fastest average scores in to best/worst table.
   updateSlowestFastestGraph(slowestA, fastestA);
   terminal.write('\r\n' + '\r\n' + '    run test with console logs open for more details')
-  terminal.write('\r\n' + '\r\n' + '    home    rpc-test-start    rpc-test-about    waf-test' + '\r\n' + '\r\n');
+  terminal.write('\r\n' + '\r\n' + '    home    rpc-com-test-start    rpc-com-test-about' + '\r\n' + '\r\n');
   toggleKeyboard();
   checkTerminal();
   console.log('The following rpcns were tested: ');

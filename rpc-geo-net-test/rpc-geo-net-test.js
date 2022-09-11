@@ -1,17 +1,4 @@
-// Creates terminal and updates it's options.
-const terminal = new Terminal({
-  cols: 200,
-  rows: 15,
-  fontSize: 10,
-  fontWeight: 450,
-  fontFamily: 'DOS',
-  cursorBlink: 'true',
-  convertEol: true,
-  theme: {
-      background: 'black',
-      cursor: 'yellowgreen',
-    }
-});
+
 // Creates an array of objects from json file.
 let rpcns = [];
 createRPCList();

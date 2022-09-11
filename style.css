@@ -2,41 +2,26 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-items: center;
+    justify-self: center;
     align-items: center;
     background-color: black;
     font-family: 'DOS';
     color: floralwhite;
     text-align: center;
-    width: 100%;
-    min-height: 100vh;
-    
+    width: 100vw;
+    height: 100vh;
+    font-size: 2vh;    
 }
 .main {
-    font-size: .8em;
     border-left: 1em #a8a8a8 solid;
     border-right: 1em #a8a8a8 solid;
     display: flex;
-    flex: 1 1 1;
     flex-direction: column;
-    
+    justify-content: space-between;
     width: 90vw;
+    height: 95vh;
 }
-/* terminal starts */
-/* #terminal-wrapper {
-    display: flex;
-    flex: 1 1 1;
-    align-content: center;
-    max-width: 100%;
-} */
-#terminal {
-    display: flex;
-    flex: 1 1 1;
-    align-content: center;
-    max-width: 100%;
-    margin: 1%;
-    /* padding: 1%; */
-}
-/* terminal ends  */
 /* statusbar starts */
 .tui-statusbar {
     display: flex;
@@ -94,8 +79,7 @@ html, body {
 }
 /* run button ends*/
 
-/* table starts */
-
+/* tables starts */
 #waf-table-wrapper {
     display: flex;
     flex: 1 1 ;
@@ -104,42 +88,14 @@ html, body {
     margin-top: 2%;
     margin-bottom: 2%;
 }
-/* #rpc-table-wrapper-outer {
-    display: flex;
-    flex: 1 1;
-    flex-direction: column;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    width: 90%;
-    border: 2px solid floralwhite;
-} */
-
-/* merges borders */
-/* #rpc-table-wrapper-outer > table:nth-child(3) {
-    border-collapse: collapse;
-} */
-
-/* borders for locations */
-/* #rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(2),
-#rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(3),
-#rpc-table-wrapper-outer > table:nth-child(3) > colgroup:nth-child(4) {
-    border-left: 2px solid floralwhite;
-    border-right: 2px solid floralwhite;
-} */
 
 /* changes to tuic.css class */
-/* .tui-table {
-    border: 1px dashed floralwhite;
-    padding: 1%;
-} */
-
-/* Adds border around rpc test averages */
-/* #rpc-table-wrapper-outer > table:nth-child(3) > tbody > tr:nth-child(6) {
-    border: 2px dashed floralwhite;
-} */
+.tui-table {
+    flex: 0 1 0;
+}
 
 #fastest-slowest {
-    margin: 1%;
+    margin: .5%;
 }
 /* This cool trick adds a border between two adjacent column! */
 #fastest-slowest td + td {
@@ -149,7 +105,7 @@ html, body {
     border-left: 1px dashed floralwhite;
 }
 #data-table {
-    margin: 1%;
+    margin: .5%;
 }
 #data-table td {
     width: 8%;
@@ -159,6 +115,12 @@ html, body {
     border-left: 1px dashed floralwhite;
 }
 /* table ends */
+
+#terminal {
+    flex: 1 1 0;
+    overflow: hidden;
+    margin: .5%;
+}
 
 /* horizontal break */
 hr {

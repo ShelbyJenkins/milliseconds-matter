@@ -1,20 +1,25 @@
 // The main script for the community rpcs comparison test.
+removePreviousTable();
+addDefaultTable();
 let rpcns = [];
 let rpcnsBad = [];
 let rpcnsBadLog = [];
 createRPCList();
 // Creates an array of objects from json file.
 async function createRPCList() {
-  var response = await fetch('rpcnshttp.json');
-  var data = await response.json();
-  rpcns = data;
-
-  var response = await fetch('rpcnshttps.json');
+  var response = await fetch('rpcns.json');
   var data = await response.json();
   data.forEach((e) => {
+    e.address = 'http://' + e.address;
     rpcns.push(e);
   });
-  
+  var response = await fetch('rpcns.json');
+  var data = await response.json();
+  data.forEach((e) => {
+    e.address = 'https://' + e.address;
+    rpcns.push(e);
+  });
+  console.log(rpcns);
 };
 // Main Function.
 async function rpcTest(rpcns) {
@@ -30,9 +35,12 @@ async function rpcTest(rpcns) {
           });
       });
   });
+  // Clears table from previous run.
+  removePreviousTable();
+  addDefaultTable();
   // Calls a single round of test on all rpcns. Waits till all tests are complete, and then tests again.
   // Performs the test 5 times to generate averages.
-  for (let b = 0; b < 6; b++) {
+  for (let b = 1; b < 6; b++) {
     terminal.write('\r\n' + '    starting test batch ' + (b) + ' of 5');
     // Pauses loop until batch is complete.
     await Promise.all(rpcns.map(async (rpcn) => {
@@ -41,15 +49,29 @@ async function rpcTest(rpcns) {
     // If rpcn has been added to rpcnsBad array, then it's removed from further testing.
     // Bad rpcns are logged with rpcnsBadLog.
     rpcnsBad.forEach((rpcnBad) => {
-    rpcnsBadLog.push(rpcnBad);
-      rpcns.forEach((rpcn, i) => {
-        if (rpcn === rpcnBad) {
-          rpcns.splice(i, 1);
-        }
-      });
+      rpcnsBadLog.push(rpcnBad);
+        rpcns.forEach((rpcn, i) => {
+          if (rpcn === rpcnBad) {
+            rpcns.splice(i, 1);
+          }
+        });
     });
     // Clears rpcnsBad after each run.
     rpncsBad = [];
+    // If rpcn works with both https and http then the https version is removed
+    rpcns.forEach((rpcnA, iA) => {
+        rpcns.forEach((rpcnB, iB) => {
+          // Checks for name match but exlcudes from matching with itself.
+          if (rpcnA.rpcn === rpcnB.rpcn && rpcnA.address !== rpcnB.address) {
+            // Match found
+            if (rpcnA.address.includes('https://')) {
+            rpcns.splice(iA, 1);
+            } else {
+            rpcns.splice(iB, 1);
+            }
+          }
+        });
+      });
     // // Pauses loop 1 seconds after each iteration.
     await new Promise(resolve => setTimeout(resolve, 1000));
   };
@@ -113,12 +135,13 @@ async function rpcTest(rpcns) {
   //   index === self.findIndex((t) => (t.rpcn === rpcns.rpcn)))
   // Sorts list by averages.
   rpcns.sort((a, b) => a.resA - b.resA);
-  rpcns.forEach((rpcn) => {
-    terminal.write('\r\n' + '    average response from ' + rpcn.address + ' took ' + rpcn.resA + ' milliseconds.');
+  // Output averages into terminal.
+  rpcns.forEach((rpcn, i) => {
+    terminal.write('\r\n' + '     #' +  (i + 1) + ' ' + rpcn.address + ' with an average response of ' + rpcn.resA + ' milliseconds.');
   });
-    rpcns.slice(0, 9).forEach((rpcn, p) => {
-    // Adds to table a header cell for position.
-    generateTableHeader(p);
+  removePreviousTable();
+  // Populates main table.
+  rpcns.slice(0, 9).forEach((rpcn, p) => {
     // Adds a cell for org name and test result.
     generateTableCellPairs(rpcn);
   });
@@ -127,6 +150,7 @@ async function rpcTest(rpcns) {
   terminal.write('\r\n' + '\r\n' + '    run test with console logs open for more details')
   terminal.write('\r\n' + '\r\n' + '    home    rpc-test-start    rpc-test-about    waf-test' + '\r\n' + '\r\n');
   toggleKeyboard();
+  checkTerminal();
   console.log('The following rpcns were tested: ');
   console.log(rpcns);
   console.log('The following rpcns failed testing: ');
@@ -164,27 +188,45 @@ function logTest(r, rpcn, b, c) {
     });
   }
 }
-// Generates a header cell for each org tested along with a number indicating it's position.
-function generateTableHeader(p) {
+function removePreviousTable() {
+  document.getElementsByTagName("table")[1].deleteRow(1);
+  document.getElementsByTagName("table")[1].deleteRow(1);
   myBody = document.getElementsByTagName('body')[0];
   myTable = myBody.getElementsByTagName('table')[1];
-  myHeader = myTable.getElementsByTagName('thead')[0];
-  myRow = myHeader.getElementsByTagName('tr')[0];
-  var th = document.createElement('th');
-  th.appendChild(document.createTextNode(p + 1));
-  myRow.appendChild(th)
+  myTableBody = myTable.getElementsByTagName('tbody')[0];
+  myTableBody.insertRow(0);
+  myTableBody.insertRow(0);
+}
+function addDefaultTable() {
+  myBody = document.getElementsByTagName('body')[0];
+  myTable = myBody.getElementsByTagName('table')[1];
+  myTableBody = myTable.getElementsByTagName('tbody')[0];
+  for (i = 0; i < 9; i++) {
+    myRow = myTableBody.getElementsByTagName('tr')[0];
+    var td = document.createElement('td');
+    td.appendChild(document.createTextNode('rpcn'));
+    myRow.appendChild(td)
+    myBody = document.getElementsByTagName('body')[0];
+    myTable = myBody.getElementsByTagName('table')[1];
+    myTableBody = myTable.getElementsByTagName('tbody')[0];
+    myRow = myTableBody.getElementsByTagName('tr')[1];
+    var td = document.createElement('td');
+    td.appendChild(document.createTextNode('ms average'));
+    myRow.appendChild(td)
+  }
 }
 function generateTableCellPairs(rpcn) {
   myBody = document.getElementsByTagName('body')[0];
-  myTableBody = myBody.getElementsByTagName('table')[1];
-  myCell = myTableBody.getElementsByTagName('tr')[1];
+  myTable = myBody.getElementsByTagName('table')[1];
+  myTableBody = myTable.getElementsByTagName('tbody')[0];
+  myRow = myTableBody.getElementsByTagName('tr')[0];
   var td = document.createElement('td');
   td.appendChild(document.createTextNode(rpcn.rpcn));
-  myCell.appendChild(td)
-  myCell = myTableBody.getElementsByTagName('tr')[2];
+  myRow.appendChild(td)
+  myRow = myTableBody.getElementsByTagName('tr')[1];
   var td = document.createElement('td');
   td.appendChild(document.createTextNode(rpcn.resA + 'ms average'));
-  myCell.appendChild(td)
+  myRow.appendChild(td)
 }
 // Updates top table with slowest and fastest and graph.
 function updateSlowestFastestGraph(slowestA, fastestA) {

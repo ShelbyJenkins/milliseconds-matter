@@ -1,11 +1,6 @@
-
 // Creates terminal and updates it's options.
 const terminal = new Terminal({
-    cols: 200,
-    rows: 20,
-    fontSize: 12,
     fontWeight: 450,
-    fontFamily: 'DOS',
     cursorBlink: 'true',
     convertEol: true,
     theme: {
@@ -18,13 +13,20 @@ const fitAddon = new FitAddon.FitAddon();
 terminal.loadAddon(fitAddon);
 terminal.open(document.getElementById('terminal'));
 fitAddon.fit();
+// Rechecks font size.
+setTimeout(checkTerminal, 400);
+setTimeout(introText, 500);
 terminal.focus();
 
-// On resize or reload runs fit().
-window.onresize = function(){ location.reload(); }
-window.addEventListener('load', function () {
+// Important due to delay in loading custom font.
+function checkTerminal() {
     fitAddon.fit();
-  })
+    terminal.setOption("fontSize", 10);
+    terminal.setOption("fontFamily", 'DOS');
+}
+
+// On resize runs fit() and checks font size.
+window.addEventListener('resize', checkTerminal)
 
 // Types text into terminal upon load.
 function introText() {
@@ -87,23 +89,23 @@ function runCommand(cmd) {
             window.location.href = '/';
             terminal.write('\r\n');
             break;
-        case 'waf-test':
-            window.location.href = '/waf/waf.html';
+        // case 'waf-test':
+        //     window.location.href = '/waf/waf.html';
+        //     break;
+        // case 'waf-test-start':
+        //     fetchTest();
+        //     return;
+        // case 'waf-test-about':
+        //     terminal.write('\r\n');
+        //     wafTestAbout();
+        //     break;    
+        case 'rpc-com-test':
+            window.location.href = 'rpc-com-test';
             break;
-        case 'waf-test-start':
-            fetchTest();
-            return;
-        case 'waf-test-about':
-            terminal.write('\r\n');
-            wafTestAbout();
-            break;    
-        case 'rpc-test':
-            window.location.href = 'rpc-geo-net-test/rpc-geo-net-test.html';
-            break;
-        case 'rpc-test-start':
+        case 'rpc-com-test-start':
             rpcTest(rpcns);
             return;
-        case 'rpc-test-about':
+        case 'rpc-com-test-about':
             terminal.write('\r\n');
             rpcTestAbout();
             break;  
@@ -119,7 +121,7 @@ function consoleUser() {
     terminal.write('\x1b[38;2;168;0;168m $ \x1b[38;2;255;255;255m');
 }
 
-introText()
+
 
 
 

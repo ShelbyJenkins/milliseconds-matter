@@ -5,7 +5,7 @@ const terminal = new Terminal({
     convertEol: true,
     theme: {
         background: 'black',
-        cursor: 'yellowgreen',
+        cursor: '#a800a8',
       }
   });
 
@@ -21,7 +21,7 @@ terminal.focus();
 // Important due to delay in loading custom font.
 function checkTerminal() {
     fitAddon.fit();
-    terminal.setOption("fontSize", 10);
+    terminal.setOption("fontSize", 12);
     terminal.setOption("fontFamily", 'DOS');
 }
 
@@ -118,7 +118,7 @@ function runCommand(cmd) {
 }
 // Prints '$' at start of new lines.
 function consoleUser() {
-    terminal.write('\x1b[38;2;168;0;168m $ \x1b[38;2;255;255;255m');
+    terminal.write('\x1b[38;2;154;205;50m $ \x1b[38;2;255;255;255m');
 }
 
 

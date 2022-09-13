@@ -1,0 +1,64 @@
+    [
+        { 
+            "rpcn"    : "spanned",
+            "address" : "http://185.85.196.19:8080",
+            "resT1"   : 0,
+            "resT2"   : 0,
+            "resT3"   : 0,
+            "resT4"   : 0,
+            "resT5"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "securespan",
+            "address" : "https://arion.earth/rpc",
+            "resT1"   : 0,
+            "resT2"   : 0,
+            "resT3"   : 0,
+            "resT4"   : 0,
+            "resT5"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "centralized-sea",
+            "address" : "http://69.197.3.5:8080",
+            "resT1"   : 0,  
+            "resT2"   : 0,
+            "resT3"   : 0,
+            "resT4"   : 0,
+            "resT5"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "centralized-mia",
+            "address" : "http://69.197.2.7:8080",
+            "resT1"   : 0,  
+            "resT2"   : 0,
+            "resT3"   : 0,
+            "resT4"   : 0,
+            "resT5"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "centralized-fra",
+            "address" : "http://69.197.4.4:8080",
+            "resT1"   : 0,  
+            "resT2"   : 0,
+            "resT3"   : 0,
+            "resT4"   : 0,
+            "resT5"   : 0,
+            "resA"    : 0
+        },
+        { 
+            "rpcn"    : "centralized-sin", 
+            "address" : "http://69.197.24.4:8080",
+            "resT1"   : 0,  
+            "resT2"   : 0,
+            "resT3"   : 0,
+            "resT4"   : 0,
+            "resT5"   : 0,
+            "resA"    : 0
+        }
+    ]    
+
+

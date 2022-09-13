@@ -1,8 +1,5 @@
     
-    milliseconds-matter-rpc-test
+    milliseconds-matter
 
-    not suitable for mobile browsers
-    
-    currently http only
+    not suitable for mobile browsers - currently http only
 
-    home    rpc-test-start    rpc-test-about    waf-test

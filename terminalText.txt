@@ -11,7 +11,5 @@
 
                 
 
-    not suitable for mobile browsers
-
-    home    rpc-com-test    about
+    not suitable for mobile browsers - http only
 

@@ -21,30 +21,39 @@ async function createRPCList() {
   });
   console.log(rpcns);
 };
+ // Disables button after click to prevent multiple entries.
+ const buttons = document.querySelectorAll('button');
+ buttons.forEach((b) => {
+     b.addEventListener('click', function(){ 
+         buttons.forEach((b) => {
+             b.disabled = true;
+             setTimeout( function() {
+                 b.disabled = false;
+             }, 30000);
+         });
+     });
+ });
 // Main Function.
 async function rpcTest(rpcns) {
-  // Disables button after click to prevent multiple entries.
-  const buttons = document.querySelectorAll('button');
-  buttons.forEach((b) => {
-      b.addEventListener('click', function(){ 
-          buttons.forEach((b) => {
-              b.disabled = true;
-              setTimeout( function() {
-                  b.disabled = false;
-              }, 6000);
-          });
-      });
-  });
   // Clears table from previous run.
   removePreviousTable();
   addDefaultTable();
   // Calls a single round of test on all rpcns. Waits till all tests are complete, and then tests again.
   // Performs the test 5 times to generate averages.
   for (let b = 1; b < 6; b++) {
-    terminal.write('\r\n' + '    starting test batch ' + (b) + ' of 5');
+    updateBatchCount(b);
+    let countRequested = 0;
+    let countResponded = 0;
     // Pauses loop until batch is complete.
+    let count = 0;
     await Promise.all(rpcns.map(async (rpcn) => {
-    await testSingle(rpcn, b);
+      countRequested += 1;
+      updateRPCRequestedCount(countRequested);
+      const promise = await testSingle(rpcn, b);
+      if (promise === 1) {
+        countResponded += 1;
+        updateRPCRespondedCount(countResponded);
+      }
     }));
     // If rpcn has been added to rpcnsBad array, then it's removed from further testing.
     // Bad rpcns are logged with rpcnsBadLog.
@@ -73,7 +82,7 @@ async function rpcTest(rpcns) {
         });
       });
     // // Pauses loop 3 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
   };
   // Single test within a batch.
   async function testSingle(rpcn, b) {
@@ -83,7 +92,7 @@ async function rpcTest(rpcns) {
       const t0 = performance.now()
       try {
           const response = await fetch(rpcn.address, {
-            signal: AbortSignal.timeout(2000),
+            signal: AbortSignal.timeout(1000),
             method: 'POST',
             headers: {
               'mode': 'no-cors',
@@ -97,9 +106,10 @@ async function rpcTest(rpcns) {
             // First test is not logged.
             if (b > 0) {
               logTest((t1 - t0), rpcn, b, r.result);
-              terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + ' milliseconds.' + '\x1b[39m');
+              updateSolanaTransactionCount(r.result);
+              terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + 'ms' + '\x1b[39m');
             }
-          resolve();
+          resolve(1);
       } catch (error) {
           terminal.write('\r\n' + '\x1b[38;2;168;0;0m ' + '    ' + rpcn.address + ' removed from test due to ' + error + '\x1b[39m');
           // Add to rpcnsBad to be used to remove bad nodes from testing.
@@ -130,14 +140,12 @@ async function rpcTest(rpcns) {
       fastestA = rpcn.resA;
     }
   });
-  // // Removes slowest duplicate if rpcn had both http and https tested.
-  // var rpcns = rpcns.filter((rpcn, index, self) =>
-  //   index === self.findIndex((t) => (t.rpcn === rpcns.rpcn)))
+
   // Sorts list by averages.
   rpcns.sort((a, b) => a.resA - b.resA);
   // Output averages into terminal.
   rpcns.forEach((rpcn, i) => {
-    terminal.write('\r\n' + '     #' +  (i + 1) + ' ' + rpcn.address + ' with an average response of ' + rpcn.resA + ' milliseconds.');
+    terminal.write('\r\n' + '     #' +  (i + 1) + ' ' + rpcn.address + ' with an average response of ' + rpcn.resA + 'ms');
   });
   removePreviousTable();
   // Populates main table.
@@ -147,8 +155,7 @@ async function rpcTest(rpcns) {
   });
   // Updates slowest and fastest average scores in to best/worst table.
   updateSlowestFastestGraph(slowestA, fastestA);
-  terminal.write('\r\n' + '\r\n' + '    run test with console logs open for more details')
-  terminal.write('\r\n' + '\r\n' + '    home    rpc-com-test-start    rpc-com-test-about' + '\r\n' + '\r\n');
+  terminal.write('\r\n' + '\r\n' + '    test complete - check console for complete log')
   toggleKeyboard();
   checkTerminal();
   console.log('The following rpcns were tested: ');
@@ -163,30 +170,6 @@ function logTest(r, rpcn, b, c) {
   rpcn.NewField = 'batch';
   r = r.toFixed(1);
   rpcn[batch] = r;
-  // console.log(c)
-  // Updates solana-transaction-count and colorizes/fromats each power of a thousand for readiblity.
-  if (c !== undefined ) {
-    // Clears previous entry.
-    document.getElementById('solana-transaction-count').innerHTML = '';
-    let arrayOfP = [];
-    while (c > 0) {
-      let n = (c % 1000);
-      // Adds leading comman and leading zeros if required.
-      let s = '  ' + n.toString().padStart(3, '0');
-      arrayOfP.push(s);
-      c = Math.round(c / 1000);
-    }
-    // Removes extraneous leading chars from leading period.
-    arrayOfP[arrayOfP.length - 1] = arrayOfP[arrayOfP.length - 1].replace('  ', '');
-    arrayOfP[arrayOfP.length - 1] = arrayOfP[arrayOfP.length - 1].replace(/^0+/, '');
-    arrayOfP.reverse().forEach(p => {
-      var newSpan = document.createElement('span');
-      newSpan.innerText = p;
-      var randomColor = Math.floor(Math.random()*16777215).toString(16);
-      newSpan.style.color = '#' + randomColor;
-      document.getElementById('solana-transaction-count').appendChild(newSpan);
-    });
-  }
 }
 function removePreviousTable() {
   document.getElementsByTagName("table")[1].deleteRow(1);
@@ -273,6 +256,7 @@ function updateSlowestFastestGraph(slowestA, fastestA) {
   }
   myDiv.style.color = 'white';
 } 
+
 function rpcTestAbout() {
   fetch('terminalTextRpc.txt')
     .then(response => response.text())
@@ -288,4 +272,50 @@ function rpcTestAbout() {
             }(i));
             } 
     })
+}
+function updateRPCRequestedCount(c) {
+  document.getElementById('rpc-requested-count').innerHTML = '';
+  var newSpan = document.createElement('span');
+  newSpan.innerText = c;
+  newSpan.style.color = '#00a8a8';
+  document.getElementById('rpc-requested-count').appendChild(newSpan);
+}
+function updateBatchCount(b) {
+document.getElementById('batch-count').innerHTML = '';
+var newSpan = document.createElement('span');
+newSpan.innerText = b;
+newSpan.style.color = '#a800a8';
+document.getElementById('batch-count').appendChild(newSpan);
+}
+function updateRPCRespondedCount(c) {
+  document.getElementById('rpc-responded-count').innerHTML = '';
+  var newSpan = document.createElement('span');
+  newSpan.innerText = c;
+  newSpan.style.color = 'yellowgreen';
+  document.getElementById('rpc-responded-count').appendChild(newSpan);
+}
+function updateSolanaTransactionCount(c) {
+// Updates solana-transaction-count and colorizes/fromats each power of a thousand for readiblity.
+if (c !== undefined ) {
+  // Clears previous entry.
+  document.getElementById('solana-transaction-count').innerHTML = '';
+  let arrayOfP = [];
+  while (c > 0) {
+    let n = (c % 1000);
+    // Adds leading comman and leading zeros if required.
+    let s = '  ' + n.toString().padStart(3, '0');
+    arrayOfP.push(s);
+    c = Math.round(c / 1000);
+  }
+  // Removes extraneous leading chars from leading period.
+  arrayOfP[arrayOfP.length - 1] = arrayOfP[arrayOfP.length - 1].replace('  ', '');
+  arrayOfP[arrayOfP.length - 1] = arrayOfP[arrayOfP.length - 1].replace(/^0+/, '');
+  arrayOfP.reverse().forEach(p => {
+    var newSpan = document.createElement('span');
+    newSpan.innerText = p;
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    newSpan.style.color = '#' + randomColor;
+    document.getElementById('solana-transaction-count').appendChild(newSpan);
+  });
+}
 }

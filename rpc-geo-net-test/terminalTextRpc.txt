@@ -6,5 +6,3 @@
         connecting to the RPC node's public ip address - this routes the request from the user over the public internet to the RPC node.
         AND connecting to the RPC node's *workload* anycast ip address - this routes the request from the user to the SP// PoP that is geographically nearest to the user and then over SP//'s private network backbone to the RPC node.
 
-    home    rpc-test-start    rpc-test-about    waf-test
-

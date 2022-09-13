@@ -40,56 +40,97 @@ hr {
     display: flex;
     align-self: stretch;
     background-color: #a8a8a8;
-    color: floralwhite;
+    color: black;
     max-width: 100%;
     text-align: left;
     padding-top: .5%;
     padding-bottom: .5%;
+    font-weight: 900;
 }
-  .tui-statusbar ul li {
-    display: inline-block;
-    color: black;
-    margin-left: 2px;
+.tui-statusbar ul {
+    display: flex;
+    flex: 1 1 auto;
 }
-  .tui-statusbar ul li:active {
+.tui-statusbar ul li {
+    display: flex;
+    width: 15%;
+    margin-left: 1em;
+}
+.tui-statusbar li a:hover {
     background-color: yellowgreen;
+    border: outset .25em yellowgreen;
     color: floralwhite; 
 }
-  .tui-statusbar ul {
-    display: flex;
-    flex: 1 1 auto;
-    align-self: stretch;
+.tui-statusbar li a {
+    border: outset .25em #00a8a8;
+    padding: .5em;
+    width: 75%;
 }
-  .tui-statusbar li {
-    display: flex;
-    flex: 1 1 auto;
-    align-self: flex-end;
-}
-   .tui-statusbar li a {
-    font-size: 1em;
-}
-  .tui-statusbar-divider {
+.tui-statusbar-divider {
     border-right: 2px rgb(0, 0, 0) solid;
     display: inline;
     margin: 0px 3px; 
 }
+.tui-statusbar span {
+    font-weight: 900;
+}
 /* statusbar ends */
+/* count bar */
+#count-bar {
+    display: flex;
+    width: 100%
+}
+#count-bar div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    width: 58%;
+}
+#count-bar > div:nth-child(1) {
+    width: 42%
+}
+#count-bar div + div {
+    border-left: 1px dashed floralwhite;
+}
+#count-bar p {
+    margin: .5em;
+}
+/* count bar ends */
 /* run button starts*/
-.run-button button {
-    padding: .5%;
-    width: 100%;
-    background-color: #a800a8;
+.run-button-locked, .run-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.run-button-locked button {
+    width: 98%;
+    background-color: #a8a8a8;
+    border: outset .25em #a8a8a8;
     color: floralwhite;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+.run-button button {
+    width: 98%;
+    background-color: #00a8a8;
+    border: outset .25em #00a8a8;
+    color: floralwhite;
+    margin-top: .5em;
+    margin-bottom: .5em;
 }
 .run-button button:hover:before {
     content: "L F G";
 }
 .run-button button:hover {
     background-color: yellowgreen;
+    border: outset .25em yellowgreen;
 }
 .run-button button:hover span {
     display: none;
 }
+
 /* run button ends*/
 
 /* tables starts */
@@ -127,12 +168,52 @@ hr {
     border-left: 1px dashed floralwhite;
 }
 
-#multi-test {
-    margin: .5%;
+
+/* securespanned test section */
+/* multi-test  */
+.multi-test {
+    display: flex;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    height: 12%;
+}
+.multi-test-header {
+    padding: .2%;
+    color: yellowgreen;
+    font-weight: 700;
+    margin: .5em;
+}
+.multi-test-header span {
+    color: yellowgreen;
+}
+.multi-test div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
-/* table ends */
-
-
+.multi-test p {
+    
+}
+.multi-test div + div {
+    border-left: 1px dashed floralwhite;
+}
+.multi-test .run-button, .run-button-locked {
+    height: 100%;
+    width: 18%;
+}
+.multi-test :is(.run-button-locked, .run-button) button {
+    height: 100%;
+}
+.multi-test .dynamic {
+    width: 40%;
+}
+.multi-test .static {
+    width: 10.5%;
+}
+#spanned.multi-test .static,
+#securespan.multi-test .static
+{
+    width: 42%;
+}
+/* multi-test ends */
 

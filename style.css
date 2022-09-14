@@ -113,15 +113,45 @@ hr {
     border: outset .3em #00a8a8;
     color: floralwhite;
 }
-.run-button button:hover:before {
-    content: "L F G";
+.run-button button:disabled {
+    background-color: #a8a8a8;
+    border: outset .3em #a8a8a8;
 }
-.run-button button:hover {
+.run-button button:hover:enabled {
     background-color: yellowgreen;
     border: outset .25em yellowgreen;
 }
-.run-button button:hover span {
+.run-button button:hover:enabled span {
     display: none;
+}
+.run-button button:hover:enabled:before {
+    content: "L F G";
+}
+.run-button button:disabled span {
+    display: none;
+}
+.run-button button:disabled:before {
+    content: "x";
+}
+/* rpc-comp-test */
+.run-button.rpc-comp-test-button {
+    margin: .5em;
+}
+.run-button.rpc-comp-test-button button {
+    padding: .5em;
+    height: 90%;
+    width: 90%;
+}
+/* rpc-dist-test */
+.multi-test .run-button {
+    height: 100%;
+    width: 18%;
+}
+.multi-test .run-button button {
+    height: 100%;
+    width: 90%;
+    margin-top: .5em;
+    margin-bottom: .5em;
 }
 /* run button ends*/
 
@@ -132,14 +162,6 @@ hr {
 /* rpc-comp-test */
 #fastest-slowest {
     margin: .5%;
-}
-.run-button.rpc-comp-test-button {
-    margin: .5em;
-}
-.run-button.rpc-comp-test-button button {
-    padding: .5em;
-    height: 90%;
-    width: 90%;
 }
 /* This cool trick adds a border between two adjacent column! */
 #fastest-slowest td + td {
@@ -188,21 +210,6 @@ hr {
 }
 .multi-test div + div {
     border-left: 1px dashed floralwhite;
-}
-.multi-test .run-button, .run-button-locked {
-    height: 100%;
-    width: 18%;
-}
-.multi-test :is(.run-button-locked, .run-button) button {
-    height: 100%;
-    width: 90%;
-    margin-top: .5em;
-    margin-bottom: .5em;
-}
-.run-button-locked button {
-    background-color: #a8a8a8;
-    border: outset .3em #a8a8a8;
-    color: floralwhite;
 }
 .multi-test .dynamic {
     width: 40%;

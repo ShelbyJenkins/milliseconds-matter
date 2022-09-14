@@ -27,12 +27,10 @@ async function createRPCList() {
      b.addEventListener('click', function(){ 
          buttons.forEach((b) => {
              b.disabled = true;
-             setTimeout( function() {
-                 b.disabled = false;
-             }, 30000);
          });
      });
  });
+
 // Main Function.
 async function rpcTest(rpcns) {
   // Clears table from previous run.
@@ -162,6 +160,8 @@ async function rpcTest(rpcns) {
   console.log(rpcns);
   console.log('The following rpcns failed testing: ');
   console.log(rpcnsBad);
+  // Unlocks button.
+  document.querySelector("body > div > div.run-button.rpc-comp-test-button > button").disabled = false
 }
 // Updates object after each test within a batch.
 function logTest(r, rpcn, b, c) {
@@ -257,22 +257,8 @@ function updateSlowestFastestGraph(slowestA, fastestA) {
   myDiv.style.color = 'white';
 } 
 
-function rpcTestAbout() {
-  fetch('terminalTextRpc.txt')
-    .then(response => response.text())
-    .then((text) => {
-        for(i = 0; i < text.length; i++) {
-            (function(i){
-                setTimeout(function() {
-                    terminal.write(text[i]);
-                    if ((text.length - 1) == (i)) { 
-                        toggleKeyboard();
-                    };
-                }, 1 * i);
-            }(i));
-            } 
-    })
-}
+
+// This group of functions updates the status of the tests.
 function updateRPCRequestedCount(c) {
   document.getElementById('rpc-requested-count').innerHTML = '';
   var newSpan = document.createElement('span');
@@ -319,20 +305,19 @@ if (c !== undefined ) {
   });
 }
 }
-
-// function rpcdisttestabout() {
-//   fetch('terminal-test-about.txt')
-//     .then(response => response.text())
-//     .then((text) => {
-//         for(i = 0; i < text.length; i++) {
-//             (function(i){
-//                 setTimeout(function() {
-//                     terminal.write(text[i]);
-//                     if ((text.length - 1) == (i)) { 
-//                         toggleKeyboard();
-//                     };
-//                 }, 1 * i);
-//             }(i));
-//             } 
-//     })
-// }
+function rpcCompTestAbout() {
+  fetch('terminal-test-about.txt')
+    .then(response => response.text())
+    .then((text) => {
+        for(i = 0; i < text.length; i++) {
+            (function(i){
+                setTimeout(function() {
+                    terminal.write(text[i]);
+                    if ((text.length - 1) == (i)) { 
+                        toggleKeyboard();
+                    };
+                }, 1 * i);
+            }(i));
+            } 
+    })
+}

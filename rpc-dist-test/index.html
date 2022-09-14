@@ -23,7 +23,7 @@
                     <li><a href="/"><span style="color: #a800a8">GO</span> home</a></li>
                     <span class="tui-statusbar-divider"></span>
                     <li>
-                        <a onclick="rpcdisttestabout();"><span style="color: #a800a8">GO</span> test-about</a></li>
+                        <a onclick="rpcDistTestAbout();"><span style="color: #a800a8">GO</span> test-about</a></li>
                     </li>
                     
                 </ul>
@@ -49,7 +49,7 @@
                     <p>-</p>                                  
                 </div>
                 <div class="run-button">
-                    <button onclick="runTest('centralized');">
+                    <button onclick="runTest('centralized')">
                         <span>test centralized endpoints</span>
                     </button>
                 </div>  
@@ -63,9 +63,9 @@
                 <div class="dynamic">
                     <p>-</p>          
                 </div>
-                <div class="run-button-locked">
-                    <button>
-                        <span>x</span>
+                <div class="run-button">
+                    <button onclick="runTest('distributed')" disabled>
+                        <span>test distributed endpoints</span>
                     </button>
                 </div>  
             </div>
@@ -78,9 +78,9 @@
                 <div class="dynamic">
                     <p>-</p>                    
                 </div>
-                <div class="run-button-locked">
-                    <button>
-                        <span>x</span>
+                <div class="run-button">
+                    <button onclick="runTest('secured')" disabled>
+                        <span>test secured endpoints</span>
                     </button>
                 </div>  
             </div>

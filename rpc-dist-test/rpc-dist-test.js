@@ -6,9 +6,6 @@ buttons.forEach((a) => {
     a.addEventListener('click', function(){ 
         buttons.forEach((b) => {
             b.disabled = true
-            setTimeout( function() {
-                b.disabled = false
-            }, 200)
         })
     })
 })
@@ -51,12 +48,10 @@ async function runTest(buttonInput) {
     case 'centralized':
         selectTable('centralized', slowestA, fastestA)
         updateDynamic(buttonInput, slowestA, fastestA)
-        unlockButton(1)
         break
     case 'distributed':
         selectTable('distributed', slowestA, fastestA)
         updateDynamic(buttonInput, slowestA, fastestA, fastestL)
-        unlockButton(2)
         break
     case 'secured':
         selectTable('secured', slowestA, fastestA)
@@ -67,6 +62,15 @@ async function runTest(buttonInput) {
   terminal.write('\r\n' + '\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n')
   toggleKeyboard()
   console.log(rpcns)
+  // Ensures the tests are run in the correct order.
+  if (rpcns.length === 4) {
+    document.querySelector("#distributed > div.run-button > button").disabled = false
+    document.querySelector("#centralized > div.run-button > button").disabled = false
+  } else {
+    document.querySelector("#distributed > div.run-button > button").disabled = false
+    document.querySelector("#centralized > div.run-button > button").disabled = false
+    document.querySelector("#secured > div.run-button > button").disabled = false
+  }
 }
 // Creates an array of objects from json file.
 async function createRPCList(criteria) {
@@ -227,34 +231,7 @@ function updateStaticTable(table, col, v, color) {
     myP.classList.add('green-168-text');
   };
 }
-// Ensures the tests are run in the correct order.
-function unlockButton(b) {
-  if (b === 1) { 
-    // Supresses error message for unlocked button.
-    while ( !document.querySelector('#distributed > div.run-button-locked') ) { 
-      return
-    }
-    var buttonDiv = document.querySelector('#distributed > div.run-button-locked')
-    buttonDiv.innerHTML = `<button onclick="runTest('distributed')">`
-    var button = buttonDiv.querySelector('button')
-    const span = document.createElement('span')
-    span.innerText = 'test distributed endpoints'
-    button.appendChild(span)
-  } else { 
-    // Supresses error message for unlocked button.
-    while ( !document.querySelector('#secured > div.run-button-locked') ) { 
-      return
-    }
-    var buttonDiv = document.querySelector('#secured > div.run-button-locked')
-    buttonDiv.innerHTML = `<button onclick="runTest('secured')">`
-    var button = buttonDiv.querySelector('button')
-    const span = document.createElement('span')
-    span.innerText = 'test secured endpoints'
-    button.appendChild(span)
-  }
-  buttonDiv.classList.remove('run-button-locked')
-  buttonDiv.classList.add('run-button')
-}
+
 // Chooses the correct table to update.
 function selectTable(table, slowestA, fastestA) {
   if (batchesOutput.length > 1) {
@@ -335,7 +312,7 @@ function updateStaticTable(table, col, v, color) {
     myP.classList.add('green-168-text')
   }
 }
-function rpcdisttestabout() {
+function rpcDistTestAbout() {
   fetch('terminal-test-about.txt')
     .then(response => response.text())
     .then((text) => {

@@ -12,10 +12,8 @@ buttons.forEach((a) => {
         })
     })
 })
-
 // Global list of rpcns. Printed to dev tools console after each run.
 let rpcns = []
-
 // Main Function.
 async function runTest(buttonInput) {
   list = await createRPCList(buttonInput)
@@ -51,46 +49,29 @@ async function runTest(buttonInput) {
   // Updates table.
   switch (buttonInput) {
     case 'centralized':
-        selectTable('centralized')
+        selectTable('centralized', slowestA, fastestA)
         updateDynamic(buttonInput, slowestA, fastestA)
         unlockButton(1)
         break
     case 'distributed':
-        selectTable('distributed')
+        selectTable('distributed', slowestA, fastestA)
         updateDynamic(buttonInput, slowestA, fastestA, fastestL)
         unlockButton(2)
         break
     case 'secured':
-        selectTable('secured')
+        selectTable('secured', slowestA, fastestA)
         // Uses fastestA param for the distributed test's average.
         updateDynamic(buttonInput, null, (rpcns.find(({type}) => type === 'distributed')).resA, null, batchesOutput[0].resA)
         break
-  }
-  // Chooses the correct table to update.
-  function selectTable(table) {
-    if (batchesOutput.length > 1) {
-      batchesOutput.forEach((rpcn, i) => {
-        if (rpcn.resA === slowestA) {
-          updateStaticTable(table, i, rpcn.resA, 'red')
-        }
-        if (rpcn.resA === fastestA) {
-          updateStaticTable(table, i, rpcn.resA, 'green')
-        }
-        updateStaticTable(table, i, rpcn.resA)
-      })
-    } else {
-      updateStaticTable(table, 0, batchesOutput[0].resA)
-    }
   }
   terminal.write('\r\n' + '\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n')
   toggleKeyboard()
   console.log(rpcns)
 }
-
 // Creates an array of objects from json file.
 async function createRPCList(criteria) {
   return new Promise(async function (resolve) {
-    let response = await fetch('rpcnsList.json')
+    let response = await fetch('rpcns.json')
     let data = await response.json()
     let list = data
     let createRPCListOutput = []
@@ -102,16 +83,16 @@ async function createRPCList(criteria) {
         resolve(createRPCListOutput)
   })
 }
-// Runs tests and returns populate 
+// Runs multiple tests and returns populated objects.
 async function testBatches(rpcns) {
   // Calls a single round of test on all rpcns. Waits till all tests are complete, and then tests again.
   // Performs the test 5 times to generate averages.
   // First test is not counted in the averages.
   for (let b = 0; b < 6; b++) {
     updateBatchCount(b)
-    // Pauses loop until batch is complete.
     let countRequested = 0
     let countResponded = 0
+    // Pauses loop until batch is complete.
     await Promise.all(rpcns.map(async (rpcn) => {
       countRequested += 1
       updateRPCRequestedCount(countRequested)
@@ -123,40 +104,6 @@ async function testBatches(rpcns) {
     }))
     // Pauses loop 1 seconds after each iteration.
     await new Promise(resolve => setTimeout(resolve, 300))
-  }
-  // Single test within a batch.
-  async function testSingle(rpcn, b) {
-    // Returns promise when fetch succeeds or fails.
-    return new Promise(async function(resolve, reject){
-      // Performance.now() measures the time with higher presicision than date()/
-      const t0 = performance.now()
-      try {
-          const response = await fetch(rpcn.address, {
-            signal: AbortSignal.timeout(1000),
-            method: 'POST',
-            headers: {
-              'mode': 'no-cors',
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify( {jsonrpc: '2.0', id: 'null', method: 'getTransactionCount'} )
-          })
-          r = await response.json()
-          const t1 = performance.now()
-            // First test is not logged.
-            if (b !== 0) {
-              logTest((t1 - t0), rpcn, b)
-              updateSolanaTransactionCount(r.result)
-              terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m')
-            }
-          resolve(1)
-      } catch (error) {
-          terminal.write('\r\n')
-          terminal.write('\x1b[38;2;168;0;0m ' + '    error testing ' + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' ' + error + '\x1b[39m')
-          logError(error, rpcn, b)
-          resolve(0)
-      }
-    })
   }
    // Averages 5 runs and updates averages on table.
    // Also sets slowest and fastest averages for highlights.
@@ -170,6 +117,40 @@ async function testBatches(rpcns) {
     rpcn.resA = a.toFixed(1)
   })
   return rpcns
+}
+ // Single test within a batch.
+ async function testSingle(rpcn, b) {
+  // Returns promise when fetch succeeds or fails.
+  return new Promise(async function(resolve, reject){
+    // Performance.now() measures the time with higher presicision than date()/
+    const t0 = performance.now()
+    try {
+        const response = await fetch(rpcn.address, {
+          signal: AbortSignal.timeout(1000),
+          method: 'POST',
+          headers: {
+            'mode': 'no-cors',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify( {jsonrpc: '2.0', id: 'null', method: 'getTransactionCount'} )
+        })
+        r = await response.json()
+        const t1 = performance.now()
+          // First test is not logged.
+          if (b !== 0) {
+            logTest((t1 - t0), rpcn, b)
+            updateSolanaTransactionCount(r.result)
+            terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m')
+          }
+        resolve(1)
+    } catch (error) {
+        terminal.write('\r\n')
+        terminal.write('\x1b[38;2;168;0;0m ' + '    error testing ' + rpcn.rpcn + ' ' + rpcn.network + ' @ ' + rpcn.address + ' ' + error + '\x1b[39m')
+        logError(error, rpcn, b)
+        resolve(0)
+    }
+  })
 }
 // Updates rpcn object with result of tests.
 function logTest(r, rpcn, b) {
@@ -273,6 +254,22 @@ function unlockButton(b) {
   }
   buttonDiv.classList.remove('run-button-locked')
   buttonDiv.classList.add('run-button')
+}
+// Chooses the correct table to update.
+function selectTable(table, slowestA, fastestA) {
+  if (batchesOutput.length > 1) {
+    batchesOutput.forEach((rpcn, i) => {
+      if (rpcn.resA === slowestA) {
+        updateStaticTable(table, i, rpcn.resA, 'red')
+      }
+      if (rpcn.resA === fastestA) {
+        updateStaticTable(table, i, rpcn.resA, 'green')
+      }
+      updateStaticTable(table, i, rpcn.resA)
+    })
+  } else {
+    updateStaticTable(table, 0, batchesOutput[0].resA)
+  }
 }
 // Updates tables with information specific to this page.
 function updateDynamic(test, slowestA, fastestA, location, wafT) {

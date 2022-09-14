@@ -1,4 +1,4 @@
-// The main script for the centralized vs spanned infrastructure comparison.
+// The main script for the centralized vs distributed infrastructure comparison.
 
 // Disables buttons after click to prevent multiple entries.
 const buttons = document.querySelectorAll('button');
@@ -8,7 +8,7 @@ buttons.forEach((a) => {
             b.disabled = true;
             setTimeout( function() {
                 b.disabled = false;
-            }, 3000);
+            }, 200);
         });
     });
 });
@@ -36,31 +36,35 @@ async function runTest(buttonInput) {
     terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    ' + rpcn.rpcn + ' average respone time of ' + rpcn.resA + 'ms' + '\x1b[39m');
     // Sets slowest average.
     if (rpcn.resA > parseFloat(slowestA)) {
-    slowestA = rpcn.resA;
+      slowestA = rpcn.resA;
     }
     // Sets fastest average.
     if (rpcn.resA < parseFloat(fastestA)) {
+      if (rpcn.type.includes('centralized')) {
+        fastestL = rpcn.rpcn;
+      }
       fastestA = rpcn.resA;
     }
   });
   // Updates table.
   switch (buttonInput) {
     case 'centralized':
-        updateTable('centralized');
-        updateDynamicCentralized(slowestA, fastestA);
+        selectTable('centralized');
+        updateDynamic(buttonInput, slowestA, fastestA);
         unlockButton(1);
         break;
-    case 'spanned':
-        updateTable('spanned');
-        updateDynamicSpanned(slowestA, fastestA);
+    case 'distributed':
+        selectTable('distributed');
+        updateDynamic(buttonInput, slowestA, fastestA, fastestL);
         unlockButton(2);
         break;
-    case 'securespan':
-        updateTable('securespan');
-        updateDynamicSecured(slowestA, fastestA);
+    case 'secured':
+        selectTable('secured');
+        // Uses fastestA param for the distributed test's average.
+        updateDynamic(buttonInput, null, (rpcns.find(({type}) => type === 'distributed')).resA, null, batchesOutput[0].resA);
         break;
   }
-  function updateTable(table) {
+  function selectTable(table) {
     if (batchesOutput.length > 1) {
       batchesOutput.forEach((rpcn, i) => {
         if (rpcn.resA === slowestA) {
@@ -75,8 +79,7 @@ async function runTest(buttonInput) {
       updateStaticTable(table, 0, batchesOutput[0].resA);
     }
   }
-  terminal.write('\r\n' + '\r\n' + '\r\n' + '    test complete - check dev tools console for complete log')
-  terminal.write('\r\n' + '\r\n');
+  terminal.write('\r\n' + '\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n');
   toggleKeyboard();
   console.log(rpcns);
 }
@@ -89,7 +92,7 @@ async function createRPCList(criteria) {
     let list = data;
     let createRPCListOutput = [];
     list.forEach((rpcn) => {
-          if (rpcn.rpcn.includes(criteria)) {
+          if (rpcn.type.includes(criteria)) {
             createRPCListOutput.push(rpcn);
           }
         });
@@ -116,7 +119,7 @@ async function testBatches(rpcns) {
       }
     }));
     // Pauses loop 1 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 10));
+    await new Promise(resolve => setTimeout(resolve, 300));
   };
   // Single test within a batch.
   async function testSingle(rpcn, b) {
@@ -126,7 +129,7 @@ async function testBatches(rpcns) {
       const t0 = performance.now()
       try {
           const response = await fetch(rpcn.address, {
-            signal: AbortSignal.timeout(500),
+            signal: AbortSignal.timeout(1000),
             method: 'POST',
             headers: {
               'mode': 'no-cors',
@@ -141,7 +144,7 @@ async function testBatches(rpcns) {
             if (b !== 0) {
               logTest((t1 - t0), rpcn, b);
               updateSolanaTransactionCount(r.result);
-              terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + 'ms' + '\x1b[39m');
+              terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m');
             }
           resolve(1);
       } catch (error) {
@@ -152,7 +155,6 @@ async function testBatches(rpcns) {
       };
     });
   };
-
    // Averages 5 runs and updates averages on table.
    // Also sets slowest and fastest averages for highlights.
    rpcns.forEach((rpcn) => {
@@ -244,124 +246,75 @@ function updateStaticTable(table, col, v, color) {
 function unlockButton(b) {
   if (b === 1) { 
     // Supresses error message for unlocked button.
-    while ( !document.querySelector("#spanned > div.run-button-locked") ) { 
+    while ( !document.querySelector("#distributed > div.run-button-locked") ) { 
       return
     };
-    var buttonDiv = document.querySelector("#spanned > div.run-button-locked");
-    buttonDiv.innerHTML = `<button onclick="runTest('spanned');">`;
+    var buttonDiv = document.querySelector("#distributed > div.run-button-locked");
+    buttonDiv.innerHTML = `<button onclick="runTest('distributed');">`;
     var button = buttonDiv.querySelector("button")
     const span = document.createElement("span");
-    span.innerText = 'test spanned endpoints';
+    span.innerText = 'test distributed endpoints';
     button.appendChild(span);
   } else { 
     // Supresses error message for unlocked button.
-    while ( !document.querySelector("#securespan > div.run-button-locked") ) { 
+    while ( !document.querySelector("#secured > div.run-button-locked") ) { 
       return
     };
-    var buttonDiv = document.querySelector("#securespan > div.run-button-locked");
-    buttonDiv.innerHTML = `<button onclick="runTest('securespan');">`;
+    var buttonDiv = document.querySelector("#secured > div.run-button-locked");
+    buttonDiv.innerHTML = `<button onclick="runTest('secured');">`;
     var button = buttonDiv.querySelector("button")
     const span = document.createElement("span");
-    span.innerText = 'test secure spanned endpoints';
+    span.innerText = 'test secured endpoints';
     button.appendChild(span);
   };
   buttonDiv.classList.remove('run-button-locked');
   buttonDiv.classList.add('run-button');
 }
-function updateDynamicCentralized(slowestA, fastestA) {
-  let text = `
-    <p>This test shows the high latency of geographically centralized RPC endpoints. 
-    While, the nearest RPC endpoint responded in just <span class="green-168-text">` + fastestA + `ms</span>,                 
-    the farthest RPC endpoint took <span class="red-168-text">` + slowestA + `ms</span>!
-    Applications with endpoints in only a single location will not be able to give global users a responsive experience!</p>`
-  myP = document.querySelector("#centralized > div.dynamic")
-  while(myP.firstChild) {
-    myP.removeChild(myP.firstChild);
+function updateDynamic(test, slowestA, fastestA, location, wafT) {
+  switch (test) {
+    case 'centralized':
+      let centralizedText = `
+        <p>
+          This test shows the high latency of geographically centralized RPC endpoints. 
+          While, the nearest RPC endpoint responded in just <span class="green-168-text">` + fastestA + `ms</span>,                 
+          the farthest RPC endpoint took <span class="red-168-text">` + slowestA + `ms</span>!
+          Applications centralized in a single location will not be able to give global users a responsive experience!
+        </p>
+      `
+      myP = document.querySelector("#centralized > div.dynamic")
+      while(myP.firstChild) {
+        myP.removeChild(myP.firstChild);
+      }
+      myP.innerHTML = centralizedText;
+      break;
+    case 'distributed':
+      let distributedText = `
+        <p>
+          This test sends your request to a global Anycast IP address.
+          Anycast routes your requests to the endpoint geographically nearest to you, <span class="cyan-168-text">` + location + `</span>.
+          Pairing Anycast with globally distributed endpoints ensures all users have a low latency user experience.
+        </p>
+      `
+      myP = document.querySelector("#distributed > div.dynamic")
+      while(myP.firstChild) {
+          myP.removeChild(myP.firstChild);
+        }
+      myP.innerHTML = distributedText;
+      break;
+    case 'secured':
+      let distibutedSecureText = `
+        <p>
+          If your endpoint is down, your app is down.
+          DDoS. Injection attacks. Bots. 'Organic' DDoS aka excess traffic. These WILL bring you down.
+          A web access firewall, aka a WAF, offers turnkey endpoint protection. 
+          SP//'s low latency WAF adds only <span class="green-168-text">` + (wafT - fastestA).toFixed(1) + `ms</span> to response times!
+        </p>
+        `
+      myP = document.querySelector("#secured > div.dynamic")
+      while(myP.firstChild) {
+          myP.removeChild(myP.firstChild);
+        }
+      myP.innerHTML = distibutedSecureText;
+      break;
   }
-  myP.innerHTML = text;
 }
-function updateDynamicSpanned(slowestA, fastestA) {
-  let text = `
-    <p>This test shows the high latency of geographically centralized RPC endpoints. 
-    While, the nearest RPC endpoint responded in just <span class="green-168-text">` + fastestA + `ms</span>,                 
-    the farthest RPC endpoint took <span class="red-168-text">` + slowestA + `ms</span>!
-    Applications with endpoints in only a single location will not be able to give global users a responsive experience!</p>`
-  myP = document.querySelector("#spanned > div.dynamic")
-  while(myP.firstChild) {
-    myP.removeChild(myP.firstChild);
-  }
-  myP.innerHTML = text;
-}
-function updateDynamicSecured(slowestA, fastestA) {
-  let text = `
-    <p>This test shows the high latency of geographically centralized RPC endpoints. 
-    While, the nearest RPC endpoint responded in just <span class="green-168-text">` + fastestA + `ms</span>,                 
-    the farthest RPC endpoint took <span class="red-168-text">` + slowestA + `ms</span>!
-    Applications with endpoints in only a single location will not be able to give global users a responsive experience!</p>`
-  myP = document.querySelector("#securespan > div.dynamic")
-  while(myP.firstChild) {
-    myP.removeChild(myP.firstChild);
-  }
-  myP.innerHTML = text;
-}
-
-
-// Updates top table with slowest and fastest and graph.
-// function updateSlowestFastestGraph(slowestA, fastestA) {
-//   myBody = document.getElementsByTagName("body")[0];
-//   myTableBody = myBody.getElementsByTagName("table")[0];
-//   myRow = myTableBody.getElementsByTagName("tr")[1];
-//   myCell = myRow.getElementsByTagName("td")[0];
-//   while(myCell.firstChild) {
-//     myCell.removeChild(myCell.firstChild);
-//   }
-//   myCell.textContent += slowestA + 'ms';
-//   myCell = myRow.getElementsByTagName("td")[2];
-//   while(myCell.firstChild) {
-//     myCell.removeChild(myCell.firstChild);
-//   }
-//   myCell.textContent += fastestA + 'ms';
-//   // Updates graph text.
-//   d = (slowestA - fastestA).toFixed(1);
-//   myRow = myTableBody.getElementsByTagName("tr")[1];
-//   myCell = myRow.getElementsByTagName("td")[1];
-//   while(myCell.firstChild) {
-//     myCell.removeChild(myCell.firstChild);
-//   }
-//   myCell.textContent += (d + 'ms delta');
-//   // Doing some tricks to make the graph look good.
-//   p = Math.round(((slowestA - fastestA) / fastestA) * 100);
-//   // Sets graph.
-//   myRow = myTableBody.getElementsByTagName("tr")[0];
-//   myCell = myRow.getElementsByTagName("th")[1];
-//   myDiv = myCell.querySelector("div");
-//   // Removes previous test's entry.
-//   while(myDiv.firstChild) {
-//     myDiv.removeChild(myDiv.firstChild);
-//   }
-//   myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart');
-//   myDiv.insertAdjacentText('beforeend', p + '% faster');
-//   if (p > 100) {
-//     myDiv.style.width = 100 + '%';
-
-//   } else {
-//     myDiv.style.width = p + '%';
-//   }
-//   myDiv.style.color = 'white';
-// } 
-// function rpcTestAbout() {
-//   fetch('terminalTextRpc.txt')
-//     .then(response => response.text())
-//     .then((text) => {
-//         for(i = 0; i < text.length; i++) {
-//             (function(i){
-//                 setTimeout(function() {
-//                     terminal.write(text[i]);
-//                     if ((text.length - 1) == (i)) { 
-//                         toggleKeyboard();
-//                     };
-//                 }, 1 * i);
-//             }(i));
-//             } 
-//     })
-// }

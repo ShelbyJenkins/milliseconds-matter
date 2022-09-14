@@ -21,7 +21,7 @@ terminal.focus();
 // Important due to delay in loading custom font.
 function checkTerminal() {
     fitAddon.fit();
-    terminal.setOption("fontSize", 12);
+    terminal.setOption("fontSize", 14);
     terminal.setOption("fontFamily", 'DOS');
 }
 

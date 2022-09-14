@@ -107,7 +107,7 @@ async function rpcTest(rpcns) {
             if (b > 0) {
               logTest((t1 - t0), rpcn, b, r.result);
               updateSolanaTransactionCount(r.result);
-              terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + Math.round((t1 - t0)) + 'ms' + '\x1b[39m');
+              terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m');
             }
           resolve(1);
       } catch (error) {
@@ -155,7 +155,7 @@ async function rpcTest(rpcns) {
   });
   // Updates slowest and fastest average scores in to best/worst table.
   updateSlowestFastestGraph(slowestA, fastestA);
-  terminal.write('\r\n' + '\r\n' + '    test complete - check console for complete log')
+  terminal.write('\r\n' + '\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n');
   toggleKeyboard();
   checkTerminal();
   console.log('The following rpcns were tested: ');

@@ -319,3 +319,20 @@ if (c !== undefined ) {
   });
 }
 }
+
+// function rpcdisttestabout() {
+//   fetch('terminal-test-about.txt')
+//     .then(response => response.text())
+//     .then((text) => {
+//         for(i = 0; i < text.length; i++) {
+//             (function(i){
+//                 setTimeout(function() {
+//                     terminal.write(text[i]);
+//                     if ((text.length - 1) == (i)) { 
+//                         toggleKeyboard();
+//                     };
+//                 }, 1 * i);
+//             }(i));
+//             } 
+//     })
+// }

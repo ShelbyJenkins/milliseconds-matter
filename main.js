@@ -30,7 +30,7 @@ window.addEventListener('resize', checkTerminal)
 
 // Types text into terminal upon load.
 function introText() {
-    fetch('terminalText.txt')
+    fetch('terminal.txt')
     .then(response => response.text())
     .then((text) => {
         for(var i = 0; i < text.length; i++) {

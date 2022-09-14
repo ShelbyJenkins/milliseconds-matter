@@ -6,6 +6,8 @@
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
         <meta http-equiv="Pragma" content="no-cache"/>
         <meta http-equiv="Expires" content="0"/>
+        <link rel="icon" type="image/x-icon" href="/favicon.svg">
+
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="/node_modules/tuicss/dist/tuicss.css">
         <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
@@ -20,9 +22,10 @@
                 <ul>
                     <li><a href="/"><span style="color: #a800a8">GO</span> home</a></li>
                     <span class="tui-statusbar-divider"></span>
-                    <!-- <li><a href="/waf"><span class="purple-168-text">GO</span> waf-test</a></li>
-                    <span class="tui-statusbar-divider"></span> -->
-                    <li><a href="#!"><span style="color: floralwhite">N/A</span> about test</a></li>
+                    <li>
+                        <a onclick="rpcdisttestabout();"><span style="color: #a800a8">GO</span> test-about</a></li>
+                    </li>
+                    
                 </ul>
             </div>
             <div class="multi-test" id="centralized">

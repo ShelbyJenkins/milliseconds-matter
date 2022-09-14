@@ -1,8 +1,0 @@
-    
-    Why: test is meant to demonstrate the response time improvements possible by using localized, non-centralized web3 infrastructure and a private network backbone.
-    What: test request used is a simple Solana command that returns the current transaction count on the Solana blockchain - "getTransactionCount."
-    Where: test is performed on four RPC nodes; two in NA, and one in both EU and APAC. This provides a low latency experience to most web3 users on Earth.
-    How: each RPC node is tested in two ways -
-        connecting to the RPC node's public ip address - this routes the request from the user over the public internet to the RPC node.
-        AND connecting to the RPC node's *workload* anycast ip address - this routes the request from the user to the SP// PoP that is geographically nearest to the user and then over SP//'s private network backbone to the RPC node.
-

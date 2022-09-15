@@ -26,60 +26,50 @@
                     </li>
                 </ul>
             </div>
-            <table class="tui-table hovered-purple" id="fastest-slowest">
-                <thead>
-                    <tr>
-                        <th>fastest</th>
-                        <th><div>-------</div></th>
-                        <th>slowest</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="green-168-text">--</td>
-                        <td>--</td>
-                        <td class="red-168-text">--</td>
-                    </tr>
-                </tbody>
-            </table>      
-            <hr> 
             <table class="tui-table hovered-purple" id="data-table">
                 <thead>
                     <tr>
                         <th>
-                            1
+                            #1
                         </th>
                         <th>
-                            2
+                            #2
                         </th>
                         <th>
-                            3
+                            #3
                         </th>
                         <th>
-                            4
+                            #4
                         </th>
                         <th>
-                            5
+                            #5
                         </th>
                         <th>
-                            6
+                            #6
                         </th>
                         <th>
-                            7
+                            #7
                         </th>
                         <th>
-                            8
+                            #8
                         </th>
                         <th>
-                            9
+                            #9
                         </th>
                     </tr>    
                 </thead>
                 <tbody>
                     <tr></tr>
                     <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
                 </tbody>
             </table>
+            <hr>
+            <div>
+                average
+            </div>
             <hr>
             <div id="count-bar">
                 <div>
@@ -93,8 +83,8 @@
             </div>
             <hr>
             <div class="run-button rpc-comp-test-button">
-                <button onclick="rpcTest(rpcns);">
-                    <span>test community RPC endpoint's response times</span>
+                <button onclick="runTest();">
+                    <span>test <span id="rpc-list-count" style="color: yellowgreen;">100</span> endpoint's response times</span>
                 </button>
             </div>
             <hr>

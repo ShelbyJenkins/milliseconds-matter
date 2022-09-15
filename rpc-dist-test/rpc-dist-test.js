@@ -110,7 +110,6 @@ async function testBatches(rpcns) {
     await new Promise(resolve => setTimeout(resolve, 300))
   }
    // Averages 5 runs and updates averages on table.
-   // Also sets slowest and fastest averages for highlights.
    rpcns.forEach((rpcn) => {
     let a = 0
     for (let b = 1; b < 6; b++) {

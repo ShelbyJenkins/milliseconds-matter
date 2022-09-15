@@ -1,26 +1,5 @@
 // The main script for the community rpcs comparison test.
-removePreviousTable();
-addDefaultTable();
-let rpcns = [];
-let rpcnsBad = [];
-let rpcnsBadLog = [];
-createRPCList();
-// Creates an array of objects from json file.
-async function createRPCList() {
-  var response = await fetch('rpcns.json');
-  var data = await response.json();
-  data.forEach((e) => {
-    e.address = 'http://' + e.address;
-    rpcns.push(e);
-  });
-  var response = await fetch('rpcns.json');
-  var data = await response.json();
-  data.forEach((e) => {
-    e.address = 'https://' + e.address;
-    rpcns.push(e);
-  });
-  console.log(rpcns);
-};
+
  // Disables button after click to prevent multiple entries.
  const buttons = document.querySelectorAll('button');
  buttons.forEach((b) => {
@@ -31,13 +10,102 @@ async function createRPCList() {
      });
  });
 
+ let rpcns = []
+ let rpcnsBad = [];
+ let rpcnsBadLog = [];
+ addDefaultTable();
+ setListCount()
+ 
 // Main Function.
-async function rpcTest(rpcns) {
+async function runTest() {
+  rpcnsBad = [];
+  rpcnsBadLog = [];
+  let list = await createRPCList();
   // Clears table from previous run.
   removePreviousTable();
   addDefaultTable();
+  // Performs the test 5 times to generate averages.
+  rpcns = await testBatches(list)
+  // Post test actions.
+  let fastestA = Number.MAX_VALUE;
+  let slowestA = 0;
+  rpcns.forEach((rpcn) => {
+    // Averages 5 runs and updates averages in list.
+    let a = 0;
+    for (let b = 1; b < 6; b++) {
+      const batch = 'resT' + b;
+      a += parseFloat(rpcn[batch]);
+    }
+    a /= 5;
+    rpcn.resA = a.toFixed(1);
+    // Sets slowest and fastest averages for graph.
+    // Sets slowest average.
+    if (rpcn.resA > parseFloat(slowestA)) {
+      slowestA = rpcn.resA;
+    }
+    // Sets fastest average.
+    if (rpcn.resA < parseFloat(fastestA)) {
+      fastestA = rpcn.resA;
+    }
+    // Pulls ASN and geodata.
+    // Updates rpcn objects with results of tests.
+      // rpcn.NewField = 'asn';
+      // rpcn.NewField = 'location';
+      // rpcn[getLocation(rpcn)] = ;
+      // rpcn[getASN(rpcn)] = ;
+  });
+  // Sorts list by averages.
+  rpcns.sort((a, b) => a.resA - b.resA);
+  // Output averages into terminal.
+  rpcns.forEach((rpcn, i) => {
+    terminal.write('\r\n' + '    #' +  (i + 1) + ' ' + rpcn.address + ' with an average response of ' + rpcn.resA + 'ms');
+  });
+  removePreviousTable();
+  // Populates main table.
+  rpcns.slice(0, 9).forEach((rpcn, p) => {
+    // Adds a cell for org name and test result.
+    generateTableCellPairs(rpcn);
+  });
+  // Updates slowest and fastest average scores in to best/worst table.
+  // updateSlowestFastestGraph(slowestA, fastestA);
+  terminal.write('\r\n' + '\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n');
+  toggleKeyboard();
+  console.log('The following rpcns were tested: ');
+  console.log(rpcns);
+  console.log('The following rpcns failed testing: ');
+  console.log(rpcnsBad);
+  // Unlocks button.
+  document.querySelector("body > div > div.run-button.rpc-comp-test-button > button").disabled = false
+}
+
+//Sets button counter.
+async function setListCount() {
+  let list = await createRPCList();
+  // Divide by two since list is populats each rpc as http and https objects.
+  document.querySelector("#rpc-list-count").innerText = (Object.keys(list).length) / 2
+ }
+// Creates an array of objects from json file.
+async function createRPCList() {
+  let response = await fetch('rpcns.json');
+  let data = await response.json();
+  let output = [];
+  data.forEach((e) => {
+    e.address = 'http://' + e.address;
+    output.push(e);
+  });
+  response = await fetch('rpcns.json');
+  data = await response.json();
+  data.forEach((e) => {
+    e.address = 'https://' + e.address;
+    output.push(e);
+  });
+  return output
+}
+// Runs multiple tests and returns populated objects.
+async function testBatches(rpcns) {
   // Calls a single round of test on all rpcns. Waits till all tests are complete, and then tests again.
   // Performs the test 5 times to generate averages.
+  // First test is not counted in the averages.
   for (let b = 1; b < 6; b++) {
     updateBatchCount(b);
     let countRequested = 0;
@@ -79,89 +147,44 @@ async function rpcTest(rpcns) {
           }
         });
       });
-    // // Pauses loop 3 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Pauses loop 3 seconds after each iteration.
+    // await new Promise(resolve => setTimeout(resolve, 1000));
   };
-  // Single test within a batch.
-  async function testSingle(rpcn, b) {
-    // Returns promise when fetch succeeds or fails.
-    return new Promise(async function(resolve, reject){
-      // Performance.now() measures the time with higher presicision than date()/
-      const t0 = performance.now()
-      try {
-          const response = await fetch(rpcn.address, {
-            signal: AbortSignal.timeout(1000),
-            method: 'POST',
-            headers: {
-              'mode': 'no-cors',
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify( {jsonrpc: '2.0', id: 'null', method: 'getTransactionCount'} )
-          });
-          r = await response.json()
-          const t1 = performance.now();
-            // First test is not logged.
-            if (b > 0) {
-              logTest((t1 - t0), rpcn, b, r.result);
-              updateSolanaTransactionCount(r.result);
-              terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m');
-            }
-          resolve(1);
-      } catch (error) {
-          terminal.write('\r\n' + '\x1b[38;2;168;0;0m ' + '    ' + rpcn.address + ' removed from test due to ' + error + '\x1b[39m');
-          // Add to rpcnsBad to be used to remove bad nodes from testing.
-          rpcnsBad.push(rpcn);
-          resolve();
-      };
-    });
-  };
-  // Post test actions.
-  let fastestA = Number.MAX_VALUE;
-  let slowestA = 0;
-   // Averages 5 runs and updates averages in list.
-   // Also sets slowest and fastest averages for graph.
-   rpcns.forEach((rpcn) => {
-    let a = 0;
-    for (let b = 1; b < 6; b++) {
-      const batch = 'resT' + b;
-      a += parseFloat(rpcn[batch]);
-    }
-    a /= 5;
-    rpcn.resA = a.toFixed(1);
-    // Sets slowest average.
-    if (rpcn.resA > parseFloat(slowestA)) {
-      slowestA = rpcn.resA;
-    }
-    // Sets fastest average.
-    if (rpcn.resA < parseFloat(fastestA)) {
-      fastestA = rpcn.resA;
-    }
+  return rpcns
+}
+// Single test within a batch.
+async function testSingle(rpcn, b) {
+  // Returns promise when fetch succeeds or fails.
+  return new Promise(async function(resolve, reject){
+    // Performance.now() measures the time with higher presicision than date()/
+    const t0 = performance.now()
+    try {
+        const response = await fetch(rpcn.address, {
+          signal: AbortSignal.timeout(1000),
+          method: 'POST',
+          headers: {
+            'mode': 'no-cors',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify( {jsonrpc: '2.0', id: 'null', method: 'getTransactionCount'} )
+        });
+        r = await response.json()
+        const t1 = performance.now();
+          // First test is not logged.
+          if (b > 0) {
+            logTest((t1 - t0), rpcn, b, r.result);
+            updateSolanaTransactionCount(r.result);
+            terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m');
+          }
+        resolve(1);
+    } catch (error) {
+        terminal.write('\r\n' + '\x1b[38;2;168;0;0m ' + '   ' + rpcn.address + ' removed from test due to ' + error + '\x1b[39m');
+        // Add to rpcnsBad to be used to remove bad nodes from testing.
+        rpcnsBad.push(rpcn);
+        resolve();
+    };
   });
-
-  // Sorts list by averages.
-  rpcns.sort((a, b) => a.resA - b.resA);
-  // Output averages into terminal.
-  rpcns.forEach((rpcn, i) => {
-    terminal.write('\r\n' + '     #' +  (i + 1) + ' ' + rpcn.address + ' with an average response of ' + rpcn.resA + 'ms');
-  });
-  removePreviousTable();
-  // Populates main table.
-  rpcns.slice(0, 9).forEach((rpcn, p) => {
-    // Adds a cell for org name and test result.
-    generateTableCellPairs(rpcn);
-  });
-  // Updates slowest and fastest average scores in to best/worst table.
-  updateSlowestFastestGraph(slowestA, fastestA);
-  terminal.write('\r\n' + '\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n');
-  toggleKeyboard();
-  checkTerminal();
-  console.log('The following rpcns were tested: ');
-  console.log(rpcns);
-  console.log('The following rpcns failed testing: ');
-  console.log(rpcnsBad);
-  // Unlocks button.
-  document.querySelector("body > div > div.run-button.rpc-comp-test-button > button").disabled = false
 }
 // Updates object after each test within a batch.
 function logTest(r, rpcn, b, c) {
@@ -171,92 +194,128 @@ function logTest(r, rpcn, b, c) {
   r = r.toFixed(1);
   rpcn[batch] = r;
 }
+function getASN(rpcn) {
+  return asn
+}
+// Refreshes table back to blank.
 function removePreviousTable() {
-  document.getElementsByTagName("table")[1].deleteRow(1);
-  document.getElementsByTagName("table")[1].deleteRow(1);
+  document.getElementsByTagName("table")[0].deleteRow(1);
+  document.getElementsByTagName("table")[0].deleteRow(1);
+  document.getElementsByTagName("table")[0].deleteRow(1);
+  document.getElementsByTagName("table")[0].deleteRow(1);
+  document.getElementsByTagName("table")[0].deleteRow(1);
   myBody = document.getElementsByTagName('body')[0];
-  myTable = myBody.getElementsByTagName('table')[1];
+  myTable = myBody.getElementsByTagName('table')[0];
   myTableBody = myTable.getElementsByTagName('tbody')[0];
+  myTableBody.insertRow(0);
+  myTableBody.insertRow(0);
+  myTableBody.insertRow(0);
   myTableBody.insertRow(0);
   myTableBody.insertRow(0);
 }
 function addDefaultTable() {
   myBody = document.getElementsByTagName('body')[0];
-  myTable = myBody.getElementsByTagName('table')[1];
+  myTable = myBody.getElementsByTagName('table')[0];
   myTableBody = myTable.getElementsByTagName('tbody')[0];
   for (i = 0; i < 9; i++) {
+    // Row of "percent faster than average."
     myRow = myTableBody.getElementsByTagName('tr')[0];
+    var td = document.createElement('td');
+    td.appendChild(document.createTextNode('percent faster than average'));
+    myRow.appendChild(td)
+    // Row of "rpcn."
+    myRow = myTableBody.getElementsByTagName('tr')[1];
     var td = document.createElement('td');
     td.appendChild(document.createTextNode('rpcn'));
     myRow.appendChild(td)
-    myBody = document.getElementsByTagName('body')[0];
-    myTable = myBody.getElementsByTagName('table')[1];
-    myTableBody = myTable.getElementsByTagName('tbody')[0];
-    myRow = myTableBody.getElementsByTagName('tr')[1];
+    // Row of "ms average."
+    myRow = myTableBody.getElementsByTagName('tr')[2];
     var td = document.createElement('td');
     td.appendChild(document.createTextNode('ms average'));
     myRow.appendChild(td)
+    // Row of "location"
+    myRow = myTableBody.getElementsByTagName('tr')[3];
+    var td = document.createElement('td');
+    td.appendChild(document.createTextNode('location'));
+    myRow.appendChild(td)
+    // Row of "asn"
+    myRow = myTableBody.getElementsByTagName('tr')[4];
+    var td = document.createElement('td');
+    td.appendChild(document.createTextNode('asn'));
+    myRow.appendChild(td)
   }
 }
+// Updates all table fields with dynamic information.
 function generateTableCellPairs(rpcn) {
   myBody = document.getElementsByTagName('body')[0];
-  myTable = myBody.getElementsByTagName('table')[1];
+  myTable = myBody.getElementsByTagName('table')[0];
   myTableBody = myTable.getElementsByTagName('tbody')[0];
+  // Sets rpcn names.
   myRow = myTableBody.getElementsByTagName('tr')[0];
   var td = document.createElement('td');
   td.appendChild(document.createTextNode(rpcn.rpcn));
   myRow.appendChild(td)
+  // Sets rpcn response times.
   myRow = myTableBody.getElementsByTagName('tr')[1];
   var td = document.createElement('td');
   td.appendChild(document.createTextNode(rpcn.resA + 'ms average'));
   myRow.appendChild(td)
+  // // Sets rpcn response times.
+  // myRow = myTableBody.getElementsByTagName('tr')[2];
+  // var td = document.createElement('td');
+  // td.appendChild(document.createTextNode(rcpn.location));
+  // myRow.appendChild(td)
+  // // Sets rpcn response times.
+  // myRow = myTableBody.getElementsByTagName('tr')[3];
+  // var td = document.createElement('td');
+  // td.appendChild(document.createTextNode(rpcn.asn));
+  // myRow.appendChild(td)
 }
 // Updates top table with slowest and fastest and graph.
-function updateSlowestFastestGraph(slowestA, fastestA) {
-  myBody = document.getElementsByTagName('body')[0];
-  myTableBody = myBody.getElementsByTagName('table')[0];
-  myRow = myTableBody.getElementsByTagName('tr')[1];
-  // Updates slowest org.
-  myCell = myRow.getElementsByTagName('td')[2];
-  while(myCell.firstChild) {
-    myCell.removeChild(myCell.firstChild);
-  }
-  myCell.textContent += slowestA + 'ms';
-  // Updates fastest org
-  myCell = myRow.getElementsByTagName('td')[0];
-  while(myCell.firstChild) {
-    myCell.removeChild(myCell.firstChild);
-  }
-  myCell.textContent += fastestA + 'ms';
-  // Updates graph text.
-  d = (slowestA - fastestA).toFixed(1);
-  myRow = myTableBody.getElementsByTagName('tr')[1];
-  myCell = myRow.getElementsByTagName('td')[1];
-  while(myCell.firstChild) {
-    myCell.removeChild(myCell.firstChild);
-  }
-  myCell.textContent += (d + 'ms delta');
-  // Doing some tricks to make the graph look good.
-  p = Math.round(((slowestA - fastestA) / fastestA) * 100);
-  // Sets graph.
-  myRow = myTableBody.getElementsByTagName('tr')[0];
-  myCell = myRow.getElementsByTagName('th')[1];
-  myDiv = myCell.querySelector('div');
-  // Removes previous test's graph.
-  while(myDiv.firstChild) {
-    myDiv.removeChild(myDiv.firstChild);
-  }
-  myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart');
-  myDiv.insertAdjacentText('beforeend', p + '% faster');
-  if (p > 100) {
-    myDiv.style.width = 100 + '%';
+// function updateSlowestFastestGraph(slowestA, fastestA) {
+//   myBody = document.getElementsByTagName('body')[0];
+//   myTableBody = myBody.getElementsByTagName('table')[0];
+//   myRow = myTableBody.getElementsByTagName('tr')[1];
+//   // Updates slowest org.
+//   myCell = myRow.getElementsByTagName('td')[2];
+//   while(myCell.firstChild) {
+//     myCell.removeChild(myCell.firstChild);
+//   }
+//   myCell.textContent += slowestA + 'ms';
+//   // Updates fastest org
+//   myCell = myRow.getElementsByTagName('td')[0];
+//   while(myCell.firstChild) {
+//     myCell.removeChild(myCell.firstChild);
+//   }
+//   myCell.textContent += fastestA + 'ms';
+//   // Updates graph text.
+//   d = (slowestA - fastestA).toFixed(1);
+//   myRow = myTableBody.getElementsByTagName('tr')[1];
+//   myCell = myRow.getElementsByTagName('td')[1];
+//   while(myCell.firstChild) {
+//     myCell.removeChild(myCell.firstChild);
+//   }
+//   myCell.textContent += (d + 'ms delta');
+//   // Doing some tricks to make the graph look good.
+//   p = Math.round(((slowestA - fastestA) / fastestA) * 100);
+//   // Sets graph.
+//   myRow = myTableBody.getElementsByTagName('tr')[0];
+//   myCell = myRow.getElementsByTagName('th')[1];
+//   myDiv = myCell.querySelector('div');
+//   // Removes previous test's graph.
+//   while(myDiv.firstChild) {
+//     myDiv.removeChild(myDiv.firstChild);
+//   }
+//   myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart');
+//   myDiv.insertAdjacentText('beforeend', p + '% faster');
+//   if (p > 100) {
+//     myDiv.style.width = 100 + '%';
 
-  } else {
-    myDiv.style.width = p + '%';
-  }
-  myDiv.style.color = 'white';
-} 
-
+//   } else {
+//     myDiv.style.width = p + '%';
+//   }
+//   myDiv.style.color = 'white';
+// } 
 
 // This group of functions updates the status of the tests.
 function updateRPCRequestedCount(c) {

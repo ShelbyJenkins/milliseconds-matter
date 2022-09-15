@@ -172,6 +172,7 @@ hr {
 }
 #data-table {
     margin: .5%;
+    height: 25%;
 }
 #data-table td {
     width: 8%;

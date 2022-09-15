@@ -13,7 +13,7 @@
         { 
             "rpcn"    : "milliseconds-matter-anycast-secured",
             "type"    : "secured",
-            "address" : "http://j9i2c5q8.stackpathcdn.com",
+            "address" : "http://rpc.milliseconds-matter.me",
             "resT1"   : 0,
             "resT2"   : 0,
             "resT3"   : 0,

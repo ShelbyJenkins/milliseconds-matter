@@ -17,18 +17,10 @@
     </head>
     <body>
         <div class="main">
-            <nav class="tui-statusbar">
-                <ul>
-                    <li class="tui-dropdown">
-                        waf-test v0.0.3
-                        <div class="tui-dropdown-content">
-                            <ul>
-                                <li><a href="#!"><span class="purple-168-text">N</span>othing done here.</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+            <div class="action-bar">
+                <span>milliseconds-matter v0.7</span>
+                <a href="#!"><span style="color: floralwhite">N/A</span><span>about site</span></a>    
+            </div>
             <div id="terminal"></div>
             <div id="waf-table-wrapper">
                 <table class="tui-table hovered-purple">
@@ -99,19 +91,19 @@
                     </tfoot>
                 </table>
             </div>
-            <div class="tui-statusbar">
-                <ul>
-                    <li><a href="/index.html"><span class="purple-168-text">GO</span> home</a></li>
-                    <span class="tui-statusbar-divider"></span>
-                    <li><a href="/waf/waf.html"><span class="purple-168-text">GO</span> waf-test</a></li>
-                    <span class="tui-statusbar-divider"></span>
-                    <li><a href="/rpc-geo-net-test/rpc-geo-net-test.html"><span class="purple-168-text">GO</span> rpc-geo-net-test</a></li>
-                    <span class="tui-statusbar-divider"></span>
-                    <li><a href="#!"><span style="color: floralwhite">N/A</span> rpc-community-test</a></li>
-                    <span class="tui-statusbar-divider"></span>
-                    <li><a onclick="wafTestAbout()"><span class="purple-168-text">GO</span> about test</a></li>
-                    <li>...</li>
-                </ul>
+            <div class="navbar">
+                <a href="/">
+                    <span class="purple-168-text">GO</span><span>home</span>
+                </a>
+                <a href="/rpc-geo-distributed-demonstration">
+                    <span class="purple-168-text">GO </span><span>rpc-geo-distributed-demonstration</span>
+                </a>
+                <a href="/rpc-speed-comparison">
+                    <span class="purple-168-text">GO </span><span>rpc-speed-comparison</span>
+                </a>
+                <a href="#!">
+                    <span class="black-168-text">N/A </span><span>waf-test</span>
+                </a>
             </div>
         </div>
     </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>milliseconds-matter-rpc-com-test</title>
+        <title>rpc-speed-comparison</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
         <meta http-equiv="Pragma" content="no-cache"/>
@@ -12,19 +12,19 @@
         <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
         <script src="/node_modules/xterm/lib/xterm.js"></script>
         <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
-        <script src="rpc-com-test.js" defer></script>
+        <script src="rpc-speed-comparison.js" defer></script>
         <script src="/main.js" defer></script>
     </head>
     <body>
         <div class="main">
-            <div class="tui-statusbar">
-                <ul>
-                    <li><a href="/"><span class="purple-168-text">GO</span> home</a></li>
-                    <span class="tui-statusbar-divider"></span>
-                    <li>
-                        <a onclick="rpcCompTestAbout();"><span style="color: #a800a8">GO</span> test-about</a></li>
-                    </li>
-                </ul>
+            <div class="action-bar">
+                <span>milliseconds-matter v0.7</span>
+                <div class="run-button rpc-comp-test-button">
+                    <button onclick="runTest();">
+                        <span>test<span id="rpc-list-count" style="color: yellowgreen;">100</span> endpoint's response times</span>
+                    </button> 
+                </div>
+                <a href="#!"><span style="color: floralwhite">N/A</span><span>about site</span></a>    
             </div>
             <table class="tui-table hovered-purple" id="data-table">
                 <thead>
@@ -82,15 +82,20 @@
                 </div>
             </div>
             <hr>
-            <div class="run-button rpc-comp-test-button">
-                <button onclick="runTest();">
-                    <span>test <span id="rpc-list-count" style="color: yellowgreen;">100</span> endpoint's response times</span>
-                </button>
-            </div>
-            <hr>
             <div id="terminal"></div>
-            <nav class="tui-statusbar">
-                <span>milliseconds-matter v0.6</span>
-            </nav>
+            <div class="navbar">
+                <a href="/">
+                    <span class="purple-168-text">GO</span><span>home</span>
+                </a>
+                <a href="/rpc-geo-distributed-demonstration">
+                    <span class="purple-168-text">GO </span><span>rpc-geo-distributed-demonstration</span>
+                </a>
+                <a href="/rpc-speed-comparison">
+                    <span class="purple-168-text">GO </span><span>rpc-speed-comparison</span>
+                </a>
+                <a href="#!">
+                    <span class="black-168-text">N/A </span><span>waf-test</span>
+                </a>
+            </div>
         </div>
     </body>

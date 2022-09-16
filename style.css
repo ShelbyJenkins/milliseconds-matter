@@ -1,26 +1,26 @@
+
 html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    justify-items: center;
-    justify-self: center;
     align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-size: 2vh;    
     background-color: black;
     font-family: 'DOS';
     color: floralwhite;
-    text-align: center;
-    width: 100vw;
-    height: 100vh;
-    font-size: 2vh;    
 }
 .main {
-    border-left: 1em #a8a8a8 solid;
-    border-right: 1em #a8a8a8 solid;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 90vw;
     height: 95vh;
+    max-height: 95vh;
+    border-left: 1em #a8a8a8 solid;
+    border-right: 1em #a8a8a8 solid;
 }
 /* horizontal break */
 hr {
@@ -31,54 +31,66 @@ hr {
     border-bottom: 1px dashed floralwhite;
 }
 #terminal {
-    flex: 1 1 0;
-    overflow: hidden;
-    margin: .5%;
+    height: 35vh;
+    padding-top: .1em;
+    padding-bottom: .1em;
 }
-/* statusbar starts */
-.tui-statusbar {
+.home-terminal {
+    height: 85vh !important;
+    padding-top: .1em;
+    padding-bottom: .1em;
+}
+/* statusbar and navbar starts */
+.navbar {
     display: flex;
-    align-self: stretch;
+    justify-content: flex-start;
+    align-items: center;
     background-color: #a8a8a8;
     color: black;
     max-width: 100%;
-    text-align: left;
-    padding-top: .5%;
-    padding-bottom: .5%;
+    height: 5%;
     font-weight: 900;
 }
-.tui-statusbar ul {
+.navbar a,
+.action-bar a
+{
     display: flex;
-    flex: 1 1 auto;
+    align-items: center;
+    border: outset .25em #00a8a8;
+    height: 75%;
+    max-width: 25%;
+    margin-left: 3em;
+    padding-left: .5em;
+    padding-right: 2em;
 }
-.tui-statusbar ul li {
-    display: flex;
-    width: 15%;
-    margin-left: 1em;
-}
-.tui-statusbar li a:hover {
+.navbar a:hover,
+.action-bar a:hover
+{
     background-color: yellowgreen;
     border: outset .25em yellowgreen;
     color: floralwhite; 
 }
-.tui-statusbar li a {
-    border: outset .25em #00a8a8;
-    padding: .5em;
-    width: 75%;
+.navbar span,
+.action-bar span
+{
+    margin-left: .5em;    
 }
-.tui-statusbar-divider {
-    border-right: 2px rgb(0, 0, 0) solid;
-    display: inline;
-    margin: 0px 3px; 
-}
-.tui-statusbar span {
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a8a8a8;
+    color: black;
+    max-width: 100%;
+    height: 5%;
     font-weight: 900;
 }
-/* statusbar ends */
+
+/* statusbar and navbar ends */
 /* count bar */
 #count-bar {
     display: flex;
-    width: 100%
+    width: 100%;
 }
 #count-bar div {
     display: flex;
@@ -89,7 +101,7 @@ hr {
     width: 58%;
 }
 #count-bar > div:nth-child(1) {
-    width: 42%
+    width: 42%;
 }
 #count-bar div + div {
     border-left: 1px dashed floralwhite;
@@ -112,10 +124,12 @@ hr {
     background-color: #00a8a8;
     border: outset .3em #00a8a8;
     color: floralwhite;
+    cursor: pointer;
 }
 .run-button button:disabled {
     background-color: #a8a8a8;
     border: outset .3em #a8a8a8;
+    cursor: not-allowed;
 }
 .run-button button:hover:enabled {
     background-color: yellowgreen;
@@ -136,11 +150,11 @@ hr {
 /* rpc-comp-test */
 .run-button.rpc-comp-test-button {
     margin: .5em;
+    width: 42%;
 }
 .run-button.rpc-comp-test-button button {
-    padding: .5em;
-    height: 90%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
 }
 /* rpc-dist-test */
 .multi-test .run-button {
@@ -160,29 +174,19 @@ hr {
 }
 
 /* rpc-comp-test */
-#fastest-slowest {
-    margin: .5%;
-}
-/* This cool trick adds a border between two adjacent column! */
-#fastest-slowest td + td {
-    border-left: 1px dashed floralwhite;
-}
-#fastest-slowest th + th {
-    border-left: 1px dashed floralwhite;
-}
+
 #data-table {
     margin: .5%;
-    height: 25%;
-    height: 35%
+    height: 20%;
+
 }
 #data-table td {
     width: 8%;
-    padding: .3em;
+    padding: .2em;
 }
 #data-table td + td {
     border-left: 1px dashed floralwhite;
 }
-
 
 /* rpc-dist-test  */
 .multi-test {

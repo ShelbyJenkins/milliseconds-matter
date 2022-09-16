@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>milliseconds-matter-rpc-dist-test</title>
+        <title>rpc-geo-distributed-demonstration</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
         <meta http-equiv="Pragma" content="no-cache"/>
@@ -13,20 +13,14 @@
         <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
         <script src="/node_modules/xterm/lib/xterm.js"></script>
         <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
-        <script src="rpc-dist-test.js" defer></script>
+        <script src="rpc-geo-distributed-demonstration.js" defer></script>
         <script src="/main.js" defer></script>
     </head>
     <body>
         <div class="main">
-            <div class="tui-statusbar">
-                <ul>
-                    <li><a href="/"><span style="color: #a800a8">GO</span> home</a></li>
-                    <span class="tui-statusbar-divider"></span>
-                    <li>
-                        <a onclick="rpcDistTestAbout();"><span style="color: #a800a8">GO</span> test-about</a></li>
-                    </li>
-                    
-                </ul>
+            <div class="action-bar">
+                <span>milliseconds-matter v0.7</span>
+                <a href="#!"><span style="color: floralwhite">N/A</span><span>about site</span></a>    
             </div>
             <div class="multi-test" id="centralized">
                 <div class="static">
@@ -97,13 +91,19 @@
             </div>
             <hr>
             <div id="terminal"></div>
-            <nav class="tui-statusbar">
-                <ul>
-                    <li>
-                        <span>milliseconds-matter v0.6</span>
-                    </li>
-                </ul>                
-            </nav>
-            
+            <div class="navbar">
+                <a href="/">
+                    <span class="purple-168-text">GO</span><span>home</span>
+                </a>
+                <a href="/rpc-geo-distributed-demonstration">
+                    <span class="purple-168-text">GO </span><span>rpc-geo-distributed-demonstration</span>
+                </a>
+                <a href="/rpc-speed-comparison">
+                    <span class="purple-168-text">GO </span><span>rpc-speed-comparison</span>
+                </a>
+                <a href="#!">
+                    <span class="black-168-text">N/A </span><span>waf-test</span>
+                </a>
+            </div>
         </div>
     </body>

@@ -49,13 +49,14 @@ async function runTest() {
   averageT /= Object.keys(rpcns).length
   averageT = averageT.toFixed(1)
   updateResponseAverage(averageT)
-  // Sorts list by averages.
+  // Sorts list by averages first to last.
   rpcns.sort((a, b) => a.resA - b.resA)
   let fastestP = 0
-  // Output averages into terminal.
+  // Updates list with percentFasterThanAverage and rank.
   rpcns.forEach((rpcn, i) => {
-    terminal.write('\r\n' + '    #' +  (i + 1) + ' ' + rpcn.address + ' with an average response of ' + rpcn.resA + 'ms')
-    // Add percentFasterThanAverage field to output.
+    // Adds rank to rpcns list.
+    rpcn.rank = (i + 1)
+    // Add percentFasterThanAverage field to rpcns list.
     let percentFasterThanAverage = Math.round(((averageT - rpcn.resA) / rpcn.resA) * 100)
     rpcn.percentFasterThanAverage = percentFasterThanAverage
     // Sets fastestP for graph math.
@@ -69,14 +70,19 @@ async function runTest() {
     // Adds a cell for org name and test result.
     generateTableCellPairs(rpcn, fastestP)
   })
-  terminal.write('\r\n' + '\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n')
-  toggleKeyboard()
   console.log('The following rpcns were tested: ')
   console.log(rpcns)
   console.log('The following rpcns failed testing: ')
   console.log(rpcnsBad)
+  // Output averages into terminal.
+  rpcns.slice().reverse().forEach(rpcn => 
+    terminal.write('\r\n' + '    #' +  (rpcn.rank) + ' ' + rpcn.rpcn + ' with an average response of ' + rpcn.resA + 'ms')
+    )
+  terminal.write('\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n')
+  toggleKeyboard()
+  
   // Unlocks button.
-  document.querySelector('body > div > div.run-button.rpc-comp-test-button > button').disabled = false
+  document.querySelector('body > div > div.action-bar > div > button').disabled = false
 }
 
 //Sets button counter.
@@ -149,7 +155,7 @@ async function testBatches(rpcns) {
         })
       })
     // Pauses loop 3 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise(resolve => setTimeout(resolve, 1500))
   }
   return rpcns
 }
@@ -191,7 +197,6 @@ async function testSingle(rpcn, b) {
 function logTest(r, rpcn, b, c) {
   // Updates rpcn objects with results of tests.
   const batch = 'resT' + b
-  rpcn.NewField = 'batch'
   r = r.toFixed(1)
   rpcn[batch] = r
 }
@@ -219,7 +224,11 @@ function addDefaultTable() {
   myTable = myBody.getElementsByTagName('table')[0]
   myTableBody = myTable.getElementsByTagName('tbody')[0]
   for (i = 0; i < 9; i++) {
-
+    // Row of 'rpcn.'
+    myRow = myTableBody.getElementsByTagName('tr')[0]
+    var td = document.createElement('td')
+    td.appendChild(document.createTextNode('rpcn'))
+    myRow.appendChild(td)
     // Row of 'percent faster than average.'
     // Create TD and text.
     var tdText = document.createElement('td')
@@ -231,14 +240,8 @@ function addDefaultTable() {
     var myTd = document.createElement('td')
     myTd.appendChild(myDiv)
     // Add to table..
-    myRow = myTableBody.getElementsByTagName('tr')[0]
-    myRow.appendChild(myTd)
-
-    // Row of 'rpcn.'
     myRow = myTableBody.getElementsByTagName('tr')[1]
-    var td = document.createElement('td')
-    td.appendChild(document.createTextNode('rpcn'))
-    myRow.appendChild(td)
+    myRow.appendChild(myTd)
     // Row of 'ms average.'
     myRow = myTableBody.getElementsByTagName('tr')[2]
     var td = document.createElement('td')
@@ -261,6 +264,11 @@ function generateTableCellPairs(rpcn, fastestP) {
   myBody = document.getElementsByTagName('body')[0]
   myTable = myBody.getElementsByTagName('table')[0]
   myTableBody = myTable.getElementsByTagName('tbody')[0]
+  // Sets rpcn names.
+  myRow = myTableBody.getElementsByTagName('tr')[0]
+  var td = document.createElement('td')
+  td.appendChild(document.createTextNode(rpcn.rpcn))
+  myRow.appendChild(td)
   // Sets % ⚡ than avg..
   // Row of 'percent faster than average.'
   // Create td wrapper for graph.
@@ -270,7 +278,11 @@ function generateTableCellPairs(rpcn, fastestP) {
   var myDiv = document.createElement('div')
   // Tricks to make the graph scale. Sets fastestP as 100%.
   w = Math.round(rpcn.percentFasterThanAverage * (100 / fastestP))
-  myDiv.style.width = w + '%'
+  if (w > 0) { 
+    myDiv.style.width = w + '%' 
+  } else {
+    myDiv.style.width = 0 + '%' 
+  }
   myDiv.classList.add('tui-chart-value', 'yellowgreen-168', 'rpc-table-chart')
   myDiv.appendChild(tdGraph)
   // Create key text td.
@@ -281,14 +293,8 @@ function generateTableCellPairs(rpcn, fastestP) {
   myTd.appendChild(tdKey)
   myTd.appendChild(myDiv)
   // Add to table.
-  myRow = myTableBody.getElementsByTagName('tr')[0]
-  myRow.appendChild(myTd)
-
-  // Sets rpcn names.
   myRow = myTableBody.getElementsByTagName('tr')[1]
-  var td = document.createElement('td')
-  td.appendChild(document.createTextNode(rpcn.rpcn))
-  myRow.appendChild(td)
+  myRow.appendChild(myTd)
   // Sets rpcn response times.
   myRow = myTableBody.getElementsByTagName('tr')[2]
   var td = document.createElement('td')

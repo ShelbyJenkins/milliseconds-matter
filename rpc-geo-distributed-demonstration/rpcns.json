@@ -2,7 +2,7 @@
         { 
             "rpcn"    : "milliseconds-matter-anycast",
             "type"    : "distributed",
-            "address" : "http://185.85.196.19:8080",
+            "address" : "http://185.85.196.111:8080",
             "resT1"   : 0,
             "resT2"   : 0,
             "resT3"   : 0,
@@ -24,7 +24,7 @@
         { 
             "rpcn"    : "Seattle",
             "type"    : "centralized",
-            "address" : "http://69.197.3.4:8080",
+            "address" : "http://69.197.3.5:8080",
             "resT1"   : 0,  
             "resT2"   : 0,
             "resT3"   : 0,
@@ -35,7 +35,7 @@
         { 
             "rpcn"    : "Miami",
             "type"    : "centralized",
-            "address" : "http://69.197.2.5:8080",
+            "address" : "http://69.197.2.7:8080",
             "resT1"   : 0,  
             "resT2"   : 0,
             "resT3"   : 0,
@@ -46,7 +46,7 @@
         { 
             "rpcn"    : "Frankfurt",
             "type"    : "centralized",
-            "address" : "http://69.197.4.3:8080",
+            "address" : "http://69.197.4.4:8080",
             "resT1"   : 0,  
             "resT2"   : 0,
             "resT3"   : 0,
@@ -57,7 +57,7 @@
         { 
             "rpcn"    : "Singapore", 
             "type"    : "centralized",
-            "address" : "http://69.197.24.3:8080",
+            "address" : "http://69.197.24.4:8080",
             "resT1"   : 0,  
             "resT2"   : 0,
             "resT3"   : 0,

@@ -1,27 +1,31 @@
 [
     {
         "rpcn"    : "stackpath-mia",
-        "address" : "69.197.2.5:8080"
+        "address" : "69.197.2.7:8080"
     },
     {
         "rpcn"    : "stackpath-sea",
-        "address" : "69.197.3.4:8080"
+        "address" : "69.197.3.5:8080"
     },
     {
         "rpcn"    : "stackpath-fra",
-        "address" : "69.197.4.3:8080"
+        "address" : "69.197.4.4:8080"
     },
     {
         "rpcn"    : "stackpath-sin",
-        "address" : "69.197.24.3:8080"
+        "address" : "69.197.24.4:8080"
     },
     {
         "rpcn"    : "waf-secured-milliseconds-matter",
         "address" : "rpc.milliseconds-matter.me"
     },
     {
-        "rpcn"    : "auka",
-        "address" : "arion.earth/rpc"
+        "rpcn"    : "validators.auka.co",
+        "address" : "rpc.auka.co/rpc"
+    },
+    {
+        "rpcn"    : "sentries.io",
+        "address" : "rpc.sentries.io/rpc"
     },
     {
         "rpcn"    : "ankr-rpc",

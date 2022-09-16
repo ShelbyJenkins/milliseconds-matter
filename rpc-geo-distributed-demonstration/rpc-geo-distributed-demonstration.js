@@ -284,7 +284,7 @@ function updateDynamic(test, slowestA, fastestA, location, wafT) {
         <p>
           If your endpoint is down, your app is down.
           DDoS. Injection attacks. Bots. 'Organic' DDoS aka excess traffic. These WILL bring you down.
-          A web access firewall, aka a WAF, offers turnkey endpoint protection. 
+          A web application firewall, aka a WAF, offers turnkey endpoint protection. 
           SP//'s low latency WAF adds only <span class='green-168-text'>` + (wafT - fastestA).toFixed(1) + `ms</span> to response times!
         </p>
         `

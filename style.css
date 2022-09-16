@@ -16,7 +16,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 90vw;
+    width: 95vw;
     height: 95vh;
     max-height: 95vh;
     border-left: 1em #a8a8a8 solid;
@@ -172,22 +172,41 @@ hr {
 /* changes to tuic.css class */
 .tui-table {
 }
-
 /* rpc-comp-test */
-
+/* Tables are a mess for styling. Never again. */
 #data-table {
-    margin: .5%;
     height: 20%;
-
 }
 #data-table td {
-    width: 8%;
+    width: 10vw;
     padding: .2em;
 }
 #data-table td + td {
     border-left: 1px dashed floralwhite;
 }
-
+#data-table th + th {
+    border-left: 1px dashed floralwhite;
+}
+#data-table thead tr th {
+    padding: .3em;
+}
+#data-table tbody tr > td {
+    padding: .2em;
+    height: 30px;
+}
+/* Percent faster graph. */
+#data-table > tbody > tr:nth-child(1) > td {
+    padding-bottom: .5em;
+    padding-top: .0em;
+    border-bottom: 1px dotted floralwhite;
+    border-top: 1px dotted floralwhite;
+}
+#data-table > tbody > tr:nth-child(1) > td > td {
+    padding-top: .0em;
+}
+#data-table > tbody > tr:nth-child(5) > td {
+    text-decoration: underline rgb(168, 0, 168);
+}
 /* rpc-dist-test  */
 .multi-test {
     display: flex;

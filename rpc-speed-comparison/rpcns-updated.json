@@ -1,0 +1,788 @@
+[
+  {
+    "rpcn": "stackpath-mia",
+    "address": "69.197.2.7:8080",
+    "asn": "STACKPATH",
+    "location": "Miami US"
+  },
+  {
+    "rpcn": "stackpath-sea",
+    "address": "69.197.3.5:8080",
+    "asn": "STACKPATH",
+    "location": "Seattle US"
+  },
+  {
+    "rpcn": "stackpath-fra",
+    "address": "69.197.4.4:8080",
+    "asn": "STACKPATH",
+    "location": "Frankfurt am Main DE"
+  },
+  {
+    "rpcn": "stackpath-sin",
+    "address": "69.197.24.4:8080",
+    "asn": "STACKPATH",
+    "location": "Singapore SG"
+  },
+  {
+    "rpcn": "waf-secured-milliseconds-matter",
+    "address": "rpc.milliseconds-matter.me",
+    "asn": "STACKPATH-CDN",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "validators.auka.co",
+    "address": "rpc.auka.co/rpc",
+    "asn": "STACKPATH-CDN",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "sentries.io",
+    "address": "rpc.sentries.io/rpc",
+    "asn": "STACKPATH-CDN",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "ankr-rpc",
+    "address": "rpc.ankr.com/solana",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "blockdaemon",
+    "address": "try-rpc.mainnet.solana.blockdaemon.tech",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "allthatnode",
+    "address": "solana-mainnet-rpc.allthatnode.com",
+    "asn": "Hetzner Online GmbH",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "blockdaemon-test",
+    "address": "34.78.137.251",
+    "asn": "GOOGLE-CLOUD-PLATFORM",
+    "location": "Brussels BE"
+  },
+  {
+    "rpcn": "genesysgo-alice",
+    "address": "alice.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-alpha-art",
+    "address": "alpha-art.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-apricot",
+    "address": "apricot.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-atlas",
+    "address": "atlas.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-aurory",
+    "address": "aurory.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-bonfida",
+    "address": "bonfida.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-bridgesplit",
+    "address": "bridgesplit.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-coin98",
+    "address": "coin98.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-cropper",
+    "address": "cropper.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-defiland",
+    "address": "defiland.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-digitaleyes",
+    "address": "digitaleyes.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-drift",
+    "address": "drift.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-exchange",
+    "address": "exchange.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-fabric",
+    "address": "fabric.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-famousfoxes",
+    "address": "famousfoxes.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-fractal",
+    "address": "fractal.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-frakt",
+    "address": "frakt.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-francium",
+    "address": "francium.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-investinpro",
+    "address": "investinpro.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-jetprotocol",
+    "address": "jetprotocol.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-jpoolone",
+    "address": "jpoolone.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-kurobi",
+    "address": "kurobi.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-mango",
+    "address": "mango.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-nftarmory",
+    "address": "nftarmory.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-ninja",
+    "address": "ninja.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-only1",
+    "address": "only1.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-pentacle",
+    "address": "pentacle.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-phantasia",
+    "address": "phantasia.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-psyoptions",
+    "address": "psyoptions.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-smb",
+    "address": "smb.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-socean",
+    "address": "socean.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-solanalysis",
+    "address": "solanalysis.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-solape",
+    "address": "solape.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-solend",
+    "address": "solend.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-solport",
+    "address": "solport.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-solsea",
+    "address": "solsea.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-ssc-dao",
+    "address": "ssc-dao.genesysgo.net",
+    "asn": "PACKET",
+    "location": "Santa Clara US"
+  },
+  {
+    "rpcn": "genesysgo-staratlas-exchange",
+    "address": "staratlasexchange.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-symmetry",
+    "address": "symmetry.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-tulip",
+    "address": "tulip.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-vybe",
+    "address": "vybe.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "genesysgo-wumbo",
+    "address": "wumbo.genesysgo.net",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "getblock-mainnet",
+    "address": "sol.getblock.io/mainnet",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "lonelypathergrindclub-mainnet-beta",
+    "address": "mainnet-beta.lonelypanthergrindclub.io/5cded9cb9648838d605d18685e3b24e798d29673",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "phantom-solana-mainnet",
+    "address": "solana-mainnet.phantom.tech",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "quiknode-broken-proud",
+    "address": "broken-proud-cherry.quiknode.pro/f146c59b4b14b3c76ea6c04cdb21d0a3",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "quiknode-dawn-silent",
+    "address": "dawn-silent-dream.solana-mainnet.quiknode.pro",
+    "asn": "LATITUDE-SH",
+    "location": "New York US"
+  },
+  {
+    "rpcn": "quiknode-frosty-red",
+    "address": "frosty-red-morning.solana-mainnet.quiknode.pro",
+    "asn": "LATITUDE-SH",
+    "location": "New York US"
+  },
+  {
+    "rpcn": "quiknode-green-hidden",
+    "address": "green-hidden-shape.solana-mainnet.quiknode.pro",
+    "asn": "LATITUDE-SH",
+    "location": "New York US"
+  },
+  {
+    "rpcn": "quiknode-misty-delicate",
+    "address": "misty-delicate-sun.solana-mainnet.quiknode.pro/86b07da9bd277bba8ad87eba3262e10d44870f2d",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "quiknode-old-summer",
+    "address": "old-summer-snow.quiknode.pro/6d8caca935e0d827cbd4374472816789d55096da",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "quiknode-restless-silent",
+    "address": "restless-silent-cloud.solana-mainnet.quiknode.pro",
+    "asn": "LATITUDE-SH",
+    "location": "New York US"
+  },
+  {
+    "rpcn": "quiknode-wandering-divine",
+    "address": "wandering-divine-dream.solana-mainnet.quiknode.pro/51a28202db85ffa02345f9ba72ad73394732af13",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "quiknode-white-bitter",
+    "address": "white-bitter-breeze.quiknode.pro/a53ae019bc2182e0a144c51f8c04a2d6687cecb6",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "quiknode-white-damp",
+    "address": "white-damp-rain.solana-mainnet.quiknode.pro/728e275a5bf349a7384fcc8e72d463df65b24a8c",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "quiknode-white-dawn",
+    "address": "white-dawn-fog.solana-mainnet.quiknode.pro/bba6063e7d406c4eff88a2a85ff25d6d8eab84df",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "quiknode-white-delicate",
+    "address": "white-delicate-meadow.solana-mainnet.quiknode.pro/d6f2bd8792c00978043f665edf1838c452f79ff7",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "quiknode-wild-dry",
+    "address": "wild-dry-wind.solana-mainnet.quiknode.pro",
+    "asn": "LATITUDE-SH",
+    "location": "New York US"
+  },
+  {
+    "rpcn": "quiknode-wild-red",
+    "address": "wild-red-morning.solana-mainnet.quiknode.pro/e48180a05f9f7ab63b6d9f0609f0ba675854e471",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "quiknode-winter-crimson",
+    "address": "winter-crimson-feather.solana-mainnet.quiknode.pro/7f1e2320bc6c956af0f0953ce8a86629aa6b52bd",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "quiknode-wispy-cool",
+    "address": "wispy-cool-tree.solana-mainnet.quiknode.pro/e1f76d47c8ccec34e2b5b30dc2a87149120a5204",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "quiknode-withered-cool",
+    "address": "withered-cool-brook.solana-mainnet.quiknode.pro/b44d1222c014690f954ef6bce03952c76dbfc691",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "quiknode-withered-delicate",
+    "address": "withered-delicate-bird.solana-mainnet.quiknode.pro/59cfd581e09e0c25b375a642f91a4db010cf27f6",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "quiknode-withered-rough",
+    "address": "withered-rough-tree.solana-mainnet.quiknode.pro/5ddd27dc601ff16ccd4ae5fd747e5251b8850309",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "rpcpool-api",
+    "address": "api.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-api-cryptocurrencies-ai",
+    "address": "api-cryptocurrencies-ai.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "London GB"
+  },
+  {
+    "rpcn": "rpcpool-api-mainnet",
+    "address": "api.mainnet.rpcpool.com",
+    "asn": "PACKET",
+    "location": "Sunnyvale US"
+  },
+  {
+    "rpcn": "rpcpool-apricot",
+    "address": "apricot-main-67cd.mainnet.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-arbirgis",
+    "address": "arbirgis.rpcpool.com",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "rpcpool-audius",
+    "address": "audius.rpcpool.com",
+    "asn": "PACKET",
+    "location": "Chicago US"
+  },
+  {
+    "rpcn": "rpcpool-audius-auth",
+    "address": "audius.rpcpool.com/4d12c27ad978e40c1b0f8449b93c",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "rpcpool-audius-fe",
+    "address": "audius-fe.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-aurory",
+    "address": "aurory.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-auth-fra1",
+    "address": "auth-fra1.rpcpool.com",
+    "asn": "DIGITALOCEAN-ASN",
+    "location": "Frankfurt am Main DE"
+  },
+  {
+    "rpcn": "rpcpool-calvin",
+    "address": "calvin.rpcpool.com",
+    "asn": "TERASWITCH",
+    "location": "Singapore SG"
+  },
+  {
+    "rpcn": "rpcpool-civic-auth",
+    "address": "civic.rpcpool.com/f40a068020b85335d0c8f2783747",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "rpcpool-cope",
+    "address": "cope.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-crema",
+    "address": "crema.rpcpool.com",
+    "asn": "TERASWITCH",
+    "location": "Los Angeles US"
+  },
+  {
+    "rpcn": "rpcpool-dexlab",
+    "address": "dexlab.rpcpool.com",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "rpcpool-entropy",
+    "address": "entropy.mainnet.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-extend",
+    "address": "extend.mainnet.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-fraktion",
+    "address": "fraktion.rpcpool.com",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "rpcpool-free",
+    "address": "free.rpcpool.com",
+    "asn": "PACKET",
+    "location": "Sunnyvale US"
+  },
+  {
+    "rpcn": "rpcpool-friktion-auth-1",
+    "address": "friktion.rpcpool.com/8236ce58a8cc909af597734efe5f",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "rpcpool-friktion-auth-2",
+    "address": "friktion.rpcpool.com/132d5fccfadee1fd0c2fce38aa14",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "rpcpool-friktion-mainnet",
+    "address": "friktion-friktion-e7c9.mainnet.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-gokal",
+    "address": "gokal.rpcpool.com",
+    "asn": "TERASWITCH",
+    "location": "Singapore SG"
+  },
+  {
+    "rpcn": "rpcpool-hedgehog",
+    "address": "hedgehog.rpcpool.com",
+    "asn": "PACKET",
+    "location": "Sunnyvale US"
+  },
+  {
+    "rpcn": "rpcpool-hel1",
+    "address": "hel1.rpcpool.com",
+    "asn": "Hetzner Online GmbH",
+    "location": "Helsinki FI"
+  },
+  {
+    "rpcn": "rpcpool-holaplex",
+    "address": "holaplex.rpcpool.com",
+    "asn": "TERASWITCH",
+    "location": "Pittsburgh US"
+  },
+  {
+    "rpcn": "rpcpool-hxro",
+    "address": "hxro.rpcpool.com/081597d8bb90b3da7fd354257950",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "rpcpool-jetprot-main",
+    "address": "jetprot-main-0d7b.mainnet.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-lamport",
+    "address": "lamport.rpcpool.com",
+    "asn": "TERASWITCH",
+    "location": "Singapore SG"
+  },
+  {
+    "rpcn": "rpcpool-larix",
+    "address": "larix.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-larix-auth",
+    "address": "larix.rpcpool.com/b9f4f7c826357818e91fbd79bd85",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "rpcpool-mainnet",
+    "address": "mainnet.rpcpool.com",
+    "asn": "PACKET",
+    "location": "Los Angeles US"
+  },
+  {
+    "rpcn": "rpcpool-mango",
+    "address": "mango.rpcpool.com",
+    "asn": "marbis GmbH",
+    "location": "Frankfurt am Main DE"
+  },
+  {
+    "rpcn": "rpcpool-mango-auth",
+    "address": "mango.rpcpool.com/946ef7337da3f5b8d3e4a34e7f88",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "rpcpool-marinade",
+    "address": "marinade.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-mercurial",
+    "address": "mercurial.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-mia7",
+    "address": "mia7.rpcpool.com",
+    "asn": "marbis GmbH",
+    "location": "Miami US"
+  },
+  {
+    "rpcn": "rpcpool-nina",
+    "address": "nina.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-omicron",
+    "address": "omicron.rpcpool.com",
+    "asn": "TERASWITCH",
+    "location": "Singapore SG"
+  },
+  {
+    "rpcn": "rpcpool-orca",
+    "address": "orca.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Heiwajima JP"
+  },
+  {
+    "rpcn": "rpcpool-p2p",
+    "address": "p2p.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-p2p-auth",
+    "address": "p2p.rpcpool.com/82313b15169cb10f3ff230febb8d",
+    "asn": "Akamai International B.V.",
+    "location": "Edison US"
+  },
+  {
+    "rpcn": "rpcpool-parrot",
+    "address": "parrot.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-raydium",
+    "address": "raydium.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "rpcpool-ren",
+    "address": "ren.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-sencha",
+    "address": "sencha.rpcpool.com",
+    "asn": "TERASWITCH",
+    "location": "Singapore SG"
+  },
+  {
+    "rpcn": "rpcpool-slope",
+    "address": "slope.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Brooklyn US"
+  },
+  {
+    "rpcn": "rpcpool-solstake",
+    "address": "solstake.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Piscataway US"
+  },
+  {
+    "rpcn": "rpcpool-svak-auth",
+    "address": "svak.rpcpool.com/999df3e1e76e5a78cc003c8a8ca2",
+    "asn": "Akamai International B.V.",
+    "location": "Ashburn US"
+  },
+  {
+    "rpcn": "rpcpool-trashpandas",
+    "address": "trashpandas.rpcpool.com",
+    "asn": "TERASWITCH",
+    "location": "Pittsburgh US"
+  },
+  {
+    "rpcn": "rpcpool-zeta",
+    "address": "zeta.rpcpool.com",
+    "asn": "AS-CHOOPA",
+    "location": "Frankfurt am Main DE"
+  },
+  {
+    "rpcn": "serum-solana-api",
+    "address": "solana-api.projectserum.com",
+    "asn": "CLOUDFLARENET",
+    "location": "unknown"
+  },
+  {
+    "rpcn": "solana-mainnet-beta-api",
+    "address": "api.mainnet-beta.solana.com",
+    "asn": "PACKET",
+    "location": "Sunnyvale US"
+  },
+  {
+    "rpcn": "solana-metaplex-api",
+    "address": "api.metaplex.solana.com",
+    "asn": "TERASWITCH",
+    "location": "Pittsburgh US"
+  },
+  {
+    "rpcn": "solflare-mainnet-beta",
+    "address": "mainnet-beta.solflare.network",
+    "asn": "PACKET",
+    "location": "Chicago US"
+  },
+  {
+    "rpcn": "tt-prod-solana-api",
+    "address": "solana-api.tt-prod.net",
+    "asn": "AMAZON-02",
+    "location": "Dublin IE"
+  }
+]

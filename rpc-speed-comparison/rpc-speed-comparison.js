@@ -93,17 +93,19 @@ async function setListCount() {
  }
 // Creates an array of objects from json file.
 async function createRPCList() {
-  let response = await fetch('rpcns.json')
+  let response = await fetch('rpcns-updated.json')
   let data = await response.json()
   let output = []
   data.forEach((e) => {
     e.address = 'http://' + e.address
+    e.rpcn = e.rpcn.toUpperCase()
     output.push(e)
   })
-  response = await fetch('rpcns.json')
+  response = await fetch('rpcns-updated.json')
   data = await response.json()
   data.forEach((e) => {
     e.address = 'https://' + e.address
+    e.rpcn = e.rpcn.toUpperCase()
     output.push(e)
   })
   return output
@@ -298,12 +300,12 @@ function generateTableCellPairs(rpcn, fastestP) {
   // Sets rpcn location.
   myRow = myTableBody.getElementsByTagName('tr')[2]
   var td = document.createElement('td')
-  td.appendChild(document.createTextNode('location tbd'))
+  td.appendChild(document.createTextNode(rpcn.location))
   myRow.appendChild(td)
   // Sets rpcn asn.
   myRow = myTableBody.getElementsByTagName('tr')[3]
   var td = document.createElement('td')
-  td.appendChild(document.createTextNode('ASN tbd'))
+  td.appendChild(document.createTextNode(rpcn.asn))
   myRow.appendChild(td)
    // Sets rpcn names.
    myRow = myTableBody.getElementsByTagName('tr')[4]

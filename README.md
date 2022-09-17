@@ -1,5 +1,5 @@
 # milliseconds-matter
 
-Hosted: https://milliseconds-matter.me
+Hosted: http://milliseconds-matter.me
 
 ascii art generated from: https://patorjk.com/software/taag/

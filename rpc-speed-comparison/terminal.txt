@@ -1,5 +1,5 @@
     
-   milliseconds-matter
+   rpc-speed-comparison
 
    not suitable for mobile browsers - http only
 

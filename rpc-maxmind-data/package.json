@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@maxmind/geoip2-node": "^3.4.0"
-  },
-}

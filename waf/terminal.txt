@@ -1,7 +1,7 @@
     
-    milliseconds-matter-waf-test
+    waf-speed-test
 
     not suitable for mobile browsers
 
-        home    waf-test-start    waf-test-about   rpc-test
+
 

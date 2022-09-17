@@ -38,12 +38,6 @@ async function runTest() {
     a /= 5
     rpcn.resA = a.toFixed(1)
     averageT += Math.round(a)
-    // Pulls ASN and geodata.
-    // Updates rpcn objects with results of tests.
-      // rpcn.NewField = 'asn'
-      // rpcn.NewField = 'location'
-      // rpcn[getLocation(rpcn)] = 
-      // rpcn[getASN(rpcn)] = 
   })
   // Sets average for all tests.
   averageT /= Object.keys(rpcns).length
@@ -75,9 +69,13 @@ async function runTest() {
   console.log('The following rpcns failed testing: ')
   console.log(rpcnsBad)
   // Output averages into terminal.
-  rpcns.slice().reverse().forEach(rpcn => 
-    terminal.write('\r\n' + '    #' +  (rpcn.rank) + ' ' + rpcn.rpcn + ' with an average response of ' + rpcn.resA + 'ms')
-    )
+  consoleOutput = []
+  rpcns.slice().reverse().forEach(rpcn => {
+    terminal.write('\r\n' + '    #' + rpcn.rank + ', avg. response time: '  + rpcn.resA + 'ms' + ', location possibly: ' + rpcn.location  + ', ASN possibly: ' + rpcn.asn + ', '  + rpcn.rpcn)
+    consoleOutput.push('#' + rpcn.rank + ', avg. response time: '  + rpcn.resA + 'ms' + ', location possibly: ' + rpcn.location  + ', ASN possibly: ' + rpcn.asn + ', '  + rpcn.rpcn)
+  })
+  console.log('Terminal output: ')
+  console.log(consoleOutput)
   terminal.write('\r\n' + '\r\n' + '    test complete - check dev tools console for complete log' + '\r\n' + '\r\n')
   toggleKeyboard()
   

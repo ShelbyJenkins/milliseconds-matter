@@ -1,8 +1,4 @@
 ###
-curl rpc.auka.co/rpc -X POST -H "Content-Type: application/json" -d '
-{"jsonrpc":"2.0","id":1, "method":"getIdentity"}
-'
-###
-curl rpc.auka.co/rpc -X POST -H "Content-Type: application/json" -d '
+curl  -X POST -H "Content-Type: application/json" -d '
 {"jsonrpc":"2.0","id":1, "method":"getIdentity"}
 '

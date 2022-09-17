@@ -46,7 +46,7 @@ async function runUpdate() {
           rpcn.ip = ipInput[0]
           let ASNList = []
           for (const ip of ipInput) {
-              const ASN = await Reader.open('GeoLite2-ASN_20220916/GeoLite2-ASN.mmdb').then(reader => {
+              const ASN = await Reader.open('rpc-maxmind-data/GeoLite2-ASN_20220916/GeoLite2-ASN.mmdb').then(reader => {
                   try {
                       return reader.asn(ip);
                   } catch (error) {
@@ -68,7 +68,7 @@ async function runUpdate() {
           // Grab City.
           let locationList = []
           for (const ip of ipInput) {
-              const location = await Reader.open('GeoLite2-City_20220916/GeoLite2-City.mmdb').then(reader => {
+              const location = await Reader.open('rpc-maxmind-data/GeoLite2-City_20220916/GeoLite2-City.mmdb').then(reader => {
                   try {
                       const response = reader.city(ip)
                       // console.log(response.city.names.en)
@@ -148,6 +148,6 @@ async function getIdentity(rpcn) {
 //   return output
 // }
 async function createList() {
-  let output = JSON.parse(await fs.promises.readFile("./rpcns.json", "utf8"))
+  let output = JSON.parse(await fs.promises.readFile("rpc-maxmind-data/rpcns.json", "utf8"))
   return output
 }

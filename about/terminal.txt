@@ -1,0 +1,33 @@
+                              _ _ _ _                              _          
+                    _ __ ___ (_) | (_)___  ___  ___ ___  _ __   __| |___      
+                   | '_ ` _ \| | | | / __|/ _ \/ __/ _ \| '_ \ / _` / __|
+                   | | | | | | | | | \__ \  __/ (_| (_) | | | | (_| \__ \
+                   |_| |_| |_|_|_|_|_|___/\___|\___\___/|_| |_|\__,_|___/     
+                                              _   _            
+                              _ __ ___   __ _| |_| |_ ___ _ __ 
+                             | '_ ` _ \ / _` | __| __/ _ \ '__|
+                             | | | | | | (_| | |_| ||  __/ |   
+                             |_| |_| |_|\__,_|\__|\__\___|_|
+
+                
+
+    not suitable for mobile browsers - http only
+
+    I helped build StackPath. 
+    SP// is a webservices provider of consumer to enterprise grade: 
+    CDN, edge compute VMs/containers, web application firewall.
+
+    The goal of this site is to shine a spotlight on 'the best kept secret in the industry.'
+    Time is a flat circle, but a short one so make the most out of every day. Milliseconds matter; to you and the people you care about.
+    
+    Contact me via:
+    http://twitter.com/J_Shelby_J
+    http://github.com/ShelbyJenkins
+
+    a) Have your WAF or RPC added to or updated on these tests!
+    b) Suggestions or questions about the tests themselves.
+    c) Telegram/Discord/Zoom contact for full demo and presentation.
+  
+    
+    
+

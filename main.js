@@ -1,5 +1,7 @@
 // Creates terminal and updates it's options.
 const terminal = new Terminal({
+    allowProposedApi: true,
+    fontFamily: 'DOS',
     fontWeight: 450,
     cursorBlink: 'true',
     convertEol: true,
@@ -11,6 +13,8 @@ const terminal = new Terminal({
   })
 
 const fitAddon = new FitAddon.FitAddon()
+const webLinksAddon = new WebLinksAddon.WebLinksAddon()
+terminal.loadAddon(webLinksAddon);
 terminal.loadAddon(fitAddon)
 terminal.open(document.getElementById('terminal'))
 fitAddon.fit()
@@ -22,8 +26,8 @@ terminal.focus()
 // Important due to delay in loading custom font.
 function checkTerminal() {
     fitAddon.fit()
-    terminal.setOption('fontSize', 14)
-    terminal.setOption('fontFamily', 'DOS')
+    terminal.options.fontSize = 14
+    terminal.options.fontFamily = 'DOS'
 }
 
 // On resize runs fit() and checks font size.
@@ -101,15 +105,18 @@ function runCommand(cmd) {
         //     terminal.write('\r\n')
         //     wafTestAbout()
         //     break    
-        case 'rpc-com-test':
-            window.location.href = 'rpc-com-test'
+        case 'rpc-speed-comparison':
+            window.location.href = '/rpc-speed-comparison'
             break
-        case 'rpc-com-test-start':
-            rpcTest(rpcns)
-            return
-        case 'rpc-com-test-about':
-            terminal.write('\r\n')
-            rpcTestAbout()
+        // case 'rpc-com-test-start':
+        //     rpcTest(rpcns)
+        //     return
+        // case 'rpc-com-test-about':
+        //     terminal.write('\r\n')
+        //     rpcTestAbout()
+        //     break
+        case 'rpc-geo-demo':
+            window.location.href = '/rpc-geo-demo'
             break  
         default:
             terminal.write('   Command does not exist.')

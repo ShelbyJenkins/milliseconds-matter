@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@maxmind/geoip2-node": "^3.4.0",
     "tuicss": "^2.1.1",
-    "xterm": "^4.19.0",
-    "xterm-addon-fit": "^0.5.0"
+    "xterm": "^5.0.0",
+    "xterm-addon-fit": "^0.6.0",
+    "xterm-addon-web-links": "^0.7.0"
   }
 }

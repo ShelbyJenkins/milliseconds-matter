@@ -3,6 +3,9 @@
  * @license MIT
  */
 
+// Work variables to avoid garbage collection.
+let i = 0;
+
 /**
  * A generic list that is maintained in sorted order and allows values with duplicate keys. This
  * list is based on binary search and as such locating a key will take O(log n) amortized, this
@@ -25,7 +28,7 @@ export class SortedList<T> {
       this._array.push(value);
       return;
     }
-    const i = this._search(this._getKey(value), 0, this._array.length - 1);
+    i = this._search(this._getKey(value), 0, this._array.length - 1);
     this._array.splice(i, 0, value);
   }
 
@@ -34,7 +37,13 @@ export class SortedList<T> {
       return false;
     }
     const key = this._getKey(value);
-    let i = this._search(key, 0, this._array.length - 1);
+    if (key === undefined) {
+      return false;
+    }
+    i = this._search(key, 0, this._array.length - 1);
+    if (i === -1) {
+      return false;
+    }
     if (this._getKey(this._array[i]) !== key) {
       return false;
     }
@@ -51,7 +60,7 @@ export class SortedList<T> {
     if (this._array.length === 0) {
       return;
     }
-    let i = this._search(key, 0, this._array.length - 1);
+    i = this._search(key, 0, this._array.length - 1);
     if (i < 0 || i >= this._array.length) {
       return;
     }
@@ -60,6 +69,22 @@ export class SortedList<T> {
     }
     do {
       yield this._array[i];
+    } while (++i < this._array.length && this._getKey(this._array[i]) === key);
+  }
+
+  public forEachByKey(key: number, callback: (value: T) => void): void {
+    if (this._array.length === 0) {
+      return;
+    }
+    i = this._search(key, 0, this._array.length - 1);
+    if (i < 0 || i >= this._array.length) {
+      return;
+    }
+    if (this._getKey(this._array[i]) !== key) {
+      return;
+    }
+    do {
+      callback(this._array[i]);
     } while (++i < this._array.length && this._getKey(this._array[i]) === key);
   }
 
@@ -72,10 +97,11 @@ export class SortedList<T> {
       return min;
     }
     let mid = Math.floor((min + max) / 2);
-    if (this._getKey(this._array[mid]) > key) {
+    const midKey = this._getKey(this._array[mid]);
+    if (midKey > key) {
       return this._search(key, min, mid - 1);
     }
-    if (this._getKey(this._array[mid]) < key) {
+    if (midKey < key) {
       return this._search(key, mid + 1, max);
     }
     // Value found! Since keys can be duplicates, move the result index back to the lowest index

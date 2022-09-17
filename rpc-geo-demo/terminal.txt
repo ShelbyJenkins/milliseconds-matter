@@ -1,5 +1,5 @@
     
-    milliseconds-matter
+    rpc-geo-demo
 
     not suitable for mobile browsers - currently http only
 

@@ -16,9 +16,10 @@
     I helped build StackPath. 
     SP// is a webservices provider of consumer to enterprise grade: 
     CDN, edge compute VMs/containers, web application firewall.
+    A goal of this site is to shine a spotlight on the performance of SP//; 'the best kept secret in the industry.'
 
-    The goal of this site is to shine a spotlight on 'the best kept secret in the industry.'
-    Time is a flat circle, but a short one so make the most out of every day. Milliseconds matter; to you and the people you care about.
+    Additionally, when we say milliseconds matter, we don't just mean in making engaging user experiences:
+    Atomic intervals of time add up, and those percentage points of your life, when well spent, compound exponetially into greatness.
     
     Contact me via:
     http://twitter.com/J_Shelby_J

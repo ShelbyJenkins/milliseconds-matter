@@ -30,14 +30,14 @@ hr {
     margin: 0;
     border-bottom: 1px dashed floralwhite;
 }
-#terminal {
+#terminal, #homeTerminal {
     text-align: left;
     height: 35vh;
     padding-top: .1em;
     padding-bottom: .1em;
 }
 .home-terminal {
-    height: 85vh !important;
+    height: 75vh !important;
     padding-top: .1em;
     padding-bottom: .1em;
 }

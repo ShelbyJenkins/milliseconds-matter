@@ -3,3 +3,14 @@
 
     not suitable for mobile browsers - currently http only
 
+    This is a demonstration of a turnkey RPC endpoint network built on StackPath. 
+    With it a responsive and engaging user experience is possible for all 8 billion users in humanities span.
+
+    The first test is performed on four RPC endpoints; two in NA, and one in both EU and APAC.
+    The second test uses the same endpoints, but uses an Anycast IP address that routes the request to the endpoint that is geographically nearest to the user.
+    The third test uses the same Anycast IP address, but this time with a web application firewall as a proxy to provide security to the endpoint.
+   
+    This solution is scalable with geographically regionalized infrastructure seemlessly connected through a single anycast IP address. 
+    This solution is resilient and secure with WAF protecting from bots, ddos, excess traffic, and other common failure modes.
+    This solution is ready for your application.
+

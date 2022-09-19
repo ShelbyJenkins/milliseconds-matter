@@ -3,5 +3,12 @@
 
     not suitable for mobile browsers
 
+    Text approximates WAF latency for comparison purpose.
+    
+    The above request/response is measured. 
 
+    Please note:
+    1) The request returns a 200 error from google.com due to CORS policies, but the response time can still be used to aproximate WAF latency.
+    2) The test does not take into account for performance gains/losses in WAF sharing a stack with CDN.
+    
 

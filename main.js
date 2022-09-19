@@ -3,6 +3,7 @@ const terminal = new Terminal({
     allowProposedApi: true,
     fontFamily: 'DOS',
     fontWeight: 450,
+    fontSize: 14,
     cursorBlink: 'true',
     convertEol: true,
     scrollSensitivity: .25,
@@ -16,12 +17,19 @@ const fitAddon = new FitAddon.FitAddon()
 const webLinksAddon = new WebLinksAddon.WebLinksAddon()
 terminal.loadAddon(webLinksAddon);
 terminal.loadAddon(fitAddon)
-terminal.open(document.getElementById('terminal'))
+homeTerminal = document.getElementById('homeTerminal')
+if (homeTerminal === null) {
+    terminal.open(document.getElementById('terminal'))
+} else {
+    terminal.open(homeTerminal)
+}
+// Slight delay to ensure font loads.
+setTimeout(checkTerminal, 500)
 fitAddon.fit()
-// Rechecks font size.
-setTimeout(checkTerminal, 400)
-setTimeout(introText, 500)
 terminal.focus()
+setTimeout(introText, 500)
+// On resize runs fit() and checks font size.
+window.addEventListener('resize', checkTerminal)
 
 // Important due to delay in loading custom font.
 function checkTerminal() {
@@ -30,12 +38,10 @@ function checkTerminal() {
     terminal.options.fontFamily = 'DOS'
 }
 
-// On resize runs fit() and checks font size.
-window.addEventListener('resize', checkTerminal)
-
 // Types text into terminal upon load.
-function introText() {
-    fetch('terminal.txt')
+async function introText() {
+    checkTerminal()
+    await fetch('terminal.txt')
     .then(response => response.text())
     .then((text) => {
         for(var i = 0; i < text.length; i++) {
@@ -43,14 +49,33 @@ function introText() {
                 setTimeout(function() {
                     terminal.write(text[i])
                     if ((text.length - 1) == (i)) { 
-                        toggleKeyboard()
+                        fitAddon.fit()
+                        checkTerminal()
+                        if (homeTerminal !== null) {
+                            setTimeout(homeText, 1, 10 , 0)
+                        } else {
+                            toggleKeyboard()     
+                        }
                     }
                 }, 1 * i)
             }(i))
             } 
     })
-    fitAddon.fit()
 }
+// Home screen fun.
+async function homeText(t, i) {
+    let response = await fetch('homeText.txt')
+    let text = await response.text()
+    if ((text.length - 1) == (i)) {
+        checkTerminal()
+        setTimeout(introText, 1000, 0, 0);
+    } else {
+        terminal.write(text[i])
+        setTimeout(homeText, t, (t + .09), (i + 1));
+    }
+}
+
+
 // Very basic typing interface.
 let keyboardStatus = false
 function toggleKeyboard() {

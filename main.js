@@ -24,7 +24,7 @@ if (homeTerminal === null) {
     terminal.open(homeTerminal)
 }
 // Slight delay to ensure font loads.
-setTimeout(checkTerminal, 500)
+setTimeout(checkTerminal, 450)
 fitAddon.fit()
 terminal.focus()
 setTimeout(introText, 500)
@@ -33,9 +33,9 @@ window.addEventListener('resize', checkTerminal)
 
 // Important due to delay in loading custom font.
 function checkTerminal() {
-    fitAddon.fit()
     terminal.options.fontSize = 14
     terminal.options.fontFamily = 'DOS'
+    fitAddon.fit()
 }
 
 // Types text into terminal upon load.

@@ -1,7 +1,7 @@
 // Creates terminal and updates it's options.
 const terminal = new Terminal({
+    // Declaring font here breaks the font somehow.
     allowProposedApi: true,
-    fontFamily: 'DOS',
     fontWeight: 450,
     fontSize: 14,
     cursorBlink: 'true',
@@ -24,23 +24,22 @@ if (homeTerminal === null) {
     terminal.open(homeTerminal)
 }
 // Slight delay to ensure font loads.
-setTimeout(checkTerminal, 450)
+setTimeout(checkTerminal, 400)
 fitAddon.fit()
 terminal.focus()
-setTimeout(introText, 500)
+setTimeout(introText, 600)
 // On resize runs fit() and checks font size.
 window.addEventListener('resize', checkTerminal)
 
 // Important due to delay in loading custom font.
 function checkTerminal() {
-    terminal.options.fontSize = 14
     terminal.options.fontFamily = 'DOS'
+    terminal.options.fontSize = 14
     fitAddon.fit()
 }
 
 // Types text into terminal upon load.
 async function introText() {
-    checkTerminal()
     await fetch('terminal.txt')
     .then(response => response.text())
     .then((text) => {
@@ -49,7 +48,6 @@ async function introText() {
                 setTimeout(function() {
                     terminal.write(text[i])
                     if ((text.length - 1) == (i)) { 
-                        fitAddon.fit()
                         checkTerminal()
                         if (homeTerminal !== null) {
                             setTimeout(homeText, 1, 10 , 0)
@@ -59,7 +57,7 @@ async function introText() {
                     }
                 }, 1 * i)
             }(i))
-            } 
+        }
     })
 }
 // Home screen fun.

@@ -208,8 +208,8 @@ function removePreviousTable() {
   document.getElementsByTagName('table')[0].deleteRow(1)
   document.getElementsByTagName('table')[0].deleteRow(1)
   document.getElementsByTagName('table')[0].deleteRow(1)
-  document.getElementsByTagName('table')[0].deleteRow(1)
-  document.getElementsByTagName('table')[0].deleteRow(1)
+  // document.getElementsByTagName('table')[0].deleteRow(1)
+  // document.getElementsByTagName('table')[0].deleteRow(1)
   myBody = document.getElementsByTagName('body')[0]
   myTable = myBody.getElementsByTagName('table')[0]
   myTableBody = myTable.getElementsByTagName('tbody')[0]
@@ -242,18 +242,18 @@ function addDefaultTable() {
     var td = document.createElement('td')
     td.appendChild(document.createTextNode('ms average'))
     myRow.appendChild(td)
-    // Row of 'location'
-    myRow = myTableBody.getElementsByTagName('tr')[2]
-    var td = document.createElement('td')
-    td.appendChild(document.createTextNode('location'))
-    myRow.appendChild(td)
-    // Row of 'asn'
-    myRow = myTableBody.getElementsByTagName('tr')[3]
-    var td = document.createElement('td')
-    td.appendChild(document.createTextNode('asn'))
-    myRow.appendChild(td)
+    // // Row of 'location'
+    // myRow = myTableBody.getElementsByTagName('tr')[2]
+    // var td = document.createElement('td')
+    // td.appendChild(document.createTextNode('location'))
+    // myRow.appendChild(td)
+    // // Row of 'asn'
+    // myRow = myTableBody.getElementsByTagName('tr')[3]
+    // var td = document.createElement('td')
+    // td.appendChild(document.createTextNode('asn'))
+    // myRow.appendChild(td)
     // Row of 'rpcn.'
-    myRow = myTableBody.getElementsByTagName('tr')[4]
+    myRow = myTableBody.getElementsByTagName('tr')[2]
     var td = document.createElement('td')
     td.appendChild(document.createTextNode('rpcn'))
     myRow.appendChild(td)
@@ -295,18 +295,18 @@ function generateTableCellPairs(rpcn, fastestP) {
   var td = document.createElement('td')
   td.appendChild(document.createTextNode(rpcn.resA + 'ms average'))
   myRow.appendChild(td)
-  // Sets rpcn location.
-  myRow = myTableBody.getElementsByTagName('tr')[2]
-  var td = document.createElement('td')
-  td.appendChild(document.createTextNode(rpcn.location))
-  myRow.appendChild(td)
-  // Sets rpcn asn.
-  myRow = myTableBody.getElementsByTagName('tr')[3]
-  var td = document.createElement('td')
-  td.appendChild(document.createTextNode(rpcn.asn))
-  myRow.appendChild(td)
+  // // Sets rpcn location.
+  // myRow = myTableBody.getElementsByTagName('tr')[2]
+  // var td = document.createElement('td')
+  // td.appendChild(document.createTextNode(rpcn.location))
+  // myRow.appendChild(td)
+  // // Sets rpcn asn.
+  // myRow = myTableBody.getElementsByTagName('tr')[3]
+  // var td = document.createElement('td')
+  // td.appendChild(document.createTextNode(rpcn.asn))
+  // myRow.appendChild(td)
    // Sets rpcn names.
-   myRow = myTableBody.getElementsByTagName('tr')[4]
+   myRow = myTableBody.getElementsByTagName('tr')[2]
    var td = document.createElement('td')
    td.appendChild(document.createTextNode(rpcn.rpcn))
    myRow.appendChild(td)
@@ -366,19 +366,19 @@ function updateResponseAverage(a) {
   newSpan.style.color = '#00a8a8'
   document.getElementById('response-average').appendChild(newSpan)
 }
-function rpcCompTestAbout() {
-  fetch('terminal-test-about.txt')
-    .then(response => response.text())
-    .then((text) => {
-        for(i = 0; i < text.length; i++) {
-            (function(i){
-                setTimeout(function() {
-                    terminal.write(text[i])
-                    if ((text.length - 1) == (i)) { 
-                        toggleKeyboard()
-                    }
-                }, 1 * i)
-            }(i))
-            } 
-    })
-}
+// function rpcCompTestAbout() {
+//   fetch('terminal-test-about.txt')
+//     .then(response => response.text())
+//     .then((text) => {
+//         for(i = 0; i < text.length; i++) {
+//             (function(i){
+//                 setTimeout(function() {
+//                     terminal.write(text[i])
+//                     if ((text.length - 1) == (i)) { 
+//                         toggleKeyboard()
+//                     }
+//                 }, 1 * i)
+//             }(i))
+//             } 
+//     })
+// }

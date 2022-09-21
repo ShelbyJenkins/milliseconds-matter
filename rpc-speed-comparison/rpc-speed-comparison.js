@@ -1,7 +1,7 @@
 // The main script for the community rpcs comparison test.
 
  // Disables button after click to prevent multiple entries.
- const buttons = document.querySelectorAll('button')
+ let buttons = document.querySelectorAll('button')
  buttons.forEach((b) => {
      b.addEventListener('click', function(){ 
          buttons.forEach((b) => {
@@ -25,33 +25,34 @@ async function runTest() {
   removePreviousTable()
   addDefaultTable()
   // Performs the test 5 times to generate averages.
-  rpcns = await testBatches(list)
+  rpcnsGood = await testBatches(list)
   // Post test actions.
-  let averageT = 0
-  rpcns.forEach((rpcn) => {
+  let averageAllRpcn = 0
+  rpcnsGood.forEach((rpcn) => {
     // Averages 5 runs and updates averages in list.
     let a = 0
+    // First test is not included in average.
     for (let b = 1; b < 6; b++) {
-      const batch = 'resT' + b
+      let batch = 'resT' + b
       a += parseFloat(rpcn[batch])
     }
     a /= 5
     rpcn.resA = a.toFixed(1)
-    averageT += Math.round(a)
+    averageAllRpcn += Math.round(a)
   })
   // Sets average for all tests.
-  averageT /= Object.keys(rpcns).length
-  averageT = averageT.toFixed(1)
-  updateResponseAverage(averageT)
+  averageAllRpcn /= Object.keys(rpcnsGood).length
+  averageAllRpcn = averageAllRpcn.toFixed(1)
+  updateResponseAverage(averageAllRpcn)
   // Sorts list by averages first to last.
-  rpcns.sort((a, b) => a.resA - b.resA)
+  rpcnsGood.sort((a, b) => a.resA - b.resA)
   let fastestP = 0
   // Updates list with percentFasterThanAverage and rank.
-  rpcns.forEach((rpcn, i) => {
+  rpcnsGood.forEach((rpcn, i) => {
     // Adds rank to rpcns list.
     rpcn.rank = (i + 1)
     // Add percentFasterThanAverage field to rpcns list.
-    let percentFasterThanAverage = Math.round(((averageT - rpcn.resA) / rpcn.resA) * 100)
+    let percentFasterThanAverage = Math.round(((averageAllRpcn - rpcn.resA) / rpcn.resA) * 100)
     rpcn.percentFasterThanAverage = percentFasterThanAverage
     // Sets fastestP for graph math.
     if (percentFasterThanAverage > fastestP ) {
@@ -60,19 +61,19 @@ async function runTest() {
   })
   removePreviousTable()
   // Populates main table.
-  rpcns.slice(0, 9).forEach((rpcn, p) => {
+  rpcnsGood.slice(0, 9).forEach((rpcn, p) => {
     // Adds a cell for org name and test result.
     generateTableCellPairs(rpcn, fastestP)
   })
   console.log('The following rpcns were tested: ')
-  console.log(rpcns)
+  console.log(rpcnsGood)
   console.log('The following rpcns failed testing: ')
   console.log(rpcnsBad)
   // Output averages into terminal.
   consoleOutput = []
-  rpcns.slice().reverse().forEach(rpcn => {
-    terminal.write('\r\n' + '    #' + rpcn.rank + ', avg. response time: '  + rpcn.resA + 'ms' + ', location possibly: ' + rpcn.location  + ', ASN possibly: ' + rpcn.asn + ', '  + rpcn.rpcn)
-    consoleOutput.push('#' + rpcn.rank + ', avg. response time: '  + rpcn.resA + 'ms' + ', location possibly: ' + rpcn.location  + ', ASN possibly: ' + rpcn.asn + ', '  + rpcn.rpcn)
+  rpcnsGood.slice().reverse().forEach(rpcn => {
+    terminal.write('\r\n' + '    #' + rpcn.rank + ' ' + rpcn.rpcn + ', avg. response time: '  + rpcn.resA + 'ms ')
+    consoleOutput.push('#' + rpcn.rank + ' ' + rpcn.rpcn + ', avg. response time: '  + rpcn.resA + 'ms ')
   })
   console.log('Terminal output: ')
   console.log(consoleOutput)
@@ -113,7 +114,7 @@ async function testBatches(rpcns) {
   // Calls a single round of test on all rpcns. Waits till all tests are complete, and then tests again.
   // Performs the test 5 times to generate averages.
   // First test is not counted in the averages.
-  for (let b = 1; b < 6; b++) {
+  for (let b = 0; b < 6; b++) {
     updateBatchCount(b)
     let countRequested = 0
     let countResponded = 0
@@ -122,7 +123,7 @@ async function testBatches(rpcns) {
     await Promise.all(rpcns.map(async (rpcn) => {
       countRequested += 1
       updateRPCRequestedCount(countRequested)
-      const promise = await testSingle(rpcn, b)
+      let promise = await testSingle(rpcn, b)
       if (promise === 1) {
         countResponded += 1
         updateRPCRespondedCount(countResponded)
@@ -155,18 +156,70 @@ async function testBatches(rpcns) {
         })
       })
     // Pauses loop 3 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    await new Promise(resolve => setTimeout(resolve, 3000))
   }
   return rpcns
 }
 // Single test within a batch.
+// First test requests getTransactionCount.
+// The following test requests getBalance on a unique address for each test.
 async function testSingle(rpcn, b) {
   // Returns promise when fetch succeeds or fails.
+
+  // In the future test the getBlock method more as a testing method.
+  // return new Promise(async function(resolve, reject){
+  //   // First we grab the current slot.
+  //   let slot = 0
+  //   try {
+  //     let response = await fetch(rpcn.address, {
+  //       signal: AbortSignal.timeout(2000),
+  //       method: 'POST',
+  //       headers: {
+  //         'mode': 'no-cors',
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify( {jsonrpc: '2.0', id: 'null', method: 'getSlot'} )
+  //     })
+  //     r = await response.json()
+  //     slot = r.result
+  //     updateSolanaTransactionCount(r.result)
+  //   } catch (error) {
+  //     terminal.write('\r\n' + '\x1b[38;2;168;0;0m ' + '   ' + rpcn.address + ' removed from test due to ' + error + '\x1b[39m')
+  //     // Add to rpcnsBad to be used to remove bad nodes from testing.
+  //     rpcnsBad.push(rpcn)
+  //     resolve()
+  //   }
+  //   // Now run the test on getBlock.
+  //   // Performance.now() measures the time with higher presicision than date().
+  //   const t0 = performance.now()
+  //   try {
+  //       let response = await fetch(rpcn.address, {
+  //         signal: AbortSignal.timeout(2000),
+  //         method: 'POST',
+  //         headers: {
+  //           'mode': 'no-cors',
+  //           'Accept': 'application/json',
+  //           'Content-Type': 'application/json'
+  //         },
+  //         body: JSON.stringify( {"jsonrpc": "2.0","id":1,"method":"getBlock","params":[slot, {"encoding": "json","transactionDetails":"full","rewards":false}] } )
+  //       })
+  //       r = await response.json()
+  //       const t1 = performance.now()
+  //       logTest((t1 - t0), rpcn, b, r.result)
+  //       terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m')
+  //       resolve(1)
+  //   } catch (error) {
+  //       terminal.write('\r\n' + '\x1b[38;2;168;0;0m ' + '   ' + rpcn.address + ' removed from test due to ' + error + '\x1b[39m')
+  //       // Add to rpcnsBad to be used to remove bad nodes from testing.
+  //       rpcnsBad.push(rpcn)
+  //       resolve()
+  //   }
+  // })
   return new Promise(async function(resolve, reject){
-    // Performance.now() measures the time with higher presicision than date()/
     const t0 = performance.now()
     try {
-        const response = await fetch(rpcn.address, {
+        let response = await fetch(rpcn.address, {
           signal: AbortSignal.timeout(2000),
           method: 'POST',
           headers: {
@@ -174,16 +227,13 @@ async function testSingle(rpcn, b) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify( {jsonrpc: '2.0', id: 'null', method: 'getTransactionCount'} )
+          body: JSON.stringify( {"jsonrpc":"2.0", "id":1, "method":"getTransactionCount"} )
         })
         r = await response.json()
         const t1 = performance.now()
-          // First test is not logged.
-          if (b > 0) {
-            logTest((t1 - t0), rpcn, b, r.result)
-            updateSolanaTransactionCount(r.result)
-            terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m')
-          }
+        updateSolanaTransactionCount(r.result)
+        logTest((t1 - t0), rpcn, b)
+        terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + rpcn.rpcn + ' @ ' + rpcn.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m')
         resolve(1)
     } catch (error) {
         terminal.write('\r\n' + '\x1b[38;2;168;0;0m ' + '   ' + rpcn.address + ' removed from test due to ' + error + '\x1b[39m')
@@ -196,7 +246,7 @@ async function testSingle(rpcn, b) {
 // Updates object after each test within a batch.
 function logTest(r, rpcn, b, c) {
   // Updates rpcn objects with results of tests.
-  const batch = 'resT' + b
+  let batch = 'resT' + b
   r = r.toFixed(1)
   rpcn[batch] = r
 }

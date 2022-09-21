@@ -1,5 +1,5 @@
 // Creates terminal and updates it's options.
-const terminal = new Terminal({
+let terminal = new Terminal({
     // Declaring font here breaks the font somehow.
     allowProposedApi: true,
     fontWeight: 450,
@@ -13,8 +13,8 @@ const terminal = new Terminal({
       }
   })
 
-const fitAddon = new FitAddon.FitAddon()
-const webLinksAddon = new WebLinksAddon.WebLinksAddon()
+let fitAddon = new FitAddon.FitAddon()
+let webLinksAddon = new WebLinksAddon.WebLinksAddon()
 terminal.loadAddon(webLinksAddon);
 terminal.loadAddon(fitAddon)
 homeTerminal = document.getElementById('homeTerminal')
@@ -40,7 +40,7 @@ function checkTerminal() {
 
 // Async wrapper for text functions.
 async function textOutputMain() {
-    const introFile = await getIntroTextFile()
+    let introFile = await getIntroTextFile()
     let homeFile = null
     if (homeTerminal !== null) {
         homeFile = await gethomeTextFile()
@@ -77,12 +77,12 @@ async function textOutputMain() {
     }
     async function gethomeTextFile() {
         var response = await fetch('homeText.txt')
-        const homeFile = await response.text()
+        let homeFile = await response.text()
         return homeFile
     }
     async function getIntroTextFile() {
         var response = await fetch('terminal.txt')
-        const introFile = await response.text()
+        let introFile = await response.text()
         return introFile
     }
 }

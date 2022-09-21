@@ -179,6 +179,7 @@ hr {
     height: 20%;
 }
 #data-table td {
+    
     width: 10vw;
     padding: .2em;
 }
@@ -250,12 +251,3 @@ hr {
 }
 /* rpc-dist-test */
 
-/* waf-test starts */
-#waf-table-wrapper {
-    display: flex;
-    flex: 1 1 ;
-    flex-direction: column;
-    width: 90%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}

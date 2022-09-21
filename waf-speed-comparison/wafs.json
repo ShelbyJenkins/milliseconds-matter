@@ -1,0 +1,14 @@
+[
+    {
+        "waf"    : "control",
+        "address" : "api.kanye.rest"
+    },
+    {
+        "waf"    : "stackpath",
+        "address" : "h5n7s5h4.stackpathcdn.com"
+    },
+    {
+        "waf"    : "aws-cloudfront",
+        "address" : "d27kryaiszkpz.cloudfront.net"
+    }
+]

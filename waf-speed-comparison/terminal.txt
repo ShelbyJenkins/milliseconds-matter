@@ -1,5 +1,5 @@
     
-    waf-speed-test
+    waf-speed-comparison
 
     not suitable for mobile browsers
 

@@ -27,7 +27,7 @@ if (homeTerminal === null) {
 setTimeout(checkTerminal, 400)
 fitAddon.fit()
 terminal.focus()
-setTimeout(introText, 600)
+setTimeout(textOutputMain, 600)
 // On resize runs fit() and checks font size.
 window.addEventListener('resize', checkTerminal)
 
@@ -38,16 +38,22 @@ function checkTerminal() {
     fitAddon.fit()
 }
 
-// Types text into terminal upon load.
-async function introText() {
-    await fetch('terminal.txt')
-    .then(response => response.text())
-    .then((text) => {
-        for(var i = 0; i < text.length; i++) {
+// Async wrapper for text functions.
+async function textOutputMain() {
+    const introFile = await getIntroTextFile()
+    let homeFile = null
+    if (homeTerminal !== null) {
+        homeFile = await gethomeTextFile()
+    }
+    introText()
+
+    // Types text into terminal upon load.
+    async function introText() {
+        for(var i = 0; i < introFile.length; i++) {
             (function(i){
                 setTimeout(function() {
-                    terminal.write(text[i])
-                    if ((text.length - 1) == (i)) { 
+                    terminal.write(introFile[i])
+                    if ((introFile.length - 1) == (i)) { 
                         checkTerminal()
                         if (homeTerminal !== null) {
                             setTimeout(homeText, 1, 10 , 0)
@@ -58,21 +64,28 @@ async function introText() {
                 }, 1 * i)
             }(i))
         }
-    })
-}
-// Home screen fun.
-async function homeText(t, i) {
-    let response = await fetch('homeText.txt')
-    let text = await response.text()
-    if ((text.length - 1) == (i)) {
-        checkTerminal()
-        setTimeout(introText, 1000, 0, 0);
-    } else {
-        terminal.write(text[i])
-        setTimeout(homeText, t, (t + .09), (i + 1));
+    }
+    // Types additional text into home screen.
+    async function homeText(time, index) {
+        if ((homeFile.length - 1) == (index)) {
+            checkTerminal()
+            setTimeout(introText, 1000, 0, 0);
+        } else {
+            terminal.write(homeFile[index])
+            setTimeout(homeText, time, (time + .09), (index + 1));
+        }
+    }
+    async function gethomeTextFile() {
+        var response = await fetch('homeText.txt')
+        const homeFile = await response.text()
+        return homeFile
+    }
+    async function getIntroTextFile() {
+        var response = await fetch('terminal.txt')
+        const introFile = await response.text()
+        return introFile
     }
 }
-
 
 // Very basic typing interface.
 let keyboardStatus = false

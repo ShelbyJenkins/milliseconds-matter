@@ -1,14 +1,26 @@
 [
     {
-        "waf"    : "control",
+        "waf"     : "control",
         "address" : "api.kanye.rest"
     },
     {
-        "waf"    : "stackpath",
+        "waf"     : "imperva",
+        "address" : "cyles9s.impervadns.net"
+    },
+    {
+        "waf"     : "stackpath",
         "address" : "h5n7s5h4.stackpathcdn.com"
     },
     {
-        "waf"    : "aws-cloudfront",
+        "waf"     : "aws-cloudfront",
         "address" : "d27kryaiszkpz.cloudfront.net"
+    },
+    {
+        "waf"     : "sucuri",
+        "address" : "22b73e1cc4.10026.sucurifirewall.com"
+    },
+    {
+        "waf"     : "barricuda",
+        "address" : "app979275.prod.cudawaas.com"
     }
 ]

@@ -62,9 +62,11 @@ async function runTest() {
   removePreviousTable()
   addDefaultTable((wafsGood.length - 1) )
   // Populates main table.
-  wafsGood.slice(1, 9).forEach((waf) => {
-    // Adds a cell for org name and test result.
-    generateTableCellPairs(waf, fastestP)
+  wafsGood.slice(0, 9).forEach((waf) => {
+    if (waf.waf !== 'CONTROL') {
+      // Adds a cell for org name and test result.
+      generateTableCellPairs(waf, fastestP)
+    }
   })
   console.log('The following wafs were tested: ')
   console.log(wafsGood)
@@ -122,7 +124,6 @@ async function testBatches(wafs) {
     // Pauses loop until batch is complete.
     let count = 0
     await Promise.all(wafs.map(async (waf) => {
-      console.log(countRequested)
       countRequested += 1
       updateWAFRequestedCount(countRequested)
       let promise = await testSingle(waf, b)
@@ -157,8 +158,8 @@ async function testBatches(wafs) {
           }
         })
       })
-    // Pauses loop .003 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 3))
+    // Pauses loop 3 seconds after each iteration.
+    await new Promise(resolve => setTimeout(resolve, 3000))
   }
   return wafs
 }
@@ -167,18 +168,19 @@ async function testBatches(wafs) {
 // The following test requests getBalance on a unique address for each test.
 async function testSingle(waf, b) {
   return new Promise(async function(resolve, reject){
+    
     const t0 = performance.now()
     try {
         let response = await fetch(waf.address, {
           // signal: AbortSignal.timeout(2000),
           method: 'GET',
-          // cache: 'no-cache',
-          // mode: 'no-cors',
+          mode: 'cors',
+          cache: 'no-cache',
         })
         const t1 = performance.now()
         let kanye = await response.json()
         updateQuote(kanye.quote)
-        logTest((t1 - t0), waf, b)
+        logTest((t1 - t0), waf, b, kanye.quote)
         terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + waf.waf + ' @ ' + waf.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m')
         resolve(1)
     } catch (error) {
@@ -195,6 +197,7 @@ function logTest(r, waf, b, c) {
   let batch = 'resT' + b
   r = r.toFixed(1)
   waf[batch] = r
+  waf[batch + 'checkForCache'] = c
 }
 function getASN(waf) {
   return asn

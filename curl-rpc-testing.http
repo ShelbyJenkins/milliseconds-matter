@@ -1,0 +1,48 @@
+### alchemy test api!
+curl https://solana-mainnet.g.alchemy.com/v2/e67SKC0Ozj7y5nVb5MvNx3ooAukt_ubR -X POST -H "Content-Type: application/json" -d '
+{
+     "id": 1,
+     "jsonrpc": "2.0",
+     "method": "getSlot",
+     "params": [
+          {
+               "commitment": "processed"
+          }
+     ]
+}
+'
+
+### anycast request without waf
+curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
+{
+     "id": 1,
+     "jsonrpc": "2.0",
+     "method": "getSlot",
+     "params": [
+          {
+               "commitment": "processed"
+          }
+     ]
+}
+'
+
+### dns anycast request without waf
+curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
+{
+     "id": 1,
+     "jsonrpc": "2.0",
+     "method": "getSlot",
+     "params": [
+          {
+               "commitment": "processed"
+          }
+     ]
+}
+'
+### anycast request with waf
+curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
+{"jsonrpc": "2.0","id":1,"method":"getBlock","params":[151710879, {"encoding": "json","transactionDetails":"signatures","rewards":false}]}'
+
+### public ip seattle request
+curl http://69.197.24.3:8080 -X POST -H "Content-Type: application/json" -d '
+  {"jsonrpc": "2.0", "id": 1, "method":"getGenesisHash"}

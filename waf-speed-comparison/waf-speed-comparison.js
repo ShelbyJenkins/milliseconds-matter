@@ -31,7 +31,7 @@ async function runTest() {
     let a = 0
     // First test is not included in average.
     for (let b = 1; b < 6; b++) {
-      let batch = 'resT' + b
+      let batch = 'res' + b
       a += parseFloat(waf[batch])
     }
     a /= 5
@@ -91,7 +91,7 @@ async function runTest() {
 async function setListCount() {
   let list = await createWAFList()
   // Divide by two since list is populats each rpc as http and https objects.
-  document.querySelector('#waf-list-count').innerText = ((Object.keys(list).length - 2)) / 2
+  document.querySelector('#waf-list-count').innerText = ((Object.keys(list).length - 1))
  }
 // Creates an array of objects from json file.
 async function createWAFList() {
@@ -103,13 +103,13 @@ async function createWAFList() {
     e.waf = e.waf.toUpperCase()
     output.push(e)
   })
-  response = await fetch('wafs.json')
-  data = await response.json()
-  data.forEach((e) => {
-    e.address = 'https://' + e.address
-    e.waf = e.waf.toUpperCase()
-    output.push(e)
-  })
+  // response = await fetch('wafs.json')
+  // data = await response.json()
+  // data.forEach((e) => {
+  //   e.address = 'https://' + e.address
+  //   e.waf = e.waf.toUpperCase()
+  //   output.push(e)
+  // })
   return output
 }
 // Runs multiple tests and returns populated objects.
@@ -159,7 +159,7 @@ async function testBatches(wafs) {
         })
       })
     // Pauses loop 3 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 3000))
+    await new Promise(resolve => setTimeout(resolve, 60000))
   }
   return wafs
 }
@@ -172,15 +172,15 @@ async function testSingle(waf, b) {
     const t0 = performance.now()
     try {
         let response = await fetch(waf.address, {
-          // signal: AbortSignal.timeout(2000),
           method: 'GET',
-          mode: 'cors',
-          cache: 'no-cache',
+          cache: 'no-store',
+          mode: 'no-cors',
         })
         const t1 = performance.now()
-        let kanye = await response.json()
-        updateQuote(kanye.quote)
-        logTest((t1 - t0), waf, b, kanye.quote)
+        headers = await response.statusText
+        console.log(headers)
+        // updateQuote(result.status)
+        logTest((t1 - t0), waf, b, 'test')
         terminal.write('\r\n' + '\x1b[38;2;0;168;0m' + '    response from ' + waf.waf + ' @ ' + waf.address + ' took ' + (t1 - t0).toFixed(1) + 'ms' + '\x1b[39m')
         resolve(1)
     } catch (error) {
@@ -194,10 +194,10 @@ async function testSingle(waf, b) {
 // Updates object after each test within a batch.
 function logTest(r, waf, b, c) {
   // Updates waf objects with results of tests.
-  let batch = 'resT' + b
+  let batch = 'res' + b
   r = r.toFixed(1)
-  waf[batch] = r
-  waf[batch + 'checkForCache'] = c
+  waf[batch] = r + 'ms'
+  waf[batch + ' test status'] = c
 }
 function getASN(waf) {
   return asn

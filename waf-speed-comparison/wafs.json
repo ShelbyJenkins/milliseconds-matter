@@ -1,11 +1,11 @@
 [
     {
         "waf"     : "control",
-        "address" : "api.kanye.rest"
+        "address" : "test-cors.appspot.com"
     },
     {
         "waf"     : "imperva",
-        "address" : "cyles9s.impervadns.net"
+        "address" : "xwzdcab.impervadns.net"
     },
     {
         "waf"     : "stackpath",
@@ -13,11 +13,11 @@
     },
     {
         "waf"     : "aws-cloudfront",
-        "address" : "d27kryaiszkpz.cloudfront.net"
+        "address" : "d29x3mtxvesa9x.cloudfront.net"
     },
     {
         "waf"     : "sucuri",
-        "address" : "22b73e1cc4.10026.sucurifirewall.com"
+        "address" : "76c8fd93cd.10030.sucurifirewall.com"
     },
     {
         "waf"     : "barricuda",

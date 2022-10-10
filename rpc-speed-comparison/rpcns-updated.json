@@ -355,12 +355,6 @@
     "location": "Chicago US"
   },
   {
-    "rpcn": "rpcpool-audius-auth",
-    "address": "audius.rpcpool.com/4d12c27ad978e40c1b0f8449b93c",
-    "asn": "Akamai International B.V.",
-    "location": "Edison US"
-  },
-  {
     "rpcn": "rpcpool-audius-fe",
     "address": "audius-fe.rpcpool.com",
     "asn": "AS-CHOOPA",
@@ -371,12 +365,6 @@
     "address": "aurory.rpcpool.com",
     "asn": "AS-CHOOPA",
     "location": "Piscataway US"
-  },
-  {
-    "rpcn": "rpcpool-auth-fra1",
-    "address": "auth-fra1.rpcpool.com",
-    "asn": "DIGITALOCEAN-ASN",
-    "location": "Frankfurt am Main DE"
   },
   {
     "rpcn": "rpcpool-calvin",
@@ -472,12 +460,6 @@
     "location": "Frankfurt am Main DE"
   },
   {
-    "rpcn": "rpcpool-mango-auth",
-    "address": "mango.rpcpool.com/946ef7337da3f5b8d3e4a34e7f88",
-    "asn": "Akamai International B.V.",
-    "location": "Edison US"
-  },
-  {
     "rpcn": "rpcpool-marinade",
     "address": "marinade.rpcpool.com",
     "asn": "AS-CHOOPA",
@@ -515,12 +497,6 @@
     "location": "Piscataway US"
   },
   {
-    "rpcn": "rpcpool-p2p-auth",
-    "address": "p2p.rpcpool.com/82313b15169cb10f3ff230febb8d",
-    "asn": "Akamai International B.V.",
-    "location": "Edison US"
-  },
-  {
     "rpcn": "rpcpool-parrot",
     "address": "parrot.rpcpool.com",
     "asn": "AS-CHOOPA",
@@ -549,13 +525,6 @@
     "address": "slope.rpcpool.com",
     "asn": "AS-CHOOPA",
     "location": "Brooklyn US"
-  },
-
-  {
-    "rpcn": "rpcpool-svak-auth",
-    "address": "svak.rpcpool.com/999df3e1e76e5a78cc003c8a8ca2",
-    "asn": "Akamai International B.V.",
-    "location": "Ashburn US"
   },
   {
     "rpcn": "rpcpool-trashpandas",

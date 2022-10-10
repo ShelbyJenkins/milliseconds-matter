@@ -1,5 +1,5 @@
-### alchemy test api!
-curl https://solana-mainnet.g.alchemy.com/v2/e67SKC0Ozj7y5nVb5MvNx3ooAukt_ubR -X POST -H "Content-Type: application/json" -d '
+
+curl https://solana-api.projectserum.com -X POST -H "Content-Type: application/json" -d '
 {
      "id": 1,
      "jsonrpc": "2.0",
@@ -11,6 +11,7 @@ curl https://solana-mainnet.g.alchemy.com/v2/e67SKC0Ozj7y5nVb5MvNx3ooAukt_ubR -X
      ]
 }
 '
+
 
 ### anycast request without waf
 curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
@@ -27,7 +28,7 @@ curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
 '
 
 ### dns anycast request without waf
-curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
+curl https://solana-api.projectserum.com -X POST -H "Content-Type: application/json" -d '
 {
      "id": 1,
      "jsonrpc": "2.0",
@@ -40,7 +41,7 @@ curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
 }
 '
 ### anycast request with waf
-curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
+curl https://cope.rpcpool.com -X POST -H "Content-Type: application/json" -d '
 {"jsonrpc": "2.0","id":1,"method":"getBlock","params":[151710879, {"encoding": "json","transactionDetails":"signatures","rewards":false}]}'
 
 ### public ip seattle request

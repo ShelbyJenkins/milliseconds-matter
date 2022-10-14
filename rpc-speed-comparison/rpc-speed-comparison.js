@@ -61,14 +61,29 @@ async function runTest() {
   })
   removePreviousTable()
   // Populates main table.
-  rpcnsGood.slice(0, 9).forEach((rpcn, p) => {
+  // Only outputs unique orgs.
+  let tableOutput = []
+  rpcnsGood.forEach((rpcn, i) => {
+    let testForRpcn = false
+    tableOutput.forEach((rpcnToTable) => {
+      if (rpcn.org === rpcnToTable.org)
+        testForRpcn = true
+    })
+    if (testForRpcn === false ){
+      tableOutput.push(rpcn)
+    }
+  })
+  console.log(tableOutput)
+  tableOutput.slice(0, 15).forEach((rpcn, p) => {
     // Adds a cell for org name and test result.
     generateTableCellPairs(rpcn, fastestP)
   })
+  tableOutput = []
+
   console.log('The following rpcns were tested: ')
   console.log(rpcnsGood)
   console.log('The following rpcns failed testing: ')
-  console.log(rpcnsBad)
+  console.log(rpcnsBadLog)
   // Output averages into terminal.
   consoleOutput = []
   rpcnsGood.slice().reverse().forEach(rpcn => {
@@ -130,17 +145,27 @@ async function testBatches(rpcns) {
       }
     }))
     // If rpcn has been added to rpcnsBad array, then it's removed from further testing.
-    // Bad rpcns are logged with rpcnsBadLog.
     rpcnsBad.forEach((rpcnBad) => {
-      rpcnsBadLog.push(rpcnBad)
+      rpcns.forEach((rpcn, i) => {
+        if (rpcn === rpcnBad) {
+          rpcns.splice(i, 1)
+        }
+      })
+    })
+    // Bad rpcns are logged with rpcnsBadLog IF no version passed testing.
+    rpcnsBad.forEach((rpcnBad) => {
+        let testForRpcn = false
         rpcns.forEach((rpcn, i) => {
-          if (rpcn === rpcnBad) {
-            rpcns.splice(i, 1)
+          if (rpcn.rpcn === rpcnBad.rpcn) {
+            testForRpcn = true
           }
         })
+        if (testForRpcn === false) {
+          rpcnsBadLog.push(rpcnBad)
+        }
     })
     // Clears rpcnsBad after each run.
-    rpncsBad = []
+    rpcnsBad = []
     // If rpcn works with both https and http then the https version is removed
     rpcns.forEach((rpcnA, iA) => {
         rpcns.forEach((rpcnB, iB) => {
@@ -151,6 +176,20 @@ async function testBatches(rpcns) {
             rpcns.splice(iA, 1)
             } else {
             rpcns.splice(iB, 1)
+            }
+          }
+        })
+      })
+    // Removes duplicates from rpcnsBadLog.
+    rpcnsBadLog.forEach((rpcnA, iA) => {
+        rpcnsBadLog.forEach((rpcnB, iB) => {
+          // Checks for name match but exlcudes from matching with itself.
+          if (rpcnA.rpcn === rpcnB.rpcn && rpcnA.address !== rpcnB.address) {
+            // Match found
+            if (rpcnA.address.includes('https://')) {
+            rpcnsBadLog.splice(iA, 1)
+            } else {
+            rpcnsBadLog.splice(iB, 1)
             }
           }
         })
@@ -220,10 +259,9 @@ async function testSingle(rpcn, b) {
     const t0 = performance.now()
     try {
         let response = await fetch(rpcn.address, {
-          signal: AbortSignal.timeout(2000),
+          signal: AbortSignal.timeout(2500),
           method: 'POST',
           headers: {
-            'mode': 'no-cors',
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
@@ -248,18 +286,15 @@ function logTest(r, rpcn, b, c) {
   // Updates rpcn objects with results of tests.
   let batch = 'resT' + b
   r = r.toFixed(1)
+  rpcn.timestamp = new Date().toJSON()
   rpcn[batch] = r
 }
-function getASN(rpcn) {
-  return asn
-}
+
 // Refreshes table back to blank.
 function removePreviousTable() {
   document.getElementsByTagName('table')[0].deleteRow(1)
   document.getElementsByTagName('table')[0].deleteRow(1)
   document.getElementsByTagName('table')[0].deleteRow(1)
-  // document.getElementsByTagName('table')[0].deleteRow(1)
-  // document.getElementsByTagName('table')[0].deleteRow(1)
   myBody = document.getElementsByTagName('body')[0]
   myTable = myBody.getElementsByTagName('table')[0]
   myTableBody = myTable.getElementsByTagName('tbody')[0]
@@ -273,7 +308,7 @@ function addDefaultTable() {
   myBody = document.getElementsByTagName('body')[0]
   myTable = myBody.getElementsByTagName('table')[0]
   myTableBody = myTable.getElementsByTagName('tbody')[0]
-  for (i = 0; i < 9; i++) {
+  for (i = 0; i < 15; i++) {
     // Row of 'percent faster than average.'
     // Create TD and text.
     var tdText = document.createElement('td')
@@ -292,17 +327,6 @@ function addDefaultTable() {
     var td = document.createElement('td')
     td.appendChild(document.createTextNode('ms average'))
     myRow.appendChild(td)
-    // // Row of 'location'
-    // myRow = myTableBody.getElementsByTagName('tr')[2]
-    // var td = document.createElement('td')
-    // td.appendChild(document.createTextNode('location'))
-    // myRow.appendChild(td)
-    // // Row of 'asn'
-    // myRow = myTableBody.getElementsByTagName('tr')[3]
-    // var td = document.createElement('td')
-    // td.appendChild(document.createTextNode('asn'))
-    // myRow.appendChild(td)
-    // Row of 'rpcn.'
     myRow = myTableBody.getElementsByTagName('tr')[2]
     var td = document.createElement('td')
     td.appendChild(document.createTextNode('rpcn'))
@@ -345,20 +369,9 @@ function generateTableCellPairs(rpcn, fastestP) {
   var td = document.createElement('td')
   td.appendChild(document.createTextNode(rpcn.resA + 'ms average'))
   myRow.appendChild(td)
-  // // Sets rpcn location.
-  // myRow = myTableBody.getElementsByTagName('tr')[2]
-  // var td = document.createElement('td')
-  // td.appendChild(document.createTextNode(rpcn.location))
-  // myRow.appendChild(td)
-  // // Sets rpcn asn.
-  // myRow = myTableBody.getElementsByTagName('tr')[3]
-  // var td = document.createElement('td')
-  // td.appendChild(document.createTextNode(rpcn.asn))
-  // myRow.appendChild(td)
-   // Sets rpcn names.
    myRow = myTableBody.getElementsByTagName('tr')[2]
    var td = document.createElement('td')
-   td.appendChild(document.createTextNode(rpcn.rpcn))
+   td.appendChild(document.createTextNode(rpcn.org))
    myRow.appendChild(td)
 }
 

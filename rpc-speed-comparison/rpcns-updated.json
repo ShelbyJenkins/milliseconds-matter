@@ -1,571 +1,443 @@
 [
   {
+    "org"     : "ankr",
     "rpcn"    : "ankr-milliseconds-matter",
     "address" : "rpc.ankr.com/solana"
   },
   {
+    "org"     : "alchemy",
     "rpcn"    : "alchemy-milliseconds-matter",
     "address" : "solana-mainnet.g.alchemy.com/v2/e67SKC0Ozj7y5nVb5MvNx3ooAukt_ubR"
   },
   {
+    "org"     : "auka",
+    "rpcn"    : "validators.auka.co",
+    "address" : "rpc.auka.co/rpc"
+  },
+  {
+    "org"     : "allthatnode",
     "rpcn"    : "allthatnode-milliseconds-matter",
     "address" : "solana-mainnet-rpc.allthatnode.com"
   },
   {
+    "org"     : "blockdaemon",
     "rpcn"    : "blockdaemon-milliseconds-matter",
     "address" : "try-rpc.mainnet.solana.blockdaemon.tech"
   },
   {
+    "org"     : "getblock",
     "rpcn"    : "getblock-milliseconds-matter",
     "address" : "sol.getblock.io/mainnet/?api_key=0adf05aa-0c1b-4a43-b644-c5b13bdb0260"
   },
   {
+    "org"     : "helius",
+    "rpcn"    : "helius-milliseconds-matter",
+    "address" : "api.helius.xyz/v0/rpc?api-key=a1438d9e-fb56-4fcf-8d43-a769bc5509a9"
+  },
+  {
+    "org"     : "nownodes",
     "rpcn"    : "nownodes-milliseconds-matter",
-    "address" : "sol.nownodes.io"
+    "address" : "sol.nownodes.io/920ed9e6-39d9-456d-bc0c-2c2f6a8136f1"
   },
   {
+    "org"     : "pokt",
     "rpcn"    : "pokt-milliseconds-matter",
-    "address" : "solana-mainnet.gateway.pokt.network/v1/lb/6d3434c678f613c28adf1c86"
+    "address" : "solana-mainnet.gateway.pokt.network/v1/lb/f65b4dcb731d2b827e4ff205"
   },
   {
+    "org"     : "quicknode",
     "rpcn"    : "quicknode-milliseconds-matter",
     "address" : "proud-wild-film.solana-mainnet.discover.quiknode.pro"
   },
   {
-    "rpcn": "stackpath-mia-milliseconds-matter",
-    "address": "69.197.2.7:8080",
-    "asn": "STACKPATH",
-    "location": "Miami US"
+    "org"     : "solana-foundation",
+    "rpcn"    : "solana-mainnet-beta-api",
+    "address" : "api.mainnet-beta.solana.com"
   },
   {
-    "rpcn": "stackpath-sea-milliseconds-matter",
-    "address": "69.197.3.5:8080",
-    "asn": "STACKPATH",
-    "location": "Seattle US"
+    "org"     : "sentries",
+    "rpcn"    : "sentries.io",
+    "address" : "rpc.sentries.io/rpc"
   },
   {
-    "rpcn": "stackpath-fra-milliseconds-matter",
-    "address": "69.197.4.4:8080",
-    "asn": "STACKPATH",
-    "location": "Frankfurt am Main DE"
+    "org"     : "stackpath",
+    "rpcn"    : "stackpath-mia-milliseconds-matter",
+    "address" : "69.197.2.7:8080"
   },
   {
-    "rpcn": "stackpath-sin-milliseconds-matter",
-    "address": "69.197.24.4:8080",
-    "asn": "STACKPATH",
-    "location": "Singapore SG"
+    "org"     : "stackpath",
+    "rpcn"    : "stackpath-sea-milliseconds-matter",
+    "address" : "69.197.3.5:8080"
   },
   {
-    "rpcn": "waf-secured-milliseconds-matter",
-    "address": "rpc.milliseconds-matter.me",
-    "asn": "STACKPATH-CDN",
-    "location": "unknown"
+    "org"     : "stackpath",
+    "rpcn"    : "stackpath-fra-milliseconds-matter",
+    "address" : "69.197.4.4:8080"
   },
   {
-    "rpcn": "validators.auka.co",
-    "address": "rpc.auka.co/rpc",
-    "asn": "STACKPATH-CDN",
-    "location": "Edison US"
+    "org"     : "stackpath",
+    "rpcn"    : "stackpath-sin-milliseconds-matter",
+    "address" : "69.197.24.4:8080"
   },
   {
-    "rpcn": "sentries.io",
-    "address": "rpc.sentries.io/rpc"
+    "org"     : "stackpath",
+    "rpcn"    : "waf-secured-milliseconds-matter",
+    "address" : "rpc.milliseconds-matter.me"
   },
   {
-    "rpcn": "genesysgo-alice",
-    "address": "alice.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "tatum",
+    "rpcn"    : "tatum-eu-milliseconds-matter",
+    "address" : "api-eu1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
   },
   {
-    "rpcn": "genesysgo-alpha-art",
-    "address": "alpha-art.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "tatum",
+    "rpcn"    : "tatum-us-milliseconds-matter",
+    "address" : "api-us-west1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
   },
   {
-    "rpcn": "genesysgo-apricot",
-    "address": "apricot.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-alice",
+    "address" : "alice.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-atlas",
-    "address": "atlas.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-alpha-art",
+    "address" : "alpha-art.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-aurory",
-    "address": "aurory.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-apricot",
+    "address" : "apricot.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-bonfida",
-    "address": "bonfida.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-atlas",
+    "address" : "atlas.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-bridgesplit",
-    "address": "bridgesplit.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-aurory",
+    "address" : "aurory.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-coin98",
-    "address": "coin98.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-bonfida",
+    "address" : "bonfida.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-cropper",
-    "address": "cropper.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-bridgesplit",
+    "address" : "bridgesplit.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-defiland",
-    "address": "defiland.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-coin98",
+    "address" : "coin98.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-digitaleyes",
-    "address": "digitaleyes.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-cropper",
+    "address" : "cropper.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-drift",
-    "address": "drift.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-defiland",
+    "address" : "defiland.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-exchange",
-    "address": "exchange.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-digitaleyes",
+    "address" : "digitaleyes.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-fabric",
-    "address": "fabric.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-exchange",
+    "address" : "exchange.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-famousfoxes",
-    "address": "famousfoxes.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-fabric",
+    "address" : "fabric.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-fractal",
-    "address": "fractal.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-famousfoxes",
+    "address" : "famousfoxes.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-frakt",
-    "address": "frakt.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-fractal",
+    "address" : "fractal.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-francium",
-    "address": "francium.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-frakt",
+    "address" : "frakt.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-investinpro",
-    "address": "investinpro.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-jpoolone",
+    "address" : "jpoolone.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-jpoolone",
-    "address": "jpoolone.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-kurobi",
+    "address" : "kurobi.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-kurobi",
-    "address": "kurobi.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-mango",
+    "address" : "mango.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-mango",
-    "address": "mango.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-nftarmory",
+    "address" : "nftarmory.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-nftarmory",
-    "address": "nftarmory.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-ninja",
+    "address" : "ninja.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-ninja",
-    "address": "ninja.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-only1",
+    "address" : "only1.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-only1",
-    "address": "only1.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-pentacle",
+    "address" : "pentacle.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-pentacle",
-    "address": "pentacle.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-phantasia",
+    "address" : "phantasia.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-phantasia",
-    "address": "phantasia.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-psyoptions",
+    "address" : "psyoptions.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-psyoptions",
-    "address": "psyoptions.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-smb",
+    "address" : "smb.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-smb",
-    "address": "smb.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-socean",
+    "address" : "socean.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-socean",
-    "address": "socean.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-solanalysis",
+    "address" : "solanalysis.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-solanalysis",
-    "address": "solanalysis.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-solend",
+    "address" : "solend.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-solape",
-    "address": "solape.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-solport",
+    "address" : "solport.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-solend",
-    "address": "solend.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-solsea",
+    "address" : "solsea.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-solport",
-    "address": "solport.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-ssc-dao",
+    "address" : "ssc-dao.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-solsea",
-    "address": "solsea.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-symmetry",
+    "address" : "symmetry.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-ssc-dao",
-    "address": "ssc-dao.genesysgo.net",
-    "asn": "PACKET",
-    "location": "Santa Clara US"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-tulip",
+    "address" : "tulip.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-staratlas-exchange",
-    "address": "staratlasexchange.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-vybe",
+    "address" : "vybe.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-symmetry",
-    "address": "symmetry.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "genesysgo",
+    "rpcn"    : "genesysgo-wumbo",
+    "address" : "wumbo.genesysgo.net"
   },
   {
-    "rpcn": "genesysgo-tulip",
-    "address": "tulip.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-api",
+    "address" : "api.rpcpool.com"
   },
   {
-    "rpcn": "genesysgo-vybe",
-    "address": "vybe.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-api-cryptocurrencies-ai",
+    "address" : "api-cryptocurrencies-ai.rpcpool.com"
   },
   {
-    "rpcn": "genesysgo-wumbo",
-    "address": "wumbo.genesysgo.net",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-api-mainnet",
+    "address" : "api.mainnet.rpcpool.com"
   },
   {
-    "rpcn": "phantom-solana-mainnet",
-    "address": "solana-mainnet.phantom.tech",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-apricot",
+    "address" : "apricot-main-67cd.mainnet.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-api",
-    "address": "api.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-audius",
+    "address" : "audius.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-api-cryptocurrencies-ai",
-    "address": "api-cryptocurrencies-ai.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "London GB"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-aurory",
+    "address" : "aurory.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-api-mainnet",
-    "address": "api.mainnet.rpcpool.com",
-    "asn": "PACKET",
-    "location": "Sunnyvale US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-calvin",
+    "address" : "calvin.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-apricot",
-    "address": "apricot-main-67cd.mainnet.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
-  },
- 
-  {
-    "rpcn": "rpcpool-audius",
-    "address": "audius.rpcpool.com",
-    "asn": "PACKET",
-    "location": "Chicago US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-cope",
+    "address" : "cope.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-audius-fe",
-    "address": "audius-fe.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-crema",
+    "address" : "crema.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-aurory",
-    "address": "aurory.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-entropy",
+    "address" : "entropy.mainnet.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-calvin",
-    "address": "calvin.rpcpool.com",
-    "asn": "TERASWITCH",
-    "location": "Singapore SG"
-  },
-  {
-    "rpcn": "rpcpool-cope",
-    "address": "cope.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
-  },
-  {
-    "rpcn": "rpcpool-crema",
-    "address": "crema.rpcpool.com",
-    "asn": "TERASWITCH",
-    "location": "Los Angeles US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-extend",
+    "address" : "extend.mainnet.rpcpool.com"
   },
 
   {
-    "rpcn": "rpcpool-entropy",
-    "address": "entropy.mainnet.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-free",
+    "address" : "free.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-extend",
-    "address": "extend.mainnet.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
-  },
-
-  {
-    "rpcn": "rpcpool-free",
-    "address": "free.rpcpool.com",
-    "asn": "PACKET",
-    "location": "Sunnyvale US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-friktion-mainnet",
+    "address" : "friktion-friktion-e7c9.mainnet.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-friktion-mainnet",
-    "address": "friktion-friktion-e7c9.mainnet.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-gokal",
+    "address" : "gokal.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-gokal",
-    "address": "gokal.rpcpool.com",
-    "asn": "TERASWITCH",
-    "location": "Singapore SG"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-hedgehog",
+    "address" : "hedgehog.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-hedgehog",
-    "address": "hedgehog.rpcpool.com",
-    "asn": "PACKET",
-    "location": "Sunnyvale US"
-  },
-
-  {
-    "rpcn": "rpcpool-holaplex",
-    "address": "holaplex.rpcpool.com",
-    "asn": "TERASWITCH",
-    "location": "Pittsburgh US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-holaplex",
+    "address" : "holaplex.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-hxro",
-    "address": "hxro.rpcpool.com/081597d8bb90b3da7fd354257950",
-    "asn": "Akamai International B.V.",
-    "location": "Edison US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-hxro",
+    "address" : "hxro.rpcpool.com/081597d8bb90b3da7fd354257950"
   },
   {
-    "rpcn": "rpcpool-jetprot-main",
-    "address": "jetprot-main-0d7b.mainnet.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-jetprot-main",
+    "address" : "jetprot-main-0d7b.mainnet.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-lamport",
-    "address": "lamport.rpcpool.com",
-    "asn": "TERASWITCH",
-    "location": "Singapore SG"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-lamport",
+    "address" : "lamport.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-mainnet",
-    "address": "mainnet.rpcpool.com",
-    "asn": "PACKET",
-    "location": "Los Angeles US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-mainnet",
+    "address" : "mainnet.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-mango",
-    "address": "mango.rpcpool.com",
-    "asn": "marbis GmbH",
-    "location": "Frankfurt am Main DE"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-mango",
+    "address" : "mango.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-marinade",
-    "address": "marinade.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-marinade",
+    "address" : "marinade.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-mercurial",
-    "address": "mercurial.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
-  },
-
-  {
-    "rpcn": "rpcpool-nina",
-    "address": "nina.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-mercurial",
+    "address" : "mercurial.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-omicron",
-    "address": "omicron.rpcpool.com",
-    "asn": "TERASWITCH",
-    "location": "Singapore SG"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-omicron",
+    "address" : "omicron.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-orca",
-    "address": "orca.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Heiwajima JP"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-orca",
+    "address" : "orca.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-p2p",
-    "address": "p2p.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-p2p",
+    "address" : "p2p.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-parrot",
-    "address": "parrot.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-parrot",
+    "address" : "parrot.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-raydium",
-    "address": "raydium.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "unknown"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-raydium",
+    "address" : "raydium.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-ren",
-    "address": "ren.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Piscataway US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-ren",
+    "address" : "ren.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-sencha",
-    "address": "sencha.rpcpool.com",
-    "asn": "TERASWITCH",
-    "location": "Singapore SG"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-sencha",
+    "address" : "sencha.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-slope",
-    "address": "slope.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Brooklyn US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-slope",
+    "address" : "slope.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-trashpandas",
-    "address": "trashpandas.rpcpool.com",
-    "asn": "TERASWITCH",
-    "location": "Pittsburgh US"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-trashpandas",
+    "address" : "trashpandas.rpcpool.com"
   },
   {
-    "rpcn": "rpcpool-zeta",
-    "address": "zeta.rpcpool.com",
-    "asn": "AS-CHOOPA",
-    "location": "Frankfurt am Main DE"
-  },
-  {
-    "rpcn": "serum-solana-api",
-    "address": "solana-api.projectserum.com",
-    "asn": "CLOUDFLARENET",
-    "location": "unknown"
-  },
-  {
-    "rpcn": "solana-mainnet-beta-api",
-    "address": "api.mainnet-beta.solana.com",
-    "asn": "PACKET",
-    "location": "Sunnyvale US"
-  },
-  {
-    "rpcn": "solana-metaplex-api",
-    "address": "api.metaplex.solana.com",
-    "asn": "TERASWITCH",
-    "location": "Pittsburgh US"
-  },
-  {
-    "rpcn": "solflare-mainnet-beta",
-    "address": "mainnet-beta.solflare.network",
-    "asn": "PACKET",
-    "location": "Chicago US"
-  },
-  {
-    "rpcn": "tt-prod-solana-api",
-    "address": "solana-api.tt-prod.net",
-    "asn": "AMAZON-02",
-    "location": "Dublin IE"
+    "org"     : "rpcpool",
+    "rpcn"    : "rpcpool-zeta",
+    "address" : "zeta.rpcpool.com"
   }
 ]

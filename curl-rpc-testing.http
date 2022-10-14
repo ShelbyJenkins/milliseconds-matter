@@ -1,5 +1,5 @@
 
-curl https://solana-api.projectserum.com -X POST -H "Content-Type: application/json" -d '
+curl https://solana-mainnet-rpc.allthatnode.com -X POST -H "Content-Type: application/json" -d '
 {
      "id": 1,
      "jsonrpc": "2.0",
@@ -14,21 +14,10 @@ curl https://solana-api.projectserum.com -X POST -H "Content-Type: application/j
 
 
 ### anycast request without waf
-curl http://arion.earth/rpc -X POST -H "Content-Type: application/json" -d '
-{
-     "id": 1,
-     "jsonrpc": "2.0",
-     "method": "getSlot",
-     "params": [
-          {
-               "commitment": "processed"
-          }
-     ]
-}
-'
+curl https://sol.getblock.io/mainnet/?api_key=0adf05aa-0c1b-4a43-b644-c5b13bdb0260 -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1, "method":"getTransactionCount"}'
 
-### dns anycast request without waf
-curl https://solana-api.projectserum.com -X POST -H "Content-Type: application/json" -d '
+### 
+curl https://sol.nownodes.io/920ed9e6-39d9-456d-bc0c-2c2f6a8136f1 -X POST -H "Content-Type: application/json" -d '
 {
      "id": 1,
      "jsonrpc": "2.0",
@@ -40,10 +29,11 @@ curl https://solana-api.projectserum.com -X POST -H "Content-Type: application/j
      ]
 }
 '
-### anycast request with waf
-curl https://cope.rpcpool.com -X POST -H "Content-Type: application/json" -d '
+### 
+curl https://api-us-west1.tatum.io -X POST -H "Content-Type: application/json" -d '
 {"jsonrpc": "2.0","id":1,"method":"getBlock","params":[151710879, {"encoding": "json","transactionDetails":"signatures","rewards":false}]}'
 
-### public ip seattle request
-curl http://69.197.24.3:8080 -X POST -H "Content-Type: application/json" -d '
+### 
+curl  https://api-us-west1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab} -X POST -H "Content-Type: application/json" -d '
   {"jsonrpc": "2.0", "id": 1, "method":"getGenesisHash"}
+

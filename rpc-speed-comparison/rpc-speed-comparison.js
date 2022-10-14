@@ -16,64 +16,68 @@
  addDefaultTable()
  setListCount()
  
-// Main Function.
-async function runTest() {
-  rpcnsBad = []
-  rpcnsBadLog = []
-  let list = await createRPCList()
-  // Clears table from previous run.
-  removePreviousTable()
-  addDefaultTable()
-  // Performs the test 5 times to generate averages.
-  rpcnsGood = await testBatches(list)
-  // Post test actions.
-  let averageAllRpcn = 0
-  rpcnsGood.forEach((rpcn) => {
-    // Averages 5 runs and updates averages in list.
-    let a = 0
-    // First test is not included in average.
-    for (let b = 1; b < 6; b++) {
-      let batch = 'resT' + b
-      a += parseFloat(rpcn[batch])
-    }
-    a /= 5
-    rpcn.resA = a.toFixed(1)
-    averageAllRpcn += Math.round(a)
-  })
-  // Sets average for all tests.
-  averageAllRpcn /= Object.keys(rpcnsGood).length
-  averageAllRpcn = averageAllRpcn.toFixed(1)
-  updateResponseAverage(averageAllRpcn)
-  // Sorts list by averages first to last.
-  rpcnsGood.sort((a, b) => a.resA - b.resA)
-  let fastestP = 0
-  // Updates list with percentFasterThanAverage and rank.
-  rpcnsGood.forEach((rpcn, i) => {
-    // Adds rank to rpcns list.
-    rpcn.rank = (i + 1)
-    // Add percentFasterThanAverage field to rpcns list.
-    let percentFasterThanAverage = Math.round(((averageAllRpcn - rpcn.resA) / rpcn.resA) * 100)
-    rpcn.percentFasterThanAverage = percentFasterThanAverage
-    // Sets fastestP for graph math.
-    if (percentFasterThanAverage > fastestP ) {
-      fastestP = percentFasterThanAverage
-    }
-  })
-  removePreviousTable()
-  // Populates main table.
-  // Only outputs unique orgs.
-  let tableOutput = []
-  rpcnsGood.forEach((rpcn, i) => {
-    let testForRpcn = false
-    tableOutput.forEach((rpcnToTable) => {
-      if (rpcn.org === rpcnToTable.org)
-        testForRpcn = true
+ // Main Function.
+ async function runTest() {
+   rpcnsBad = []
+   rpcnsBadLog = []
+   let list = await createRPCList()
+   // Clears table from previous run.
+   removePreviousTable()
+   addDefaultTable()
+   // Performs the test 5 times to generate averages.
+   rpcnsGood = await testBatches(list)
+   // Post test actions.
+   let averageAllRpcn = 0
+   rpcnsGood.forEach((rpcn) => {
+     // Averages 5 runs and updates averages in list.
+     let a = 0
+     // First test is not included in average.
+     for (let b = 1; b < 6; b++) {
+       let batch = 'resT' + b
+       a += parseFloat(rpcn[batch])
+      }
+      a /= 5
+      rpcn.resA = a.toFixed(1)
+      // averageAllRpcn += Math.round(a)
     })
-    if (testForRpcn === false ){
-      tableOutput.push(rpcn)
-    }
+    // Generates list of unique orgs.
+    let tableOutput = []
+    rpcnsGood.forEach((rpcn, i) => {
+      let testForRpcn = false
+      tableOutput.forEach((rpcnToTable) => {
+        if (rpcn.org === rpcnToTable.org)
+        testForRpcn = true
+      })
+      if (testForRpcn === false ){
+        tableOutput.push(rpcn)
+      }
+    })
+    // Averages all orgs.
+    tableOutput.forEach((rpcn) => {
+      averageAllRpcn += Math.round(rpcn.resA)
+    })
+    averageAllRpcn /= Object.keys(tableOutput).length
+    averageAllRpcn = averageAllRpcn.toFixed(1)
+    updateResponseAverage(averageAllRpcn)
+    // Sorts list by averages first to last.
+    rpcnsGood.sort((a, b) => a.resA - b.resA)
+    tableOutput.sort((a, b) => a.resA - b.resA)
+    let fastestP = 0
+    // Updates list with percentFasterThanAverage and rank.
+    rpcnsGood.forEach((rpcn, i) => {
+      // Adds rank to rpcns list.
+      rpcn.rank = (i + 1)
+      // Add percentFasterThanAverage field to rpcns list.
+      let percentFasterThanAverage = Math.round(((averageAllRpcn - rpcn.resA) / rpcn.resA) * 100)
+      rpcn.percentFasterThanAverage = percentFasterThanAverage
+      // Sets fastestP for graph math.
+      if (percentFasterThanAverage > fastestP ) {
+        fastestP = percentFasterThanAverage
+      }
   })
-  console.log(tableOutput)
+  
+  // Populates main table.
+  removePreviousTable()
   tableOutput.slice(0, 15).forEach((rpcn, p) => {
     // Adds a cell for org name and test result.
     generateTableCellPairs(rpcn, fastestP)

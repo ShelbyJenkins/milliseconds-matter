@@ -38,17 +38,19 @@
       }
       a /= 5
       rpcn.resA = a.toFixed(1)
-      // averageAllRpcn += Math.round(a)
     })
+    // Sorts list by averages first to last BEFORE generating tableOutput list.
+    rpcnsGood.sort((a, b) => a.resA - b.resA)
     // Generates list of unique orgs.
     let tableOutput = []
     rpcnsGood.forEach((rpcn, i) => {
       let testForRpcn = false
       tableOutput.forEach((rpcnToTable) => {
-        if (rpcn.org === rpcnToTable.org)
-        testForRpcn = true
+        if (rpcn.org === rpcnToTable.org) {
+          testForRpcn = true
+        }
       })
-      if (testForRpcn === false ){
+      if (testForRpcn === false) {
         tableOutput.push(rpcn)
       }
     })
@@ -59,12 +61,11 @@
     averageAllRpcn /= Object.keys(tableOutput).length
     averageAllRpcn = averageAllRpcn.toFixed(1)
     updateResponseAverage(averageAllRpcn)
-    // Sorts list by averages first to last.
-    rpcnsGood.sort((a, b) => a.resA - b.resA)
+    // Sorts tableOutput by averages first to last.
     tableOutput.sort((a, b) => a.resA - b.resA)
     let fastestP = 0
-    // Updates list with percentFasterThanAverage and rank.
-    rpcnsGood.forEach((rpcn, i) => {
+    // Updates tableOutput list with percentFasterThanAverage.
+    tableOutput.forEach((rpcn, i) => {
       // Adds rank to rpcns list.
       rpcn.rank = (i + 1)
       // Add percentFasterThanAverage field to rpcns list.
@@ -75,15 +76,18 @@
         fastestP = percentFasterThanAverage
       }
   })
-  
-  // Populates main table.
+    // Updates rpcnsGood list with rank.
+    rpcnsGood.forEach((rpcn, i) => {
+      // Adds rank to rpcns list.
+      rpcn.rank = (i + 1)
+  })
+    // Populates main table.
   removePreviousTable()
   tableOutput.slice(0, 15).forEach((rpcn, p) => {
     // Adds a cell for org name and test result.
     generateTableCellPairs(rpcn, fastestP)
   })
   tableOutput = []
-
   console.log('The following rpcns were tested: ')
   console.log(rpcnsGood)
   console.log('The following rpcns failed testing: ')

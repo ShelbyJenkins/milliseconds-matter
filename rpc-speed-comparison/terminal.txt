@@ -1,5 +1,3 @@
-   rpc-speed-comp
-   
    not suitable for mobile browsers - currently http only
    
    This test requests 'getTransactionCount' from Solana RPC endpoints (five times) and records the average response times.
@@ -11,6 +9,6 @@
       2) Network. Compute providers that have strong network peering strategies and/or their own private backbones will route user requests more effeciently.
       3) Deployment competence and architecture.
       
-   This test meaingful for applications where calls to endpoints add latency to the user experience.
+   This test is meaingful for applications where calls to endpoints add latency to the user experience.
    A limitation of this test is that it's run from YOUR locale - and so it does not represent all eight billion user's experience. 
 

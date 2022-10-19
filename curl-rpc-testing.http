@@ -15,9 +15,8 @@ curl https://solana-mainnet-rpc.allthatnode.com -X POST -H "Content-Type: applic
 
 ### anycast request without waf
 curl https://sol.getblock.io/mainnet/?api_key=0adf05aa-0c1b-4a43-b644-c5b13bdb0260 -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1, "method":"getTransactionCount"}'
-
 ### 
-curl https://sol.nownodes.io/920ed9e6-39d9-456d-bc0c-2c2f6a8136f1 -X POST -H "Content-Type: application/json" -d '
+curl http://sol.getblock.io/mainnet/?api_key=0adf05aa-0c1b-4a43-b644-c5b13bdb0260 -X POST -H "Content-Type: application/json" -d '
 {
      "id": 1,
      "jsonrpc": "2.0",
@@ -30,7 +29,7 @@ curl https://sol.nownodes.io/920ed9e6-39d9-456d-bc0c-2c2f6a8136f1 -X POST -H "Co
 }
 '
 ### 
-curl https://api-us-west1.tatum.io -X POST -H "Content-Type: application/json" -d '
+curl https://69.197.3.5 -X POST -H "Content-Type: application/json" -d '
 {"jsonrpc": "2.0","id":1,"method":"getBlock","params":[151710879, {"encoding": "json","transactionDetails":"signatures","rewards":false}]}'
 
 ### 

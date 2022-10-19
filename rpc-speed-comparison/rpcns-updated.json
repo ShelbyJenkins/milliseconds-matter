@@ -25,6 +25,11 @@
     "address" : "try-rpc.mainnet.solana.blockdaemon.tech"
   },
   {
+    "org"     : "chainstack",
+    "rpcn"    : "chainstack-ams-milliseconds-matter",
+    "address" : "nd-588-289-349.p2pify.com/23a161b428c6535cde9d1f32c03ad1dd"
+  },
+  {
     "org"     : "getblock",
     "rpcn"    : "getblock-milliseconds-matter",
     "address" : "sol.getblock.io/mainnet/?api_key=0adf05aa-0c1b-4a43-b644-c5b13bdb0260"
@@ -61,23 +66,28 @@
   },
   {
     "org"     : "stackpath",
-    "rpcn"    : "stackpath-mia-milliseconds-matter",
+    "rpcn"    : "stackpath-miami-milliseconds-matter",
     "address" : "69.197.2.7:8080"
   },
   {
     "org"     : "stackpath",
-    "rpcn"    : "stackpath-sea-milliseconds-matter",
+    "rpcn"    : "stackpath-seattle-milliseconds-matter",
     "address" : "69.197.3.5:8080"
   },
   {
     "org"     : "stackpath",
-    "rpcn"    : "stackpath-fra-milliseconds-matter",
-    "address" : "69.197.4.4:8080"
+    "rpcn"    : "stackpath-detroit-milliseconds-matter",
+    "address" : "69.197.27.3:8080"
   },
   {
     "org"     : "stackpath",
-    "rpcn"    : "stackpath-sin-milliseconds-matter",
-    "address" : "69.197.24.4:8080"
+    "rpcn"    : "stackpath-amsterdam-milliseconds-matter",
+    "address" : "69.197.13.4:8080"
+  },
+  {
+    "org"     : "stackpath",
+    "rpcn"    : "stackpath-seoul-milliseconds-matter",
+    "address" : "69.197.7.3:8080"
   },
   {
     "org"     : "stackpath",

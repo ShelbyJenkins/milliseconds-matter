@@ -202,8 +202,8 @@ async function testBatches(rpcns) {
           }
         })
       })
-    // Pauses loop 3 seconds after each iteration.
-    await new Promise(resolve => setTimeout(resolve, 3000))
+    // Pauses loop 10 seconds after each iteration.
+    await new Promise(resolve => setTimeout(resolve, 10000))
   }
   return rpcns
 }
@@ -267,7 +267,7 @@ async function testSingle(rpcn, b) {
     const t0 = performance.now()
     try {
         let response = await fetch(rpcn.address, {
-          signal: AbortSignal.timeout(2500),
+          signal: AbortSignal.timeout(10000),
           method: 'POST',
           headers: {
             'Accept': 'application/json',

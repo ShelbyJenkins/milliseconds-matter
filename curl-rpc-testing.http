@@ -14,7 +14,7 @@ curl https://solana-mainnet-rpc.allthatnode.com -X POST -H "Content-Type: applic
 
 
 ### 
-curl https://api.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab} -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1, "method":"getTransactionCount"}'
+curl https://api-eu1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab} -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1, "method":"getTransactionCount"}'
 ### 
 curl https://sol.getblock.io/mainnet/?api_key=0adf05aa-0c1b-4a43-b644-c5b13bdb0260 -X POST -H "Content-Type: application/json" -d '
 {

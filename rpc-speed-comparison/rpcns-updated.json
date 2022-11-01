@@ -105,6 +105,11 @@
     "address" : "api-us-west1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
   },
   {
+    "org"     : "tatum",
+    "rpcn"    : "tatum-us-milliseconds-matter",
+    "address" : "api-eu1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
+  },
+  {
     "org"     : "rpcpool",
     "rpcn"    : "rpcpool-api",
     "address" : "api.rpcpool.com"

@@ -14,9 +14,9 @@ curl https://solana-mainnet-rpc.allthatnode.com -X POST -H "Content-Type: applic
 
 
 ### anycast request without waf
-curl http://proud-wild-film.solana-mainnet.discover.quiknode.pro -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1, "method":"getTransactionCount"}'
+curl https://api.rpcpool.com -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1, "method":"getTransactionCount"}'
 ### 
-curl https://api.helius.xyz/v0/rpc?api-key=a1438d9e-fb56-4fcf-8d43-a769bc5509a9 -X POST -H "Content-Type: application/json" -d '
+curl https://sol.getblock.io/mainnet/?api_key=0adf05aa-0c1b-4a43-b644-c5b13bdb0260 -X POST -H "Content-Type: application/json" -d '
 {
      "id": 1,
      "jsonrpc": "2.0",

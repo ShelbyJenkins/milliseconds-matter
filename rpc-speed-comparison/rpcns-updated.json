@@ -96,8 +96,8 @@
   },
   {
     "org"     : "tatum",
-    "rpcn"    : "tatum-eu-milliseconds-matter",
-    "address" : "api-eu1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
+    "rpcn"    : "tatum-milliseconds-matter",
+    "address" : "api.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
   },
   {
     "org"     : "tatum",

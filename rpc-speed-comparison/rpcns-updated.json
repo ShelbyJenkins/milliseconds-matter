@@ -51,8 +51,13 @@
   },
   {
     "org"     : "quicknode",
-    "rpcn"    : "quicknode-milliseconds-matter",
+    "rpcn"    : "quicknode-discover-milliseconds-matter",
     "address" : "proud-wild-film.solana-mainnet.discover.quiknode.pro"
+  },
+  {
+    "org"     : "quicknode",
+    "rpcn"    : "quicknode-build-milliseconds-matter",
+    "address" : "old-muddy-yard.solana-mainnet.quiknode.pro/"
   },
   {
     "org"     : "solana-foundation",

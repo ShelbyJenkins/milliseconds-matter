@@ -1,0 +1,255 @@
+== Info:   Trying 185.209.178.223:443...
+== Info: Connected to proud-wild-film.solana-mainnet.discover.quiknode.pro (185.209.178.223) port 443 (#0)
+== Info: ALPN, offering h2
+== Info: ALPN, offering http/1.1
+== Info:  CAfile: C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+== Info:  CApath: none
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.3 (OUT), TLS handshake, Client hello (1):
+=> Send SSL data, 512 bytes (0x200)
+0000: ......|.l(F{...6..U.)...i.L...LsMo...  ...O.3u..V..A.6Z....j|.1.
+0040: ?.......>.......,.0.........+./...$.(.k.#.'.g.....9.....3.....=.
+0080: <.5./.....u...9.7..4proud-wild-film.solana-mainnet.discover.quik
+00c0: node.pro........................3t.........h2.http/1.1.........1
+0100: .....0.................................................+........
+0140: ....-.....3.&.$... ....p..<>......h..V...H. .....v>.............
+0180: ................................................................
+01c0: ................................................................
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....z
+== Info: TLSv1.3 (IN), TLS handshake, Server hello (2):
+<= Recv SSL data, 122 bytes (0x7a)
+0000: ...v.....y...^..2.1X4....l...!(.K...cU ...O.3u..V..A.6Z....j|.1.
+0040: ?............+.....3.$... Y.U.b(....K<.++..C?...__....F...
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 5 bytes (0x5)
+0000: .... 
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+<= Recv SSL data, 15 bytes (0xf)
+0000: .............h2
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....0
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (IN), TLS handshake, Certificate (11):
+<= Recv SSL data, 3871 bytes (0xf1f)
+0000: ...........0...0..n.........{..l{../.......l0...*.H........021.0
+0040: ...U....US1.0...U....Let's Encrypt1.0...U....R30...220822175151Z
+0080: ..221120175150Z011/0-..U...&*.solana-mainnet.discover.quiknode.p
+00c0: ro0Y0...*.H.=....*.H.=....B....g&...p...4.$...k..C...$.....r..9
+0100: ....a.>.....qX.V...:..>zZ.......`0..\0...U...........0...U.%..0.
+0140: ..+.........+.......0...U.......0.0...U........L. ../.....".@...
+0180: .0...U.#..0........XV..P.@........0U..+........I0G0!..+.....0...
+01c0: http://r3.o.lencr.org0"..+.....0...http://r3.i.lencr.org/01..U..
+0200: .*0(.&*.solana-mainnet.discover.quiknode.pro0L..U. .E0C0...g....
+0240: .07..+..........0(0&..+.........http://cps.letsencrypt.org0.....
+0280: +.....y............v.)y...99!.Vs.c.w..W}.`...M]&\%].............
+02c0: ..G0E.!......_|....t..RA..b.Sj..4...I.Q.. .C.-...l...yF.....xC.
+0300: ....].Uh.}.u...^.h.O.l..._N>Z.....j^.;.. D\*s.............F0D. Q
+0340: >....^a.}..-..+;.[c.3w..y#...P.. `.&..%....>.y...Z..m%..fk..ciT.
+0380: .0...*.H.............).......y1.3....J..`.~....w.).....xw.E...."
+03c0: c.....Zjn.L.O...P.G;.#L.*}.......u.U8.."..peR.5..&.dx]5v..9q.S"
+0400: .8t.....a..r.jn5.....l..Lo...Upg.......E.vBX.lcPv...".+Jo...9G\
+0440: ......#.....E..^.G.*.;U..0.n.(L.....<j.`)kT..n...^.k..OpB.......
+0480: -..wA@,..{....S.;i........0...0............+.J....S...%._Z0...*.
+04c0: H........0O1.0...U....US1)0'..U... Internet Security Research Gr
+0500: oup1.0...U....ISRG Root X10...200904000000Z..250915160000Z021.0.
+0540: ..U....US1.0...U....Let's Encrypt1.0...U....R30.."0...*.H.......
+0580: ......0...........(.........U.......zB..]&..+..L...k.u....G..U5W
+05c0: ....9...<B.Nn.;......\.Y8...i.Z.....$%..7q..........;ERE...S.4.R
+0600: ......`p..T..m...@4k+..f.f4|.k..W)..0.].ro......X=......+.....q]
+0640: .F...%...`guf.....\.S.:..G.......w?.S......p...c.......S...H...i
+0680: .%u...R...Q.............0...0...U...........0...U.%..0...+......
+06c0: ...+.......0...U.......0.......0...U...........XV..P.@........0.
+0700: ..U.#..0...y.Y.{....s.....X...n02..+........&0$0"..+.....0...htt
+0740: p://x1.i.lencr.org/0'..U... 0.0.......http://x1.c.lencr.org/0"..
+0780: U. ..0.0...g.....0...+..........0...*.H...............NG>...D...
+07c0: gx..c.uM..=3erT-...... ._..p..n;.^... ..........<....9..|%.G.en?
+0800: F.....+.T....'K.../...q.J....#{.-...W>...3.G!x..'.*....\.d...y.O
+0840: .mD.^.........D).Y .c.!..&..W..e..."...C....~...7.Z..0..n+*.!N..
+0880: .....^....j...;3..K........?.UC6.h.6.j.....@.4...c959un..v.....K
+08c0: l..........h..e..=wS..y...1.u*C.U.r.)...]N..F.0..._..y..^p......
+0900: ...aq%*...%PRh........}..l.!1.........=.L.8...+.......= .~Y...X.
+0940: [.H..\O.)..U#......|.../....GF?.....(Mh2.g^.i....../..RC.o2WeM2.
+0980: .8S.]~]f)........V.B..N.%8DPm...U...Id.N....[.s...G.....d0..`0..
+09c0: H.......@.w!7..B..v.<d..0...*.H........0?1$0"..U....Digital Sign
+0a00: ature Trust Co.1.0...U....DST Root CA X30...210120191403Z..24093
+0a40: 0181403Z0O1.0...U....US1)0'..U... Internet Security Research Gro
+0a80: up1.0...U....ISRG Root X10.."0...*.H.............0..........$s..
+0ac0: 7...+W(......8..n<.W.x.u....jn..O(..h.lD...c...k....1.!~.3<.H..y
+0b00: ......!.K...qiJffl.~<p..)"........K...~....G.|.H#S.8.O.o...IW..t
+0b40: ../.8.{.p!.u.0<.....c...O...K~.....w...{J.L.%.p..)..S$........J.
+0b80: ?..aQ......cq...o[....\4ylv.;.by..../&.....................6....
+0bc0: 7..6u...r......I......*.A...v.........5/(.l.....dwnG7...Y^h.r..
+0c00: ..A)>Y>.&.$...Z.L@.F....:Qn.;.}r...xY.>Qx....../..>{J.Ks......P.
+0c40: |C.t..t......0.[q6....00\H..;..}`...)..........A.........|.;F.H*
+0c80: ..v.v..j.=...8.d..+
+0c95: (.....B.".'].y...p..N...:..'Qn..d.3CO........F0..B0...U.......0.
+0cd5: ...0...U...........0K..+........?0=0;..+.....0../http://apps.ide
+0d15: ntrust.com/roots/dstrootcax3.p7c0...U.#..0.......{,q...K.u...`..
+0d55: .0T..U. .M0K0...g.....0?..+..........000...+........"http://cps.
+0d95: root-x1.letsencrypt.org0<..U...50301./.-.+http://crl.identrust.c
+0dd5: om/DSTROOTCAX3CRL.crl0...U......y.Y.{....s.....X...n0...*.H.....
+0e15: .........s.l.n..R.....Z../........P..lB.o...O.D..u.....bnx..'.9\
+0e55: ...nV.p.S.......+..... 53..a6.q......E....#(....g...C,........i]
+0e95: ..[.X".MU.pgm.W.F9A..X.Xm..W.6...#......\..I...5...N........;l)#
+0ed5: .`.E.L..;.....D.X....EE..]f....o...B...........8..}...I....+.kO.
+0f15: .8w....9..
+<= Recv SSL data, 5 bytes (0x5)
+0000: ...._
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (IN), TLS handshake, CERT verify (15):
+<= Recv SSL data, 78 bytes (0x4e)
+0000: ...J...F0D. c...m.....8P-.|..Q.............. j....^.,w.@=.:....
+0040: X:..-i$[.z.mZ`
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....5
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (IN), TLS handshake, Finished (20):
+<= Recv SSL data, 36 bytes (0x24)
+0000: ... ..+.tE.....)%.f.[H1....8..M..\..
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send SSL data, 5 bytes (0x5)
+0000: ....5
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (OUT), TLS handshake, Finished (20):
+=> Send SSL data, 36 bytes (0x24)
+0000: ... ..E..M.l,M.......<.......2......
+== Info: SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+== Info: ALPN, server accepted to use h2
+== Info: Server certificate:
+== Info:  subject: CN=*.solana-mainnet.discover.quiknode.pro
+== Info:  start date: Aug 22 17:51:51 2022 GMT
+== Info:  expire date: Nov 20 17:51:50 2022 GMT
+== Info:  subjectAltName: host "proud-wild-film.solana-mainnet.discover.quiknode.pro" matched cert's "*.solana-mainnet.discover.quiknode.pro"
+== Info:  issuer: C=US; O=Let's Encrypt; CN=R3
+== Info:  SSL certificate verify ok.
+== Info: Using HTTP2, server supports multiplexing
+== Info: Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+=> Send SSL data, 5 bytes (0x5)
+0000: ....)
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send SSL data, 5 bytes (0x5)
+0000: ....,
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+== Info: h2h3 [:method: POST]
+== Info: h2h3 [:path: /]
+== Info: h2h3 [:scheme: https]
+== Info: h2h3 [:authority: proud-wild-film.solana-mainnet.discover.quiknode.pro]
+== Info: h2h3 [user-agent: curl/7.82.0]
+== Info: h2h3 [accept: */*]
+== Info: h2h3 [content-type: application/json]
+== Info: h2h3 [content-length: 56]
+== Info: Using Stream ID: 1 (easy handle 0x24c02e62070)
+=> Send SSL data, 5 bytes (0x5)
+0000: ....e
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send header, 167 bytes (0xa7)
+0000: POST / HTTP/2
+000f: Host: proud-wild-film.solana-mainnet.discover.quiknode.pro
+004b: user-agent: curl/7.82.0
+0064: accept: */*
+0071: content-type: application/json
+0091: content-length: 56
+00a5: 
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+<= Recv SSL data, 130 bytes (0x82)
+0000: ...~..:.......q.A.......@T]..p..).6u...m.nin.bxX.4...Z..(.b...~q
+0040: .......V...............U...zKF..z3%....i<.....p..0h....} ...&.!
+0080: ..
+=> Send SSL data, 5 bytes (0x5)
+0000: ....R
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send data, 56 bytes (0x38)
+0000: {"jsonrpc":"2.0","id":1, "method":"getTransactionCount"}
+== Info: We are completely uploaded and fine
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....2
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+== Info: Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....m
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+<= Recv header, 13 bytes (0xd)
+0000: HTTP/2 200 
+<= Recv header, 40 bytes (0x28)
+0000: access-control-allow-credentials: true
+<= Recv header, 83 bytes (0x53)
+0000: access-control-allow-headers: Content-Type,Authorization,User-Ag
+0040: ent,solana-client
+<= Recv header, 50 bytes (0x32)
+0000: access-control-allow-methods: GET, POST, OPTIONS
+<= Recv header, 31 bytes (0x1f)
+0000: access-control-allow-origin: 
+<= Recv header, 32 bytes (0x20)
+0000: content-type: application/json
+<= Recv header, 23 bytes (0x17)
+0000: vary: Accept-Encoding
+<= Recv header, 21 bytes (0x15)
+0000: x-host-id: fcbdf55b
+<= Recv header, 49 bytes (0x31)
+0000: x-node-id: 08777362-575c-4584-aa42-4f09eb19af92
+<= Recv header, 28 bytes (0x1c)
+0000: x-ratelimit-limit: 1000000
+<= Recv header, 31 bytes (0x1f)
+0000: x-ratelimit-remaining: 999991
+<= Recv header, 31 bytes (0x1f)
+0000: x-ratelimit-reset: 1667961424
+<= Recv header, 52 bytes (0x34)
+0000: x-request-id: 1b3e81cf-ab93-4d3c-a41d-2944060f9db2
+<= Recv header, 20 bytes (0x14)
+0000: content-length: 47
+<= Recv header, 37 bytes (0x25)
+0000: date: Tue, 08 Nov 2022 02:43:06 GMT
+<= Recv header, 2 bytes (0x2)
+0000: 
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....I
+<= Recv SSL data, 1 bytes (0x1)
+0000: .
+<= Recv data, 47 bytes (0x2f)
+0000: {"jsonrpc":"2.0","result":113172874496,"id":1}.
+== Info: Connection #0 to host proud-wild-film.solana-mainnet.discover.quiknode.pro left intact
+== Info: Could not resolve host: POST
+== Info: Closing connection 1

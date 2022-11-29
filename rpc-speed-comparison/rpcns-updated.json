@@ -86,8 +86,8 @@
   },
   {
     "org"     : "stackpath",
-    "rpcn"    : "stackpath-amsterdam-milliseconds-matter",
-    "address" : "69.197.13.4:8080"
+    "rpcn"    : "stackpath-frankfurt-milliseconds-matter",
+    "address" : "69.197.4.18:8080"
   },
   {
     "org"     : "stackpath",

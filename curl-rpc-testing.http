@@ -1,39 +1,19 @@
 
-curl http://proud-wild-film.solana-mainnet.discover.quiknode.pro
- -X POST -H "Content-Type: application/json" -d '
+### 
+curl http://rpc.milliseconds-matter.me -X POST -H "Content-Type: application/json" -d '
 {
      "id": 1,
      "jsonrpc": "2.0",
-     "method": "getSlot",
-     "params": [
-          {
-               "commitment": "processed"
-          }
-     ]
+     "method": "getBlock",
+     "params":
+          [
+               160973525, 
+               {
+                    "encoding": "jsonParsed",
+                    "maxSupportedTransactionVersion":0,
+                    "transactionDetails":"signatures",
+                    "rewards":false
+               }
+          ]
 }
 '
-
-
-### 
-curl https://solana-gateway.moralis.io -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1, "method":"getTransactionCount"}'
-### 
-curl https://old-muddy-yard.solana-mainnet.quiknode.pro/ -X POST -H "Content-Type: application/json" -d '
-{
-     "id": 1,
-     "jsonrpc": "2.0",
-     "method": "getSlot",
-     "params": [
-          {
-               "commitment": "processed"
-          }
-     ]
-}
-'
-### 
-curl https://69.197.3.5 -X POST -H "Content-Type: application/json" -d '
-{"jsonrpc": "2.0","id":1,"method":"getBlock","params":[151710879, {"encoding": "json","transactionDetails":"signatures","rewards":false}]}'
-
-### 
-curl  https://api-us-west1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab} -X POST -H "Content-Type: application/json" -d '
-  {"jsonrpc": "2.0", "id": 1, "method":"getGenesisHash"}
-

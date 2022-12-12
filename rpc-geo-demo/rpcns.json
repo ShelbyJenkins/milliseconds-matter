@@ -44,9 +44,9 @@
             "resA"    : 0
         },
         { 
-            "rpcn"    : "Amsterdam",
+            "rpcn"    : "Frankfurt",
             "type"    : "centralized",
-            "address" : "http://69.197.13.4:8080",
+            "address" : "http://69.197.4.18:8080",
             "resT1"   : 0,  
             "resT2"   : 0,
             "resT3"   : 0,

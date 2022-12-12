@@ -67,37 +67,7 @@
   {
     "org"     : "sentries",
     "rpcn"    : "sentries.io",
-    "address" : "rpc.sentries.io/rpc"
-  },
-  {
-    "org"     : "stackpath",
-    "rpcn"    : "stackpath-miami-milliseconds-matter",
-    "address" : "69.197.2.7:8080"
-  },
-  {
-    "org"     : "stackpath",
-    "rpcn"    : "stackpath-seattle-milliseconds-matter",
-    "address" : "69.197.3.5:8080"
-  },
-  {
-    "org"     : "stackpath",
-    "rpcn"    : "stackpath-detroit-milliseconds-matter",
-    "address" : "69.197.27.3:8080"
-  },
-  {
-    "org"     : "stackpath",
-    "rpcn"    : "stackpath-frankfurt-milliseconds-matter",
-    "address" : "69.197.4.18:8080"
-  },
-  {
-    "org"     : "stackpath",
-    "rpcn"    : "stackpath-seoul-milliseconds-matter",
-    "address" : "69.197.7.3:8080"
-  },
-  {
-    "org"     : "stackpath",
-    "rpcn"    : "waf-secured-milliseconds-matter",
-    "address" : "rpc.milliseconds-matter.me"
+    "address" : "rpc.sentries.io/7d255ee206af4531b12fa4763ca3036d"
   },
   {
     "org"     : "tatum",

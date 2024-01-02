@@ -26,13 +26,8 @@
   },
   {
     "org"     : "chainstack",
-    "rpcn"    : "chainstack-iad-milliseconds-matter",
-    "address" : "nd-936-724-150.p2pify.com/6994e63ab38ea4b4dd641bcb28219fb2"
-  },
-  {
-    "org"     : "chainstack",
-    "rpcn"    : "chainstack-ams-milliseconds-matter",
-    "address" : "nd-588-289-349.p2pify.com/23a161b428c6535cde9d1f32c03ad1dd"
+    "rpcn"    : "chainstack-global-elastic",
+    "address" : "https://solana-mainnet.core.chainstack.com/76c57c4770fac9138a0740395ce3db1f"
   },
   {
     "org"     : "getblock",

@@ -27,7 +27,7 @@
   {
     "org"     : "chainstack",
     "rpcn"    : "chainstack-global-elastic",
-    "address" : "https://solana-mainnet.core.chainstack.com/76c57c4770fac9138a0740395ce3db1f"
+    "address" : "solana-mainnet.core.chainstack.com/76c57c4770fac9138a0740395ce3db1f"
   },
   {
     "org"     : "getblock",

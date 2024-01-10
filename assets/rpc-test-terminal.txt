@@ -1,5 +1,3 @@
-   not suitable for mobile browsers - currently http only
-   
    This test requests 'getTransactionCount' from Solana RPC endpoints (five times) and records the average response times.
       Both http and https requests are tested. If an address does not respond it is removed from the test.
       Contact me to have your RPC added!

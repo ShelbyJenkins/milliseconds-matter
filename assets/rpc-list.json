@@ -5,11 +5,6 @@
     "address" : "rpc.ankr.com/solana"
   },
   {
-    "org"     : "auka",
-    "rpcn"    : "validators.auka.co",
-    "address" : "rpc.auka.co/rpc"
-  },
-  {
     "org"     : "allthatnode",
     "rpcn"    : "allthatnode-milliseconds-matter",
     "address" : "solana-mainnet-rpc.allthatnode.com"
@@ -37,7 +32,7 @@
   {
     "org"     : "sentries",
     "rpcn"    : "sentries.io",
-    "address" : "rpc.sentries.io/7d255ee206af4531b12fa4763ca3036d"
+    "address" : "solport.sentries.io/4c860ce19e664e0d8493a830a517ad6c"
   },
   {
     "org"     : "tatum",

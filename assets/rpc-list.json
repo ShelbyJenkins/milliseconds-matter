@@ -1,0 +1,57 @@
+[
+  {
+    "org"     : "ankr",
+    "rpcn"    : "ankr-milliseconds-matter",
+    "address" : "rpc.ankr.com/solana"
+  },
+  {
+    "org"     : "auka",
+    "rpcn"    : "validators.auka.co",
+    "address" : "rpc.auka.co/rpc"
+  },
+  {
+    "org"     : "allthatnode",
+    "rpcn"    : "allthatnode-milliseconds-matter",
+    "address" : "solana-mainnet-rpc.allthatnode.com"
+  },
+  {
+    "org"     : "chainstack",
+    "rpcn"    : "chainstack-global-elastic",
+    "address" : "solana-mainnet.core.chainstack.com/76c57c4770fac9138a0740395ce3db1f"
+  },
+  {
+    "org"     : "getblock",
+    "rpcn"    : "getblock-milliseconds-matter",
+    "address" : "sol.getblock.io/mainnet/?api_key=0adf05aa-0c1b-4a43-b644-c5b13bdb0260"
+  },
+  {
+    "org"     : "pokt",
+    "rpcn"    : "pokt-milliseconds-matter",
+    "address" : "solana-mainnet.gateway.pokt.network/v1/lb/f65b4dcb731d2b827e4ff205"
+  },
+  {
+    "org"     : "solana-foundation",
+    "rpcn"    : "solana-mainnet-beta-api",
+    "address" : "api.mainnet-beta.solana.com"
+  },
+  {
+    "org"     : "sentries",
+    "rpcn"    : "sentries.io",
+    "address" : "rpc.sentries.io/7d255ee206af4531b12fa4763ca3036d"
+  },
+  {
+    "org"     : "tatum",
+    "rpcn"    : "tatum-milliseconds-matter",
+    "address" : "api.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
+  },
+  {
+    "org"     : "tatum",
+    "rpcn"    : "tatum-us-milliseconds-matter",
+    "address" : "api-us-west1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
+  },
+  {
+    "org"     : "tatum",
+    "rpcn"    : "tatum-us-milliseconds-matter",
+    "address" : "api-eu1.tatum.io/v3/solana/web3/{2375e129-91fd-4084-9667-b618257dfeab}"
+  }
+]

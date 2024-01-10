@@ -6,37 +6,104 @@
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
         <meta http-equiv="Pragma" content="no-cache"/>
         <meta http-equiv="Expires" content="0"/>
-        <link rel="icon" type="image/x-icon" href="/favicon.svg">
-        <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="/node_modules/tuicss/dist/tuicss.css">
-        <link rel="stylesheet" href="/node_modules/xterm/css/xterm.css">
-        <script src="/node_modules/xterm/lib/xterm.js"></script>
-        <script src="/node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
-        <script src="/node_modules/xterm-addon-web-links/lib/xterm-addon-web-links.js"></script>
-        <script src="/main.js" defer></script>
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.svg">
+        <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="/styles/tuicss/tuicss.css">
+        <link rel="stylesheet" href="/styles/xterm/xterm.css">
+        <script src="/styles/xterm/xterm.js"></script>
+        <script src="/styles/xterm/xterm-addon-fit.js"></script>
+        <script src="/styles/xterm/xterm-addon-web-links.js"></script>
+        <script src="/src/rpcSpeedComparison.js" defer></script>
+        <script src="/src/main.js" defer></script>
     </head>
     <body>
         <div class="main">
             <div class="action-bar">
-                <span>milliseconds-matter v0.8</span>
-                <a href="/about"><span class="purple-168-text">GO</span><span>about site</span></a>    
+                <span>milliseconds-matter v0.9</span>
+                <div class="run-button rpc-comp-test-button">
+                    <button onclick="runTest();">
+                        <span>test<span id="rpc-list-count" style="color: yellowgreen;">100</span> endpoint's response times</span>
+                    </button> 
+                </div>
+                <a href="/pages/about"><span class="purple-168-text">GO</span><span>about</span></a>
             </div>
-            <div id="homeTerminal" class="home-terminal"></div>
+            <table class="tui-table hovered-purple" id="data-table">
+                <thead>
+                    <tr>
+                        <th>
+                            #1
+                        </th>
+                        <th>
+                            #2
+                        </th>
+                        <th>
+                            #3
+                        </th>
+                        <th>
+                            #4
+                        </th>
+                        <th>
+                            #5
+                        </th>
+                        <th>
+                            #6
+                        </th>
+                        <th>
+                            #7
+                        </th>
+                        <th>
+                            #8
+                        </th>
+                        <th>
+                            #9
+                        </th>
+                        <th>
+                            #10
+                        </th>
+                        <th>
+                            #11
+                        </th>
+                        <th>
+                            #12
+                        </th>
+                        <th>
+                            #13
+                        </th>
+                        <th>
+                            #14
+                        </th>
+                        <th>
+                            #15
+                        </th>
+                    </tr>    
+                </thead>
+                <tbody>
+                    <tr></tr>
+                    <tr></tr>
+                    <!-- <tr></tr>
+                    <tr></tr> -->
+                    <tr></tr>
+                </tbody>
+            </table>
+            <hr>
+            <div>
+                <p>average endpoint response time: <span id="response-average"></span> 
+            </div>
+            <hr>
+            <div id="count-bar">
+                <div>
+                    <p>now testing <span id="rpc-requested-count">x</span> Solana endpoints once in batch <span id="batch-count">x</span> of 5 </p>
+                    <p>response from <span id="rpc-responded-count">x</span> Solana endpoints successfully recieved!</p>
+                </div>
+                <div>
+                    <p>test request 'getTransactionCount' returns a count of</p>
+                    <p><span id="solana-transaction-count">___&ThinSpace;___&ThinSpace;___&ThinSpace;___</span> Solana transactions!</p>
+                </div>
+            </div>
+            <hr>
+            <div id="test-terminal"></div>
             <div class="navbar">
-                <a href="/">
-                    <span class="purple-168-text">GO</span><span>home</span>
-                </a>
-                <a href="/rpc-speed-comparison">
-                    <span class="purple-168-text">GO </span><span>rpc-speed-comparison</span>
-                </a>
-                <a href="#!">
-                    <span class="black-168-text">n/a </span><span>rpc-geo-demo</span>
-                </a>
-                <a href="#!">
-                    <span class="black-168-text">n/a </span><span>waf-speed-comparison</span>
-                </a>
+                <span>not suitable for mobile browsers - http only</span>
             </div>
         </div>
     </body>
-
-      
